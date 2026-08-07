@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# TensorFlow Models
+*.h5
+*.keras
+*.tflite
+*.ckpt
+
+# Dataset
+datasets/raw/
+datasets/processed/
+datasets/train/
+datasets/validation/
+datasets/test/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+
+# Environment
+.env
