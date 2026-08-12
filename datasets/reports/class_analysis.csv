@@ -1,0 +1,65 @@
+crop,source,class,images,healthy,meets_100_image_threshold
+apple,PlantDoc,Apple Scab Leaf,87,False,False
+apple,PlantDoc,Apple leaf,91,False,False
+apple,PlantDoc,Apple rust leaf,89,False,False
+banana,Banana,cordana,562,False,True
+banana,Banana,healthy,529,True,True
+banana,Banana,pestalotiopsis,573,False,True
+banana,Banana,sigatoka,873,False,True
+bell_pepper,PlantDoc,Bell_pepper leaf,61,False,False
+bell_pepper,PlantDoc,Bell_pepper leaf spot,71,False,False
+blueberry,PlantDoc,Blueberry leaf,116,False,True
+cherry,PlantDoc,Cherry leaf,57,False,False
+cotton,Cotton,bacterial_blight,448,False,True
+cotton,Cotton,curl_virus,417,False,True
+cotton,Cotton,fussarium_wilt,419,False,True
+cotton,Cotton,healthy,426,True,True
+grape,PlantDoc,grape leaf,69,False,False
+grape,PlantDoc,grape leaf black rot,64,False,False
+maize,PlantDoc,Corn Gray leaf spot,68,False,False
+maize,PlantDoc,Corn leaf blight,192,False,True
+maize,PlantDoc,Corn rust leaf,116,False,True
+mango,Mango,Anthracnose,500,False,True
+mango,Mango,Bacterial Canker,500,False,True
+mango,Mango,Cutting Weevil,500,False,True
+mango,Mango,Die Back,500,False,True
+mango,Mango,Gall Midge,500,False,True
+mango,Mango,Healthy,500,True,True
+mango,Mango,Powdery Mildew,500,False,True
+mango,Mango,Sooty Mould,500,False,True
+peach,PlantDoc,Peach leaf,112,False,True
+pepper,PlantVillage,Pepper__bell___Bacterial_spot,997,False,True
+pepper,PlantVillage,Pepper__bell___healthy,1478,True,True
+potato,PlantDoc,Potato leaf early blight,117,False,True
+potato,PlantDoc,Potato leaf late blight,105,False,True
+potato,PlantVillage,Potato___Early_blight,1000,False,True
+potato,PlantVillage,Potato___Late_blight,1000,False,True
+potato,PlantVillage,Potato___healthy,152,True,True
+raspberry,PlantDoc,Raspberry leaf,116,False,True
+rice,Rice,Bacterial Leaf Blight,632,False,True
+rice,Rice,Brown Spot,646,False,True
+rice,Rice,Healthy Rice Leaf,653,True,True
+rice,Rice,Leaf Blast,634,False,True
+rice,Rice,Leaf scald,628,False,True
+rice,Rice,Sheath Blight,632,False,True
+soybean,PlantDoc,Soyabean leaf,65,False,False
+squash,PlantDoc,Squash Powdery mildew leaf,129,False,True
+strawberry,PlantDoc,Strawberry leaf,96,False,False
+tomato,PlantDoc,Tomato Early blight leaf,83,False,False
+tomato,PlantDoc,Tomato Septoria leaf spot,148,False,True
+tomato,PlantDoc,Tomato leaf,62,False,False
+tomato,PlantDoc,Tomato leaf bacterial spot,107,False,True
+tomato,PlantDoc,Tomato leaf late blight,111,False,True
+tomato,PlantDoc,Tomato leaf mosaic virus,54,False,False
+tomato,PlantDoc,Tomato leaf yellow virus,75,False,False
+tomato,PlantDoc,Tomato mold leaf,91,False,False
+tomato,PlantVillage,Tomato_Bacterial_spot,2127,False,True
+tomato,PlantVillage,Tomato_Early_blight,1000,False,True
+tomato,PlantVillage,Tomato_Late_blight,1909,False,True
+tomato,PlantVillage,Tomato_Leaf_Mold,952,False,True
+tomato,PlantVillage,Tomato_Septoria_leaf_spot,1771,False,True
+tomato,PlantVillage,Tomato_Spider_mites_Two_spotted_spider_mite,1676,False,True
+tomato,PlantVillage,Tomato__Target_Spot,1404,False,True
+tomato,PlantVillage,Tomato__Tomato_YellowLeaf__Curl_Virus,3208,False,True
+tomato,PlantVillage,Tomato__Tomato_mosaic_virus,373,False,True
+tomato,PlantVillage,Tomato_healthy,1591,True,True

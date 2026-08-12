@@ -1,0 +1,264 @@
+{
+    "banana": {
+        "total_images": 2537,
+        "number_of_original_classes": 4,
+        "healthy_images": 529,
+        "disease_images": 2008,
+        "minimum_class_images": 529,
+        "maximum_class_images": 873,
+        "classes_with_at_least_100_images": 4,
+        "classes": {
+            "Banana::cordana": 562,
+            "Banana::healthy": 529,
+            "Banana::pestalotiopsis": 573,
+            "Banana::sigatoka": 873
+        }
+    },
+    "cotton": {
+        "total_images": 1710,
+        "number_of_original_classes": 4,
+        "healthy_images": 426,
+        "disease_images": 1284,
+        "minimum_class_images": 417,
+        "maximum_class_images": 448,
+        "classes_with_at_least_100_images": 4,
+        "classes": {
+            "Cotton::bacterial_blight": 448,
+            "Cotton::curl_virus": 417,
+            "Cotton::fussarium_wilt": 419,
+            "Cotton::healthy": 426
+        }
+    },
+    "mango": {
+        "total_images": 4000,
+        "number_of_original_classes": 8,
+        "healthy_images": 500,
+        "disease_images": 3500,
+        "minimum_class_images": 500,
+        "maximum_class_images": 500,
+        "classes_with_at_least_100_images": 8,
+        "classes": {
+            "Mango::Anthracnose": 500,
+            "Mango::Bacterial Canker": 500,
+            "Mango::Cutting Weevil": 500,
+            "Mango::Die Back": 500,
+            "Mango::Gall Midge": 500,
+            "Mango::Healthy": 500,
+            "Mango::Powdery Mildew": 500,
+            "Mango::Sooty Mould": 500
+        }
+    },
+    "apple": {
+        "total_images": 267,
+        "number_of_original_classes": 3,
+        "healthy_images": 0,
+        "disease_images": 267,
+        "minimum_class_images": 87,
+        "maximum_class_images": 91,
+        "classes_with_at_least_100_images": 0,
+        "classes": {
+            "PlantDoc::Apple Scab Leaf": 87,
+            "PlantDoc::Apple leaf": 91,
+            "PlantDoc::Apple rust leaf": 89
+        }
+    },
+    "bell_pepper": {
+        "total_images": 132,
+        "number_of_original_classes": 2,
+        "healthy_images": 0,
+        "disease_images": 132,
+        "minimum_class_images": 61,
+        "maximum_class_images": 71,
+        "classes_with_at_least_100_images": 0,
+        "classes": {
+            "PlantDoc::Bell_pepper leaf": 61,
+            "PlantDoc::Bell_pepper leaf spot": 71
+        }
+    },
+    "blueberry": {
+        "total_images": 116,
+        "number_of_original_classes": 1,
+        "healthy_images": 0,
+        "disease_images": 116,
+        "minimum_class_images": 116,
+        "maximum_class_images": 116,
+        "classes_with_at_least_100_images": 1,
+        "classes": {
+            "PlantDoc::Blueberry leaf": 116
+        }
+    },
+    "cherry": {
+        "total_images": 57,
+        "number_of_original_classes": 1,
+        "healthy_images": 0,
+        "disease_images": 57,
+        "minimum_class_images": 57,
+        "maximum_class_images": 57,
+        "classes_with_at_least_100_images": 0,
+        "classes": {
+            "PlantDoc::Cherry leaf": 57
+        }
+    },
+    "maize": {
+        "total_images": 376,
+        "number_of_original_classes": 3,
+        "healthy_images": 0,
+        "disease_images": 376,
+        "minimum_class_images": 68,
+        "maximum_class_images": 192,
+        "classes_with_at_least_100_images": 2,
+        "classes": {
+            "PlantDoc::Corn Gray leaf spot": 68,
+            "PlantDoc::Corn leaf blight": 192,
+            "PlantDoc::Corn rust leaf": 116
+        }
+    },
+    "grape": {
+        "total_images": 133,
+        "number_of_original_classes": 2,
+        "healthy_images": 0,
+        "disease_images": 133,
+        "minimum_class_images": 64,
+        "maximum_class_images": 69,
+        "classes_with_at_least_100_images": 0,
+        "classes": {
+            "PlantDoc::grape leaf": 69,
+            "PlantDoc::grape leaf black rot": 64
+        }
+    },
+    "peach": {
+        "total_images": 112,
+        "number_of_original_classes": 1,
+        "healthy_images": 0,
+        "disease_images": 112,
+        "minimum_class_images": 112,
+        "maximum_class_images": 112,
+        "classes_with_at_least_100_images": 1,
+        "classes": {
+            "PlantDoc::Peach leaf": 112
+        }
+    },
+    "potato": {
+        "total_images": 2374,
+        "number_of_original_classes": 5,
+        "healthy_images": 152,
+        "disease_images": 2222,
+        "minimum_class_images": 105,
+        "maximum_class_images": 1000,
+        "classes_with_at_least_100_images": 5,
+        "classes": {
+            "PlantDoc::Potato leaf early blight": 117,
+            "PlantDoc::Potato leaf late blight": 105,
+            "PlantVillage::Potato___Early_blight": 1000,
+            "PlantVillage::Potato___Late_blight": 1000,
+            "PlantVillage::Potato___healthy": 152
+        }
+    },
+    "raspberry": {
+        "total_images": 116,
+        "number_of_original_classes": 1,
+        "healthy_images": 0,
+        "disease_images": 116,
+        "minimum_class_images": 116,
+        "maximum_class_images": 116,
+        "classes_with_at_least_100_images": 1,
+        "classes": {
+            "PlantDoc::Raspberry leaf": 116
+        }
+    },
+    "soybean": {
+        "total_images": 65,
+        "number_of_original_classes": 1,
+        "healthy_images": 0,
+        "disease_images": 65,
+        "minimum_class_images": 65,
+        "maximum_class_images": 65,
+        "classes_with_at_least_100_images": 0,
+        "classes": {
+            "PlantDoc::Soyabean leaf": 65
+        }
+    },
+    "squash": {
+        "total_images": 129,
+        "number_of_original_classes": 1,
+        "healthy_images": 0,
+        "disease_images": 129,
+        "minimum_class_images": 129,
+        "maximum_class_images": 129,
+        "classes_with_at_least_100_images": 1,
+        "classes": {
+            "PlantDoc::Squash Powdery mildew leaf": 129
+        }
+    },
+    "strawberry": {
+        "total_images": 96,
+        "number_of_original_classes": 1,
+        "healthy_images": 0,
+        "disease_images": 96,
+        "minimum_class_images": 96,
+        "maximum_class_images": 96,
+        "classes_with_at_least_100_images": 0,
+        "classes": {
+            "PlantDoc::Strawberry leaf": 96
+        }
+    },
+    "tomato": {
+        "total_images": 16742,
+        "number_of_original_classes": 18,
+        "healthy_images": 1591,
+        "disease_images": 15151,
+        "minimum_class_images": 54,
+        "maximum_class_images": 3208,
+        "classes_with_at_least_100_images": 13,
+        "classes": {
+            "PlantDoc::Tomato Early blight leaf": 83,
+            "PlantDoc::Tomato Septoria leaf spot": 148,
+            "PlantDoc::Tomato leaf": 62,
+            "PlantDoc::Tomato leaf bacterial spot": 107,
+            "PlantDoc::Tomato leaf late blight": 111,
+            "PlantDoc::Tomato leaf mosaic virus": 54,
+            "PlantDoc::Tomato leaf yellow virus": 75,
+            "PlantDoc::Tomato mold leaf": 91,
+            "PlantVillage::Tomato_Bacterial_spot": 2127,
+            "PlantVillage::Tomato_Early_blight": 1000,
+            "PlantVillage::Tomato_Late_blight": 1909,
+            "PlantVillage::Tomato_Leaf_Mold": 952,
+            "PlantVillage::Tomato_Septoria_leaf_spot": 1771,
+            "PlantVillage::Tomato_Spider_mites_Two_spotted_spider_mite": 1676,
+            "PlantVillage::Tomato__Target_Spot": 1404,
+            "PlantVillage::Tomato__Tomato_YellowLeaf__Curl_Virus": 3208,
+            "PlantVillage::Tomato__Tomato_mosaic_virus": 373,
+            "PlantVillage::Tomato_healthy": 1591
+        }
+    },
+    "pepper": {
+        "total_images": 2475,
+        "number_of_original_classes": 2,
+        "healthy_images": 1478,
+        "disease_images": 997,
+        "minimum_class_images": 997,
+        "maximum_class_images": 1478,
+        "classes_with_at_least_100_images": 2,
+        "classes": {
+            "PlantVillage::Pepper__bell___Bacterial_spot": 997,
+            "PlantVillage::Pepper__bell___healthy": 1478
+        }
+    },
+    "rice": {
+        "total_images": 3825,
+        "number_of_original_classes": 6,
+        "healthy_images": 653,
+        "disease_images": 3172,
+        "minimum_class_images": 628,
+        "maximum_class_images": 653,
+        "classes_with_at_least_100_images": 6,
+        "classes": {
+            "Rice::Bacterial Leaf Blight": 632,
+            "Rice::Brown Spot": 646,
+            "Rice::Healthy Rice Leaf": 653,
+            "Rice::Leaf Blast": 634,
+            "Rice::Leaf scald": 628,
+            "Rice::Sheath Blight": 632
+        }
+    }
+}

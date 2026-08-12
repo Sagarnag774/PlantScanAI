@@ -1,0 +1,65 @@
+source,crop,original_class,canonical_class,type
+Banana,banana,cordana,cordana,disease
+Banana,banana,healthy,healthy,healthy
+Banana,banana,pestalotiopsis,pestalotiopsis,disease
+Banana,banana,sigatoka,sigatoka,disease
+Cotton,cotton,bacterial_blight,bacterial_blight,disease
+Cotton,cotton,curl_virus,curl_virus,disease
+Cotton,cotton,fussarium_wilt,fusarium_wilt,disease
+Cotton,cotton,healthy,healthy,healthy
+Mango,mango,Anthracnose,anthracnose,disease
+Mango,mango,Bacterial Canker,bacterial_canker,disease
+Mango,mango,Cutting Weevil,cutting_weevil,disease
+Mango,mango,Die Back,die_back,disease
+Mango,mango,Gall Midge,gall_midge,disease
+Mango,mango,Healthy,healthy,healthy
+Mango,mango,Powdery Mildew,powdery_mildew,disease
+Mango,mango,Sooty Mould,sooty_mould,disease
+PlantDoc,apple,Apple Scab Leaf,apple_scab,disease
+PlantDoc,apple,Apple leaf,REVIEW_REQUIRED,unknown
+PlantDoc,apple,Apple rust leaf,rust,disease
+PlantDoc,bell_pepper,Bell_pepper leaf,REVIEW_REQUIRED,unknown
+PlantDoc,bell_pepper,Bell_pepper leaf spot,leaf_spot,disease
+PlantDoc,blueberry,Blueberry leaf,REVIEW_REQUIRED,unknown
+PlantDoc,cherry,Cherry leaf,REVIEW_REQUIRED,unknown
+PlantDoc,grape,grape leaf,REVIEW_REQUIRED,unknown
+PlantDoc,grape,grape leaf black rot,black_rot,disease
+PlantDoc,maize,Corn Gray leaf spot,gray_leaf_spot,disease
+PlantDoc,maize,Corn leaf blight,leaf_blight,disease
+PlantDoc,maize,Corn rust leaf,rust,disease
+PlantDoc,peach,Peach leaf,REVIEW_REQUIRED,unknown
+PlantDoc,potato,Potato leaf early blight,early_blight,disease
+PlantDoc,potato,Potato leaf late blight,late_blight,disease
+PlantDoc,raspberry,Raspberry leaf,REVIEW_REQUIRED,unknown
+PlantDoc,soybean,Soyabean leaf,REVIEW_REQUIRED,unknown
+PlantDoc,squash,Squash Powdery mildew leaf,powdery_mildew,disease
+PlantDoc,strawberry,Strawberry leaf,REVIEW_REQUIRED,unknown
+PlantDoc,tomato,Tomato Early blight leaf,early_blight,disease
+PlantDoc,tomato,Tomato Septoria leaf spot,septoria_leaf_spot,disease
+PlantDoc,tomato,Tomato leaf,REVIEW_REQUIRED,unknown
+PlantDoc,tomato,Tomato leaf bacterial spot,bacterial_spot,disease
+PlantDoc,tomato,Tomato leaf late blight,late_blight,disease
+PlantDoc,tomato,Tomato leaf mosaic virus,mosaic_virus,disease
+PlantDoc,tomato,Tomato leaf yellow virus,curl_virus,disease
+PlantDoc,tomato,Tomato mold leaf,leaf_mold,disease
+PlantVillage,pepper,Pepper__bell___Bacterial_spot,bacterial_spot,disease
+PlantVillage,pepper,Pepper__bell___healthy,healthy,healthy
+PlantVillage,potato,Potato___Early_blight,early_blight,disease
+PlantVillage,potato,Potato___Late_blight,late_blight,disease
+PlantVillage,potato,Potato___healthy,healthy,healthy
+PlantVillage,tomato,Tomato_Bacterial_spot,bacterial_spot,disease
+PlantVillage,tomato,Tomato_Early_blight,early_blight,disease
+PlantVillage,tomato,Tomato_Late_blight,late_blight,disease
+PlantVillage,tomato,Tomato_Leaf_Mold,leaf_mold,disease
+PlantVillage,tomato,Tomato_Septoria_leaf_spot,septoria_leaf_spot,disease
+PlantVillage,tomato,Tomato_Spider_mites_Two_spotted_spider_mite,spider_mites,disease
+PlantVillage,tomato,Tomato__Target_Spot,target_spot,disease
+PlantVillage,tomato,Tomato__Tomato_YellowLeaf__Curl_Virus,curl_virus,disease
+PlantVillage,tomato,Tomato__Tomato_mosaic_virus,mosaic_virus,disease
+PlantVillage,tomato,Tomato_healthy,healthy,healthy
+Rice,rice,Bacterial Leaf Blight,bacterial_leaf_blight,disease
+Rice,rice,Brown Spot,brown_spot,disease
+Rice,rice,Healthy Rice Leaf,healthy,healthy
+Rice,rice,Leaf Blast,leaf_blast,disease
+Rice,rice,Leaf scald,leaf_scald,disease
+Rice,rice,Sheath Blight,sheath_blight,disease
