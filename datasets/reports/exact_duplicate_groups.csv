@@ -1,0 +1,241 @@
+group_id,group_size,redundant_files,datasets,subsets,splits,labels,split_leakage,label_conflict,cross_dataset,files
+1,3,2,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h192.jpg || datasets/raw/Cotton/healthy/h194.jpg || datasets/raw/Cotton/healthy/h195.jpg
+2,3,2,Banana,Augmented,raw,healthy,NO,NO,NO,datasets/raw/Banana/AugmentedSet/healthy/130_aug.jpeg || datasets/raw/Banana/AugmentedSet/healthy/150_aug.jpeg || datasets/raw/Banana/AugmentedSet/healthy/151_aug.jpeg
+3,3,2,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h394.jpg || datasets/raw/Cotton/healthy/h401.jpg || datasets/raw/Cotton/healthy/h4201.jpg
+4,3,2,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl0.jpg || datasets/raw/Cotton/curl_virus/curl45 - Copy.jpg || datasets/raw/Cotton/curl_virus/curl45.jpg
+5,3,2,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/bact439.jpg || datasets/raw/Cotton/bacterial_blight/bb - Copy.jpg || datasets/raw/Cotton/bacterial_blight/bb.jpg
+6,3,2,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl299.jpg || datasets/raw/Cotton/curl_virus/curl379.jpg || datasets/raw/Cotton/curl_virus/curlvirus1.jpg
+7,3,2,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h277.jpg || datasets/raw/Cotton/healthy/h341.jpg || datasets/raw/Cotton/healthy/h399.jpg
+8,3,2,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl1 (2).jpg || datasets/raw/Cotton/curl_virus/curl112.jpg || datasets/raw/Cotton/curl_virus/images.jpg
+9,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h388.jpg || datasets/raw/Cotton/healthy/h498.jpg
+10,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl43.png || datasets/raw/Cotton/curl_virus/curl50.png
+11,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/26.jpeg || datasets/raw/Banana/OriginalSet/healthy/56.jpeg
+12,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143750 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143750.jpg
+13,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h41.jpg || datasets/raw/Cotton/healthy/h42.jpg
+14,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl186.jpg || datasets/raw/Cotton/curl_virus/curl190.jpg
+15,2,1,PlantVillage,Main,raw,Tomato_Late_blight,NO,NO,NO,datasets/raw/PlantVillage/Tomato_Late_blight/98586693-fe1f-4ea0-8e27-4501b61cf09b___GHLB_PS Leaf 23.5 Day 13.jpg || datasets/raw/PlantVillage/Tomato_Late_blight/c1775bad-7c02-41fb-bb7d-f8df91d60ac3___GHLB_PS Leaf 23.5 Day 13.jpg
+16,2,1,PlantDoc,Main,test|train,Tomato Septoria leaf spot|Tomato leaf bacterial spot,YES,YES,NO,datasets/raw/PlantDoc/test/Tomato leaf bacterial spot/Tomato leaf bacterial spot (9).jpg || datasets/raw/PlantDoc/train/Tomato Septoria leaf spot/Tomato Septoria leaf spot (109).jpg
+17,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl199.jpg || datasets/raw/Cotton/curl_virus/curl204.jpg
+18,2,1,PlantVillage,Main,raw,Tomato_healthy,NO,NO,NO,datasets/raw/PlantVillage/Tomato_healthy/9662364c-aaba-45e3-b907-10792d60578c___GH_HL Leaf 220.JPG || datasets/raw/PlantVillage/Tomato_healthy/d2ce7896-6fa4-45e6-96c5-d162da0e3e1c___GH_HL Leaf 220.JPG
+19,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done8.jpg || datasets/raw/Cotton/fussarium_wilt/fus57.jpg
+20,2,1,Mango,Main,raw,Die Back,NO,NO,NO,datasets/raw/Mango/Die Back/20211129_161600 (Custom)(1).jpg || datasets/raw/Mango/Die Back/20211129_161600 (Custom).jpg
+21,2,1,PlantVillage,Main,raw,Tomato_Late_blight,NO,NO,NO,datasets/raw/PlantVillage/Tomato_Late_blight/48c55974-9fe9-4f4b-94f7-c8cd127d1e05___GHLB_PS Leaf 23.7 Day 13.jpg || datasets/raw/PlantVillage/Tomato_Late_blight/bd4f09bd-ee85-4ab1-bce0-8cde3fdd7f1b___GHLB_PS Leaf 23.7 Day 13.jpg
+22,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done16.jpg || datasets/raw/Cotton/fussarium_wilt/fus153.jpg
+23,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl255.jpg || datasets/raw/Cotton/curl_virus/curl258.jpg
+24,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done11.jpg || datasets/raw/Cotton/fussarium_wilt/fus116.jpg
+25,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl302.jpg || datasets/raw/Cotton/curl_virus/curl382.jpg
+26,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h276.jpg || datasets/raw/Cotton/healthy/h398.jpg
+27,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl249 - Copy.jpg || datasets/raw/Cotton/curl_virus/curl249.jpg
+28,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h294.jpg || datasets/raw/Cotton/healthy/h296.jpg
+29,2,1,PlantVillage,Main,raw,Tomato_Late_blight,NO,NO,NO,datasets/raw/PlantVillage/Tomato_Late_blight/1a69b38b-c4eb-42c4-9584-bcb14fb8db0c___GHLB2 Leaf 9011.JPG || datasets/raw/PlantVillage/Tomato_Late_blight/2c47b891-3c97-48f1-a2cc-5aa53d3a1148___GHLB2 Leaf 9011.JPG
+30,2,1,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/bact187.png || datasets/raw/Cotton/bacterial_blight/bact256.png
+31,2,1,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/bact188.png || datasets/raw/Cotton/bacterial_blight/bact257.png
+32,2,1,PlantVillage,Main,raw,Tomato_healthy,NO,NO,NO,datasets/raw/PlantVillage/Tomato_healthy/1af0bfe1-4bcf-4b8b-be66-5d0953eb647e___GH_HL Leaf 482.2.JPG || datasets/raw/PlantVillage/Tomato_healthy/cfd491d6-4af5-4728-8f0e-0d330a07174a___GH_HL Leaf 482.2.JPG
+33,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143842_1 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143842_1.jpg
+34,2,1,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/bact180.png || datasets/raw/Cotton/bacterial_blight/bact249.png
+35,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h301.jpg || datasets/raw/Cotton/healthy/h303.jpg
+36,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl307.jpg || datasets/raw/Cotton/curl_virus/curl91.jpg
+37,2,1,Banana,Augmented,raw,healthy,NO,NO,NO,datasets/raw/Banana/AugmentedSet/healthy/280_aug.jpeg || datasets/raw/Banana/AugmentedSet/healthy/281_aug.jpeg
+38,2,1,Rice,Main,raw,Healthy Rice Leaf,NO,NO,NO,datasets/raw/Rice/Healthy Rice Leaf/Healthy_rice_leaf (6).jpg || datasets/raw/Rice/Healthy Rice Leaf/Healthy_rice_leaf (7).jpg
+39,2,1,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/bact81.jpg || datasets/raw/Cotton/bacterial_blight/bact85.jpg
+40,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/555.jpg || datasets/raw/Cotton/healthy/h484.jpg
+41,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h447.jpg || datasets/raw/Cotton/healthy/h477.jpg
+42,2,1,PlantVillage,Main,raw,Tomato_Late_blight,NO,NO,NO,datasets/raw/PlantVillage/Tomato_Late_blight/d6e6897a-5083-4914-9903-804c5684a956___GHLB2 Leaf 102.JPG || datasets/raw/PlantVillage/Tomato_Late_blight/d81682aa-746b-4e07-af2b-52ebb6f4c017___GHLB2 Leaf 102.JPG
+43,2,1,Rice,Main,raw,Brown Spot,NO,NO,NO,datasets/raw/Rice/Brown Spot/IMG_20231018_143712 - Copy.jpg || datasets/raw/Rice/Brown Spot/IMG_20231018_143712.jpg
+44,2,1,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/leaf-blight-7-13-16-225x300 - Copy.jpg || datasets/raw/Cotton/bacterial_blight/leaf-blight-7-13-16-225x300.jpg
+45,2,1,Mango,Main,raw,Anthracnose,NO,NO,NO,datasets/raw/Mango/Anthracnose/20211011_170717 (Custom).jpg || datasets/raw/Mango/Anthracnose/20211011_170717 - Copy - Copy - Copy (Custom).jpg
+46,2,1,Banana,Augmented,raw,cordana,NO,NO,NO,datasets/raw/Banana/AugmentedSet/cordana/20_aug.jpeg || datasets/raw/Banana/AugmentedSet/cordana/21_aug.jpeg
+47,2,1,Mango,Main,raw,Anthracnose,NO,NO,NO,datasets/raw/Mango/Anthracnose/IMG_20211011_140557 (Custom).jpg || datasets/raw/Mango/Anthracnose/IMG_20211011_140557 - Copy (Custom).jpg
+48,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl163.jpg || datasets/raw/Cotton/curl_virus/curl372.jpg
+49,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl164.jpg || datasets/raw/Cotton/curl_virus/curl373.jpg
+50,2,1,PlantDoc,Main,test|train,Corn Gray leaf spot|Corn leaf blight,YES,YES,NO,datasets/raw/PlantDoc/test/Corn leaf blight/Corn leaf blight (10).jpg || datasets/raw/PlantDoc/train/Corn Gray leaf spot/Corn Gray leaf spot (20).jpg
+51,2,1,Banana,Augmented,raw,healthy,NO,NO,NO,datasets/raw/Banana/AugmentedSet/healthy/86_aug.jpeg || datasets/raw/Banana/AugmentedSet/healthy/90_aug.jpeg
+52,2,1,PlantVillage,Main,raw,Tomato_healthy,NO,NO,NO,datasets/raw/PlantVillage/Tomato_healthy/37aad83b-7ff8-4b35-b3ed-fb8e0f54910b___GH_HL Leaf 342.1.JPG || datasets/raw/PlantVillage/Tomato_healthy/e786ac89-29fe-47e3-b49e-b9a9ee7edd9d___GH_HL Leaf 342.1.JPG
+53,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/FOV4-leaf-symptoms-courtesy-UC-Davis_468x351.jpg || datasets/raw/Cotton/fussarium_wilt/done21.jpg
+54,2,1,Banana,Original,raw,healthy|pestalotiopsis,NO,YES,NO,datasets/raw/Banana/OriginalSet/healthy/122.jpeg || datasets/raw/Banana/OriginalSet/pestalotiopsis/78.jpeg
+55,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h279.jpg || datasets/raw/Cotton/healthy/h395.jpg
+56,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done19.jpg || datasets/raw/Cotton/fussarium_wilt/fus175.jpg
+57,2,1,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/P1010086jpg - Copy.jpg || datasets/raw/Cotton/bacterial_blight/P1010086jpg.jpg
+58,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h350.jpg || datasets/raw/Cotton/healthy/h354.jpg
+59,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h219.png || datasets/raw/Cotton/healthy/h220.png
+60,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done17.jpg || datasets/raw/Cotton/fussarium_wilt/fus159.jpg
+61,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl127.jpg || datasets/raw/Cotton/curl_virus/curl131.jpg
+62,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h137.jpg || datasets/raw/Cotton/healthy/h140.jpg
+63,2,1,Rice,Main,raw,Brown Spot,NO,NO,NO,datasets/raw/Rice/Brown Spot/Brown_spot (135).jpg || datasets/raw/Rice/Brown Spot/Brown_spot (136).jpg
+64,2,1,Banana,Augmented,raw,cordana,NO,NO,NO,datasets/raw/Banana/AugmentedSet/cordana/128_aug.jpeg || datasets/raw/Banana/AugmentedSet/cordana/129_aug.jpeg
+65,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done9.jpg || datasets/raw/Cotton/fussarium_wilt/fus72.jpg
+66,2,1,Mango,Main,raw,Anthracnose,NO,NO,NO,datasets/raw/Mango/Anthracnose/20211011_170706 (Custom).jpg || datasets/raw/Mango/Anthracnose/20211011_170706 - Copy - Copy - Copy (Custom).jpg
+67,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/25.jpeg || datasets/raw/Banana/OriginalSet/healthy/55.jpeg
+68,2,1,PlantDoc,Main,train,Potato leaf early blight|Potato leaf late blight,NO,YES,NO,datasets/raw/PlantDoc/train/Potato leaf early blight/Potato leaf early blight (14).jpg || datasets/raw/PlantDoc/train/Potato leaf late blight/Potato leaf late blight (11).jpg
+69,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/105.jpeg || datasets/raw/Banana/OriginalSet/healthy/11.jpeg
+70,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/1.jpeg || datasets/raw/Banana/OriginalSet/healthy/109.jpeg
+71,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done14.jpg || datasets/raw/Cotton/fussarium_wilt/fus136.jpg
+72,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/40.jpeg || datasets/raw/Banana/OriginalSet/healthy/7.jpeg
+73,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h125.jpg || datasets/raw/Cotton/healthy/h130.jpg
+74,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl301.jpg || datasets/raw/Cotton/curl_virus/curl381.jpg
+75,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl155.jpg || datasets/raw/Cotton/curl_virus/curl214.jpg
+76,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/125.jpeg || datasets/raw/Banana/OriginalSet/healthy/31.jpeg
+77,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h378.png || datasets/raw/Cotton/healthy/h484.png
+78,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/27.jpeg || datasets/raw/Banana/OriginalSet/healthy/57.jpeg
+79,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl308.jpg || datasets/raw/Cotton/curl_virus/curl92.jpg
+80,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h57.jpg || datasets/raw/Cotton/healthy/h58.jpg
+81,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl300.jpg || datasets/raw/Cotton/curl_virus/curl380.jpg
+82,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/127.jpeg || datasets/raw/Banana/OriginalSet/healthy/22.jpeg
+83,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl115.jpg || datasets/raw/Cotton/curl_virus/curl117.jpg
+84,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143753 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143753.jpg
+85,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/29.jpeg || datasets/raw/Banana/OriginalSet/healthy/51.jpeg
+86,2,1,PlantVillage,Main,raw,Tomato_Late_blight,NO,NO,NO,datasets/raw/PlantVillage/Tomato_Late_blight/5f21282c-e2ef-4c4a-ace1-b5701fe7effc___GHLB2 Leaf 8999.JPG || datasets/raw/PlantVillage/Tomato_Late_blight/e5d707cd-077c-43af-bda9-6138e516ff51___GHLB2 Leaf 8999.JPG
+87,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl103.jpg || datasets/raw/Cotton/curl_virus/curl105.jpg
+88,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/48.jpeg || datasets/raw/Banana/OriginalSet/healthy/89.jpeg
+89,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/123.jpeg || datasets/raw/Banana/OriginalSet/healthy/4.jpeg
+90,2,1,Mango,Main,raw,Die Back,NO,NO,NO,datasets/raw/Mango/Die Back/20211129_161616 (Custom)(1).jpg || datasets/raw/Mango/Die Back/20211129_161616 (Custom).jpg
+91,2,1,Mango,Main,raw,Anthracnose,NO,NO,NO,datasets/raw/Mango/Anthracnose/IMG_20211011_140624 (Custom).jpg || datasets/raw/Mango/Anthracnose/IMG_20211011_140624 - Copy (Custom).jpg
+92,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h177.jpg || datasets/raw/Cotton/healthy/h179.jpg
+93,2,1,Mango,Main,raw,Anthracnose,NO,NO,NO,datasets/raw/Mango/Anthracnose/IMG_20211011_140304 (Custom).jpg || datasets/raw/Mango/Anthracnose/IMG_20211011_140304 - Copy (Custom).jpg
+94,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143840 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143840.jpg
+95,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h318.jpg || datasets/raw/Cotton/healthy/h321.jpg
+96,2,1,Mango,Main,raw,Anthracnose,NO,NO,NO,datasets/raw/Mango/Anthracnose/20211011_170709 (Custom).jpg || datasets/raw/Mango/Anthracnose/20211011_170709 - Copy - Copy - Copy (Custom).jpg
+97,2,1,PlantDoc,Main,test|train,Potato leaf early blight|Potato leaf late blight,YES,YES,NO,datasets/raw/PlantDoc/test/Potato leaf late blight/Potato leaf late blight (1).jpg || datasets/raw/PlantDoc/train/Potato leaf early blight/Potato leaf early blight (13).jpg
+98,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl114.jpg || datasets/raw/Cotton/curl_virus/curl118.jpg
+99,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done.jpg || datasets/raw/Cotton/fussarium_wilt/fus9.jpg
+100,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h211.jpg || datasets/raw/Cotton/healthy/h212.jpg
+101,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done6.jpg || datasets/raw/Cotton/fussarium_wilt/fus41.jpg
+102,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h202.jpg || datasets/raw/Cotton/healthy/h205.jpg
+103,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/Figure-2A.png || datasets/raw/Cotton/fussarium_wilt/fus222.png
+104,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/32.jpeg || datasets/raw/Banana/OriginalSet/healthy/38.jpeg
+105,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h147.jpg || datasets/raw/Cotton/healthy/h155.jpg
+106,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/20.jpeg || datasets/raw/Banana/OriginalSet/healthy/59.jpeg
+107,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/112.jpeg || datasets/raw/Banana/OriginalSet/healthy/62.jpeg
+108,2,1,Mango,Main,raw,Anthracnose,NO,NO,NO,datasets/raw/Mango/Anthracnose/IMG_20211011_153557 (Custom).jpg || datasets/raw/Mango/Anthracnose/IMG_20211011_153557 - Copy (Custom).jpg
+109,2,1,Rice,Main,raw,Sheath Blight,NO,NO,NO,datasets/raw/Rice/Sheath Blight/IMG_20231006_163218 - Copy.jpg || datasets/raw/Rice/Sheath Blight/IMG_20231006_163218.jpg
+110,2,1,PlantVillage,Main,raw,Tomato_healthy,NO,NO,NO,datasets/raw/PlantVillage/Tomato_healthy/488feb1c-4b9f-44e7-8aa6-4103a9601f5f___GH_HL Leaf 434.JPG || datasets/raw/PlantVillage/Tomato_healthy/a5de43e7-fc2f-4a14-a8e6-c0f2f94c84f1___GH_HL Leaf 434.JPG
+111,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl309.jpg || datasets/raw/Cotton/curl_virus/curl93.jpg
+112,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/15.jpeg || datasets/raw/Banana/OriginalSet/healthy/44.jpeg
+113,2,1,Rice,Main,raw,Brown Spot,NO,NO,NO,datasets/raw/Rice/Brown Spot/IMG_20231018_143709 - Copy.jpg || datasets/raw/Rice/Brown Spot/IMG_20231018_143709.jpg
+114,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl363.jpg || datasets/raw/Cotton/curl_virus/curl42.jpg
+115,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/49.jpeg || datasets/raw/Banana/OriginalSet/healthy/5.jpeg
+116,2,1,Rice,Main,raw,Sheath Blight,NO,NO,NO,datasets/raw/Rice/Sheath Blight/IMG_20231006_163217 - Copy.jpg || datasets/raw/Rice/Sheath Blight/IMG_20231006_163217.jpg
+117,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/128.jpeg || datasets/raw/Banana/OriginalSet/healthy/21.jpeg
+118,2,1,Rice,Main,raw,Healthy Rice Leaf,NO,NO,NO,datasets/raw/Rice/Healthy Rice Leaf/Healthy_rice_leaf (8).jpg || datasets/raw/Rice/Healthy Rice Leaf/Healthy_rice_leaf (9).jpg
+119,2,1,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/bact179.png || datasets/raw/Cotton/bacterial_blight/bact248.png
+120,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl126.jpg || datasets/raw/Cotton/curl_virus/curl130.jpg
+121,2,1,Rice,Main,raw,Brown Spot,NO,NO,NO,datasets/raw/Rice/Brown Spot/IMG_20231018_143713 - Copy.jpg || datasets/raw/Rice/Brown Spot/IMG_20231018_143713.jpg
+122,2,1,Mango,Main,raw,Anthracnose,NO,NO,NO,datasets/raw/Mango/Anthracnose/20211011_171141 (Custom).jpg || datasets/raw/Mango/Anthracnose/20211011_171141 - Copy - Copy - Copy (Custom).jpg
+123,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl17.jpg || datasets/raw/Cotton/curl_virus/curl267.jpg
+124,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/fus20.jpg || datasets/raw/Cotton/fussarium_wilt/fus24.jpg
+125,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl376.jpg || datasets/raw/Cotton/curl_virus/curl57.jpg
+126,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/102.jpeg || datasets/raw/Banana/OriginalSet/healthy/39.jpeg
+127,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/103.jpeg || datasets/raw/Banana/OriginalSet/healthy/110.jpeg
+128,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h152.jpg || datasets/raw/Cotton/healthy/h154.jpg
+129,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h334.jpg || datasets/raw/Cotton/healthy/h404.jpg
+130,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h295.jpg || datasets/raw/Cotton/healthy/h302.jpg
+131,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/42.jpeg || datasets/raw/Banana/OriginalSet/healthy/6.jpeg
+132,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/3.jpeg || datasets/raw/Banana/OriginalSet/healthy/92.jpeg
+133,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/0.jpeg || datasets/raw/Banana/OriginalSet/healthy/104.jpeg
+134,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/2.jpeg || datasets/raw/Banana/OriginalSet/healthy/34.jpeg
+135,2,1,Mango,Main,raw,Die Back,NO,NO,NO,datasets/raw/Mango/Die Back/20211129_161631 (Custom)(1).jpg || datasets/raw/Mango/Die Back/20211129_161631 (Custom).jpg
+136,2,1,Banana,Augmented,raw,cordana,NO,NO,NO,datasets/raw/Banana/AugmentedSet/cordana/169_aug.jpeg || datasets/raw/Banana/AugmentedSet/cordana/171_aug.jpeg
+137,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143803 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143803.jpg
+138,2,1,Mango,Main,raw,Anthracnose,NO,NO,NO,datasets/raw/Mango/Anthracnose/20211011_170708 (Custom).jpg || datasets/raw/Mango/Anthracnose/20211011_170708 - Copy - Copy - Copy (Custom).jpg
+139,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/23.jpeg || datasets/raw/Banana/OriginalSet/healthy/54.jpeg
+140,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143855 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143855.jpg
+141,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/10.jpeg || datasets/raw/Banana/OriginalSet/healthy/106.jpeg
+142,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/12.jpeg || datasets/raw/Banana/OriginalSet/healthy/45.jpeg
+143,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl421.jpg || datasets/raw/Cotton/curl_virus/images (2).jpg
+144,2,1,PlantVillage,Main,raw,Tomato_Late_blight,NO,NO,NO,datasets/raw/PlantVillage/Tomato_Late_blight/3fae9c64-18f0-4a67-9f97-554248bb1bed___GHLB_PS Leaf 24 Day 16.jpg || datasets/raw/PlantVillage/Tomato_Late_blight/5de6da85-f8c4-48c4-b463-3e6bd78884cc___GHLB_PS Leaf 24 Day 16.jpg
+145,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/126.jpeg || datasets/raw/Banana/OriginalSet/healthy/24.jpeg
+146,2,1,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/bact447 - Copy.jpg || datasets/raw/Cotton/bacterial_blight/bact447.jpg
+147,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/101.jpeg || datasets/raw/Banana/OriginalSet/healthy/46.jpeg
+148,2,1,Banana,Augmented,raw,healthy,NO,NO,NO,datasets/raw/Banana/AugmentedSet/healthy/181_aug.jpeg || datasets/raw/Banana/AugmentedSet/healthy/269_aug.jpeg
+149,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/13.jpeg || datasets/raw/Banana/OriginalSet/healthy/43.jpeg
+150,2,1,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/bact395.png || datasets/raw/Cotton/bacterial_blight/bact396.png
+151,2,1,Banana,Augmented,raw,healthy,NO,NO,NO,datasets/raw/Banana/AugmentedSet/healthy/136_aug.jpeg || datasets/raw/Banana/AugmentedSet/healthy/145_aug.jpeg
+152,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143838 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143838.jpg
+153,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/foliar-damage-from-fusarium-oxysporum.png || datasets/raw/Cotton/fussarium_wilt/fus346.png
+154,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/fus309.JPG || datasets/raw/Cotton/fussarium_wilt/fus310.JPG
+155,2,1,PlantDoc,Main,test|train,Potato leaf early blight|Potato leaf late blight,YES,YES,NO,datasets/raw/PlantDoc/test/Potato leaf early blight/Potato leaf early blight (2).jpg || datasets/raw/PlantDoc/train/Potato leaf late blight/Potato leaf late blight (19).jpg
+156,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/47.jpeg || datasets/raw/Banana/OriginalSet/healthy/9.jpeg
+157,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h333.jpg || datasets/raw/Cotton/healthy/h396.jpg
+158,2,1,Mango,Main,raw,Die Back,NO,NO,NO,datasets/raw/Mango/Die Back/20211129_161628 (Custom)(1).jpg || datasets/raw/Mango/Die Back/20211129_161628 (Custom).jpg
+159,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done10.jpg || datasets/raw/Cotton/fussarium_wilt/fus84.jpg
+160,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h260.jpg || datasets/raw/Cotton/healthy/h364.jpg
+161,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h65.jpg || datasets/raw/Cotton/healthy/h66.jpg
+162,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl187.jpg || datasets/raw/Cotton/curl_virus/curl189.jpg
+163,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done8 (2).jpg || datasets/raw/Cotton/fussarium_wilt/fus64.jpg
+164,2,1,PlantVillage,Main,raw,Tomato_Late_blight,NO,NO,NO,datasets/raw/PlantVillage/Tomato_Late_blight/861d8b00-57a4-46b0-b51a-09d102dbe119___GHLB_PS Leaf 24 Day 13.jpg || datasets/raw/PlantVillage/Tomato_Late_blight/d82b634e-9a19-497b-b698-aaf100d622a1___GHLB_PS Leaf 24 Day 13.jpg
+165,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143839 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143839.jpg
+166,2,1,Banana,Augmented,raw,cordana,NO,NO,NO,datasets/raw/Banana/AugmentedSet/cordana/6_aug.jpeg || datasets/raw/Banana/AugmentedSet/cordana/8_aug.jpeg
+167,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl162.jpg || datasets/raw/Cotton/curl_virus/curl371.jpg
+168,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/cotton-leaf-curl-virus-cotton-1595427323.jpg || datasets/raw/Cotton/curl_virus/curl387.jpg
+169,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143856 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143856.jpg
+170,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl157.jpg || datasets/raw/Cotton/curl_virus/curl216.jpg
+171,2,1,Mango,Main,raw,Die Back,NO,NO,NO,datasets/raw/Mango/Die Back/20211129_161605 (Custom)(1).jpg || datasets/raw/Mango/Die Back/20211129_161605 (Custom).jpg
+172,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/111.jpeg || datasets/raw/Banana/OriginalSet/healthy/18.jpeg
+173,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143802_1 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143802_1.jpg
+174,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143843 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143843.jpg
+175,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/33.jpeg || datasets/raw/Banana/OriginalSet/healthy/36.jpeg
+176,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143857 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143857.jpg
+177,2,1,Rice,Main,raw,Sheath Blight,NO,NO,NO,datasets/raw/Rice/Sheath Blight/IMG_20231006_163221 - Copy.jpg || datasets/raw/Rice/Sheath Blight/IMG_20231006_163221.jpg
+178,2,1,Mango,Main,raw,Anthracnose,NO,NO,NO,datasets/raw/Mango/Anthracnose/IMG_20211011_140539 (Custom).jpg || datasets/raw/Mango/Anthracnose/IMG_20211011_140539 - Copy (Custom).jpg
+179,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl147.jpg || datasets/raw/Cotton/curl_virus/curl148.jpg
+180,2,1,Mango,Main,raw,Anthracnose,NO,NO,NO,datasets/raw/Mango/Anthracnose/20211011_170714 (Custom).jpg || datasets/raw/Mango/Anthracnose/20211011_170714 - Copy - Copy - Copy (Custom).jpg
+181,2,1,PlantVillage,Main,raw,Tomato_Late_blight,NO,NO,NO,datasets/raw/PlantVillage/Tomato_Late_blight/5688ea99-c949-41d0-bbab-9cbf0ffb8bcd___GHLB2 Leaf 8677.JPG || datasets/raw/PlantVillage/Tomato_Late_blight/e20107e7-137f-400e-817f-5dc4c58e5d70___GHLB2 Leaf 8677.JPG
+182,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done18.jpg || datasets/raw/Cotton/fussarium_wilt/fus167.jpg
+183,2,1,Rice,Main,raw,Healthy Rice Leaf,NO,NO,NO,datasets/raw/Rice/Healthy Rice Leaf/Healthy_rice_leaf (26).jpg || datasets/raw/Rice/Healthy Rice Leaf/Healthy_rice_leaf (27).jpg
+184,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h241.jpg || datasets/raw/Cotton/healthy/h245.jpg
+185,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/19.jpeg || datasets/raw/Banana/OriginalSet/healthy/58.jpeg
+186,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl156.jpg || datasets/raw/Cotton/curl_virus/curl215.jpg
+187,2,1,Banana,Augmented,raw,healthy,NO,NO,NO,datasets/raw/Banana/AugmentedSet/healthy/190_aug.jpeg || datasets/raw/Banana/AugmentedSet/healthy/31_aug.jpeg
+188,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done1.jpg || datasets/raw/Cotton/fussarium_wilt/fus16.jpg
+189,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143844 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143844.jpg
+190,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h386.jpg || datasets/raw/Cotton/healthy/h389.jpg
+191,2,1,PlantDoc,Main,test|train,Potato leaf early blight|Potato leaf late blight,YES,YES,NO,datasets/raw/PlantDoc/test/Potato leaf late blight/Potato leaf late blight (4).jpg || datasets/raw/PlantDoc/train/Potato leaf early blight/Potato leaf early blight (24).jpg
+192,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h420.jpg || datasets/raw/Cotton/healthy/h425.jpg
+193,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done12.jpg || datasets/raw/Cotton/fussarium_wilt/fus120.jpg
+194,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h91.jpg || datasets/raw/Cotton/healthy/h95.jpg
+195,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143856_1 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143856_1.jpg
+196,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/108.jpeg || datasets/raw/Banana/OriginalSet/healthy/16.jpeg
+197,2,1,PlantDoc,Main,test|train,Potato leaf early blight|Potato leaf late blight,YES,YES,NO,datasets/raw/PlantDoc/test/Potato leaf late blight/Potato leaf late blight (6).jpg || datasets/raw/PlantDoc/train/Potato leaf early blight/Potato leaf early blight (70).jpg
+198,2,1,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/2015-angular-leaf-spot-colquitt-county-2.jpg || datasets/raw/Cotton/bacterial_blight/bact355.jpg
+199,2,1,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/bact189.png || datasets/raw/Cotton/bacterial_blight/bact258.png
+200,2,1,Mango,Main,raw,Die Back,NO,NO,NO,datasets/raw/Mango/Die Back/20211129_161620 (Custom)(1).jpg || datasets/raw/Mango/Die Back/20211129_161620 (Custom).jpg
+201,2,1,Rice,Main,raw,Brown Spot,NO,NO,NO,datasets/raw/Rice/Brown Spot/IMG_20231018_143710 - Copy.jpg || datasets/raw/Rice/Brown Spot/IMG_20231018_143710.jpg
+202,2,1,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/bact443.jpg || datasets/raw/Cotton/bacterial_blight/bact445.jpg
+203,2,1,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/bact181.png || datasets/raw/Cotton/bacterial_blight/bact250.png
+204,2,1,PlantVillage,Main,raw,Tomato_healthy,NO,NO,NO,datasets/raw/PlantVillage/Tomato_healthy/37203047-d8ba-43f7-b31e-d496c41c569c___GH_HL Leaf 389.JPG || datasets/raw/PlantVillage/Tomato_healthy/505465db-407b-4e0a-8110-7479dad5261c___GH_HL Leaf 389.JPG
+205,2,1,PlantDoc,Main,test|train,Blueberry leaf,YES,NO,NO,datasets/raw/PlantDoc/test/Blueberry leaf/Blueberry leaf (1).jpg || datasets/raw/PlantDoc/train/Blueberry leaf/Blueberry leaf (49).jpg
+206,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h114.jpg || datasets/raw/Cotton/healthy/h309.jpg
+207,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl205.jpg || datasets/raw/Cotton/curl_virus/curl207.jpg
+208,2,1,Mango,Main,raw,Anthracnose,NO,NO,NO,datasets/raw/Mango/Anthracnose/IMG_20211011_153604 (Custom).jpg || datasets/raw/Mango/Anthracnose/IMG_20211011_153604 - Copy (Custom).jpg
+209,2,1,Rice,Main,raw,Brown Spot,NO,NO,NO,datasets/raw/Rice/Brown Spot/Brown_spot (133).jpg || datasets/raw/Rice/Brown Spot/Brown_spot (134).jpg
+210,2,1,Rice,Main,raw,Sheath Blight,NO,NO,NO,datasets/raw/Rice/Sheath Blight/IMG_20231014_172039 - Copy.jpg || datasets/raw/Rice/Sheath Blight/IMG_20231014_172039.jpg
+211,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/124.jpeg || datasets/raw/Banana/OriginalSet/healthy/30.jpeg
+212,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done20.jpg || datasets/raw/Cotton/fussarium_wilt/fus198.jpg
+213,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done15.png || datasets/raw/Cotton/fussarium_wilt/fus144.png
+214,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl250 - Copy.jpg || datasets/raw/Cotton/curl_virus/curl250.jpg
+215,2,1,Rice,Main,raw,Brown Spot,NO,NO,NO,datasets/raw/Rice/Brown Spot/IMG_20231018_143715 - Copy.jpg || datasets/raw/Rice/Brown Spot/IMG_20231018_143715.jpg
+216,2,1,Cotton,Main,raw,curl_virus,NO,NO,NO,datasets/raw/Cotton/curl_virus/curl343.jpg || datasets/raw/Cotton/curl_virus/curl8.jpg
+217,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h47.jpg || datasets/raw/Cotton/healthy/h51.jpg
+218,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h108.jpg || datasets/raw/Cotton/healthy/h109.jpg
+219,2,1,PlantVillage,Main,raw,Tomato_healthy,NO,NO,NO,datasets/raw/PlantVillage/Tomato_healthy/068e324c-faf6-40d6-8f83-578907f1cac5___GH_HL Leaf 466.1.JPG || datasets/raw/PlantVillage/Tomato_healthy/34c81c57-e1fa-49dd-a49d-34fe8b2385fe___GH_HL Leaf 466.1.JPG
+220,2,1,PlantDoc,Main,test|train,Corn Gray leaf spot|Corn leaf blight,YES,YES,NO,datasets/raw/PlantDoc/test/Corn Gray leaf spot/Corn Gray leaf spot (1).jpg || datasets/raw/PlantDoc/train/Corn leaf blight/Corn leaf blight (121).jpg
+221,2,1,Mango,Main,raw,Anthracnose,NO,NO,NO,datasets/raw/Mango/Anthracnose/IMG_20211011_153429 (Custom).jpg || datasets/raw/Mango/Anthracnose/IMG_20211011_153429 - Copy - Copy (Custom).jpg
+222,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done13.jpg || datasets/raw/Cotton/fussarium_wilt/fus128.jpg
+223,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/Figure-2B.png || datasets/raw/Cotton/fussarium_wilt/done23.png
+224,2,1,Cotton,Main,raw,bacterial_blight,NO,NO,NO,datasets/raw/Cotton/bacterial_blight/bact186.png || datasets/raw/Cotton/bacterial_blight/bact255.png
+225,2,1,Rice,Main,raw,Leaf Blast,NO,NO,NO,datasets/raw/Rice/Leaf Blast/IMG_20231018_143841 - Copy.jpg || datasets/raw/Rice/Leaf Blast/IMG_20231018_143841.jpg
+226,2,1,PlantDoc,Main,test|train,Corn Gray leaf spot|Corn leaf blight,YES,YES,NO,datasets/raw/PlantDoc/test/Corn leaf blight/Corn leaf blight (7).jpg || datasets/raw/PlantDoc/train/Corn Gray leaf spot/Corn Gray leaf spot (12).jpg
+227,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h390.jpg || datasets/raw/Cotton/healthy/h488.jpg
+228,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/41.jpeg || datasets/raw/Banana/OriginalSet/healthy/8.jpeg
+229,2,1,Rice,Main,raw,Brown Spot,NO,NO,NO,datasets/raw/Rice/Brown Spot/Brown_spot (131).jpg || datasets/raw/Rice/Brown Spot/Brown_spot (132).jpg
+230,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/107.jpeg || datasets/raw/Banana/OriginalSet/healthy/14.jpeg
+231,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h392.jpg || datasets/raw/Cotton/healthy/h416.jpg
+232,2,1,Banana,Augmented,raw,healthy,NO,NO,NO,datasets/raw/Banana/AugmentedSet/healthy/257_aug.jpeg || datasets/raw/Banana/AugmentedSet/healthy/258_aug.jpeg
+233,2,1,Cotton,Main,raw,fussarium_wilt,NO,NO,NO,datasets/raw/Cotton/fussarium_wilt/done5.jpg || datasets/raw/Cotton/fussarium_wilt/fus33.jpg
+234,2,1,Mango,Main,raw,Anthracnose,NO,NO,NO,datasets/raw/Mango/Anthracnose/20211011_170712 (Custom).jpg || datasets/raw/Mango/Anthracnose/20211011_170712 - Copy - Copy - Copy (Custom).jpg
+235,2,1,PlantDoc,Main,test|train,Tomato Septoria leaf spot,YES,NO,NO,datasets/raw/PlantDoc/test/Tomato Septoria leaf spot/Tomato Septoria leaf spot (9).jpg || datasets/raw/PlantDoc/train/Tomato Septoria leaf spot/Tomato Septoria leaf spot (48).jpg
+236,2,1,Banana,Original,raw,healthy,NO,NO,NO,datasets/raw/Banana/OriginalSet/healthy/17.jpeg || datasets/raw/Banana/OriginalSet/healthy/63.jpeg
+237,2,1,Cotton,Main,raw,healthy,NO,NO,NO,datasets/raw/Cotton/healthy/h289.jpg || datasets/raw/Cotton/healthy/h305.jpg
+238,2,1,Rice,Main,raw,Brown Spot,NO,NO,NO,datasets/raw/Rice/Brown Spot/IMG_20231018_143711 - Copy.jpg || datasets/raw/Rice/Brown Spot/IMG_20231018_143711.jpg
+239,2,1,PlantDoc,Main,test|train,Tomato leaf yellow virus,YES,NO,NO,datasets/raw/PlantDoc/test/Tomato leaf yellow virus/Tomato leaf yellow virus (6).jpg || datasets/raw/PlantDoc/train/Tomato leaf yellow virus/Tomato leaf yellow virus (63).jpg
+240,2,1,Mango,Main,raw,Die Back,NO,NO,NO,datasets/raw/Mango/Die Back/20211129_161611 (Custom)(1).jpg || datasets/raw/Mango/Die Back/20211129_161611 (Custom).jpg
