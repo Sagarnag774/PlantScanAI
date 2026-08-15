@@ -1,0 +1,8 @@
+metric,value
+total_images,35004
+corrupt_images,0
+exact_duplicate_groups,0
+exact_duplicate_files,0
+train_test_duplicate_groups,0
+audit_exclusions_still_present,0
+validation_status,PASS
