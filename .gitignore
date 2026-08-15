@@ -9,18 +9,22 @@ venv/
 .venv/
 env/
 
-# TensorFlow Models
+# TensorFlow / ML Models
 *.h5
 *.keras
 *.tflite
 *.ckpt
 
-# Dataset
+# Datasets - local only
 datasets/raw/
 datasets/processed/
 datasets/train/
 datasets/validation/
 datasets/test/
+
+# Generated dataset reports / review images
+datasets/reports/clean_dataset_log.csv
+datasets/reports/*.jpg
 
 # Jupyter
 .ipynb_checkpoints/
@@ -44,27 +48,3 @@ build/
 
 # Environment
 .env
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-
-# Virtual environment
-venv/
-
-# Cleaned/generated datasets
-datasets/processed/
-datasets/raw/
-
-# Generated dataset reports/logs
-datasets/reports/clean_dataset_log.csv
-
-# Generated image review files
-datasets/reports/*.jpg
-
-# Jupyter
-.ipynb_checkpoints/
-
-# OS
-.DS_Store
-Thumbs.db
