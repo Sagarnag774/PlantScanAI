@@ -44,3 +44,27 @@ build/
 
 # Environment
 .env
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+
+# Cleaned/generated datasets
+datasets/processed/
+datasets/raw/
+
+# Generated dataset reports/logs
+datasets/reports/clean_dataset_log.csv
+
+# Generated image review files
+datasets/reports/*.jpg
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
