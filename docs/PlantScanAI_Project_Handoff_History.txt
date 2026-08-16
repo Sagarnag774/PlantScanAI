@@ -1,0 +1,599 @@
+PLANTSCAN AI PROJECT HANDOFF / CHAT HISTORY Prepared: 16 August 2026
+
+PURPOSE This document gives PlantScan AI team members a single
+project-history and handoff record. It covers the PlantScan AI work
+carried across the available project conversations, from architecture
+and research through dataset cleaning, duplicate verification, Dataset
+v1, Git/GitHub setup, dependency setup, and the current next steps.
+
+====================================================================== 1.
+PROJECT OVERVIEW
+======================================================================
+
+PlantScan AI is an AI-powered plant health assistant.
+
+Planned capabilities: - Plant disease detection - Plant-part
+classification - Unknown/out-of-scope detection - Plant Health Score -
+Treatment recommendations - Organic solution first - Chemical solution
+second - Prevention - Multiple languages - Offline + online mobile
+operation - Lightweight/mobile-friendly models -
+Low-cost/free/open-source tools where practical
+
+The project is being developed by a four-person team.
+
+======================================================================
+2. CORE ARCHITECTURE
+======================================================================
+
+DECISION: PlantScan AI uses THREE independent AI models.
+
+1.  Plant-part classifier Determines which plant part is visible.
+
+2.  Disease classifier Identifies the disease/class for supported crops.
+
+3.  Unknown/out-of-scope detector Rejects images that are outside the
+    supported PlantScan AI scope.
+
+Initially the project targets approximately 10 major crops.
+
+IMPORTANT: The final crop list and disease class structure are NOT yet
+frozen.
+
+High-level pipeline:
+
+User image -> Plant-part classifier -> Disease classifier / unknown
+detector -> Prediction + confidence -> Plant Health Score -> Treatment /
+prevention recommendation -> Mobile app response
+
+Treatment order: 1. Organic solution 2. Chemical solution 3. Prevention
+
+======================================================================
+3. MODEL / RESEARCH DIRECTION
+======================================================================
+
+Lightweight transfer-learning approaches were researched, including: -
+MobileNetV2 - MobileNetV3 - EfficientNet-B0 - YOLO-based approaches -
+Feature embeddings - Euclidean/cosine distance thresholds - MC Dropout -
+Ensemble approaches - Saliency-based approaches
+
+A previous tomato experiment used approximately: - 10 classes - 5-fold
+cross validation - batch size 32 - up to 100 epochs - Adam optimizer -
+best reported fold accuracy around 97.1% - reported average around
+94.42% - TensorFlow Lite conversion was explored
+
+IMPORTANT: Those historical experiment results are not automatically the
+final PlantScan AI benchmark. The current project uses the cleaner
+verified multi-source Dataset v1 and the three-model architecture.
+
+======================================================================
+4. LITERATURE / RESEARCH
+======================================================================
+
+The project collected and reviewed material covering: - Plant leaf
+disease detection - Mobile-based plant disease detection - MobileNetV2 -
+Transfer learning - Multi-dataset plant disease detection - Tomato leaf
+disease prediction - Saliency/instance-aware disease detection -
+Deep-learning image-based disease detection - Comparative disease
+detection - Efficient object detection such as BGM-YOLO
+
+Research findings should be used to justify design choices, but
+literature results must not be presented as PlantScan AI’s own
+experimental results.
+
+======================================================================
+5. DATASET COLLECTION
+======================================================================
+
+Main sources: 1. PlantVillage 2. Mango 3. Rice 4. Banana 5. PlantDoc 6.
+Cotton
+
+Initial combined total: 35,262 images
+
+Initial validation: - Valid: 35,252 - Warnings: 10 - Corrupt: 0
+
+Source counts: PlantVillage: 20,638 Mango: 4,000 Rice: 3,825 Banana:
+2,537 PlantDoc: 2,552 Cotton: 1,710
+
+======================================================================
+6. INITIAL CROP COUNTS
+======================================================================
+
+Apple: 267 Banana: 2,537 Bell pepper: 132 Blueberry: 116 Cherry: 57
+Cotton: 1,710 Grape: 133 Maize: 376 Mango: 4,000 Peach: 112 Pepper:
+2,475 Potato: 2,374 Raspberry: 116 Rice: 3,825 Soybean: 65 Squash: 129
+Strawberry: 96 Tomato: 16,742
+
+These are historical source-analysis counts, not the final model
+distribution.
+
+======================================================================
+7. DATASET STRUCTURE
+======================================================================
+
+Current raw sources:
+
+datasets/raw/ Banana/ Cotton/ Mango/ PlantDoc/ PlantVillage/ Rice/
+
+PlantDoc: test/ train/
+
+Banana: AugmentedSet/ OriginalSet/
+
+The Banana AugmentedSet/OriginalSet structure became important during
+near-duplicate analysis.
+
+======================================================================
+8. CANONICAL CLASS ANALYSIS
+======================================================================
+
+The analysis reported: - Original classes: 64 - Disease classes: 47 -
+Healthy classes: 7 - Review required: 10
+
+CRITICAL DECISION: The 47 disease classes are NOT the final model
+classes.
+
+Reasons: - Crop-specific / independent models are planned. - Source
+datasets use different label structures. - Some labels are ambiguous or
+inconsistent. - Final classes require explicit review.
+
+Do not train a final 47-class model merely because the analysis reported
+47 disease classes.
+
+======================================================================
+9. ACCIDENTAL NESTED PLANTVILLAGE DUPLICATE
+======================================================================
+
+Discovered: datasets/raw/PlantVillage/PlantVillage/
+
+This contained duplicate copies of PlantVillage images.
+
+Verification: - Nested files: 20,639 - Images: 20,638 - Verified:
+20,639 - Missing: 0 - Different: 0
+
+DECISION: The nested duplicate folder was safely deleted.
+
+======================================================================
+10. NEAR-DUPLICATE DETECTION
+======================================================================
+
+Script: data_collection/scripts/find_near_duplicates.py
+
+ImageHash was installed.
+
+Processed: 35,262 images 35,262 successfully hashed 0 failed
+
+Results: Distance 0: 1,402 pairs Distance 2: 180 pairs Distance 4: 29
+pairs Total candidates: 1,611 Unique images involved: 2,038
+
+IMPORTANT: These were candidate matches only. Nothing was deleted solely
+because of a perceptual-hash match.
+
+An early analysis script incorrectly classified some
+Banana/Cotton/Mango/Rice paths as “other”. That report was not trusted
+for final dataset decisions.
+
+======================================================================
+11. SHA-256 VERIFICATION
+======================================================================
+
+Script: data_collection/scripts/verify_near_duplicates.py
+
+Purpose: - Read distance-0 pairs - Calculate SHA-256 - Distinguish exact
+duplicates from perceptual-only matches - Identify dataset/source
+relationships
+
+Results: Distance-0 pairs: 1,402 Exact duplicates: 256 Perceptual only:
+1,146
+
+Dataset relationships: Cotton <-> Cotton: 882 Mango <-> Mango: 271
+Banana <-> Banana: 136 PlantDoc <-> PlantDoc: 58 Rice <-> Rice: 41
+PlantVillage <-> PlantVillage:14
+
+Exact duplicate relationships: Cotton <-> Cotton: 126 Banana <-> Banana:
+52 Rice <-> Rice: 31 Mango <-> Mango: 21 PlantVillage <->
+PlantVillage:14 PlantDoc <-> PlantDoc: 12
+
+No cross-dataset exact duplicate relationship was reported.
+
+Only the 256 SHA-256-confirmed pairs were treated as exact duplicates.
+
+======================================================================
+12. EXACT DUPLICATE GROUP ANALYSIS
+======================================================================
+
+Script: data_collection/scripts/analyze_exact_duplicates.py
+
+Final audit stage reported: Exact duplicate pairs: 240 Exact duplicate
+groups: 240 Files involved: 488 Files marked KEEP: 230 Files marked
+EXCLUDE: 258
+
+Conflict groups: 10 Leakage groups: 3
+
+IMPORTANT: “pairs” and “groups” are different metrics. Do not mix the
+earlier 256 confirmed pairs with the later 240 grouped audit result.
+
+======================================================================
+13. DUPLICATE CONFLICT / LEAKAGE REVIEW
+======================================================================
+
+PlantDoc conflicts included examples such as: - Potato early blight vs
+late blight across train/test - Corn Gray leaf spot vs Corn leaf blight
+across train/test - Tomato bacterial spot vs Septoria leaf spot - Tomato
+Septoria leaf spot duplicated across train/test - Tomato yellow virus
+duplicated across train/test - Blueberry leaf duplicated across
+train/test
+
+A Banana example also showed an exact duplicate under: healthy and
+pestalotiopsis
+
+These were treated as label conflicts.
+
+Final audit: Conflict groups: 10 Leakage groups: 3
+
+No automatic deletion was based solely on perceptual similarity.
+
+======================================================================
+14. DUPLICATE REVIEW TOOLING / REPORTS
+======================================================================
+
+Scripts created included: - analyze_near_duplicates.py -
+find_near_duplicates.py - verify_near_duplicates.py -
+analyze_exact_duplicates.py - create_duplicate_review.py -
+inspect_duplicate_groups.py - create_duplicate_audit.py -
+inspect_audit.py - review_group_16.py - review_group_50.py -
+review_group_54.py - review_group_68.py - review_remaining_conflicts.py
+
+Reports included: - near_duplicate_analysis.csv -
+near_duplicate_images.csv - near_duplicate_verified.csv -
+exact_duplicate_groups.csv - duplicate_review.csv - duplicate_audit.csv
+
+A duplicate review report initially contained: Suspicious file entries:
+26
+
+======================================================================
+15. CLEAN DATASET CREATION
+======================================================================
+
+Script: preprocessing/build_clean_dataset.py
+
+Output: datasets/processed/cleaned_raw/
+
+Results: Raw files scanned: 35,264 Image files scanned: 35,262 Files
+copied: 35,006 Files excluded: 258
+
+Accounting: 35,006 copied + 258 excluded = 35,264 raw files
+
+The script confirmed all audit exclusions were found in the raw dataset.
+
+Cleaned source structure: datasets/processed/cleaned_raw/ Banana/
+Cotton/ Mango/ PlantDoc/ PlantVillage/ Rice/
+
+PlantDoc retains: test/ train/
+
+======================================================================
+16. FINAL DATASET VALIDATION
+======================================================================
+
+Script: preprocessing/validate_clean_dataset.py
+
+Validation: Images found: 35,004 Corrupt images: 0 Exact duplicate
+groups: 0 Files involved: 0 Train/test duplicate groups: 0 Audit
+exclusions still present: 0
+
+STATUS: PASS
+
+Report: datasets/reports/final_dataset_validation.csv
+
+Pillow warnings were observed for a few files: - Truncated File Read -
+Malformed MPO file interpreted as base JPEG
+
+Despite these warnings, validation classified: Corrupt images: 0
+
+======================================================================
+17. DATASET V1 FINAL COUNTS
+======================================================================
+
+Dataset v1 total: 35,004 images
+
+Source counts: Banana: 2,485 Cotton: 1,591 Mango: 3,979 PlantDoc: 2,531
+PlantVillage: 20,624 Rice: 3,794
+
+Total: 35,004
+
+Source split counts reported by validation: raw: 32,473 test: 228 train:
+2,303
+
+IMPORTANT: These raw/train/test counts describe source organization
+inside cleaned_raw. They are NOT the final ML train/validation/test
+split.
+
+Therefore: Dataset v1 = cleaned source dataset Dataset v1 != final model
+training dataset
+
+======================================================================
+18. DATASET FREEZE
+======================================================================
+
+DECISION: Dataset v1 is frozen and should be treated as read-only.
+
+Do not: - Delete more images - Rename source classes - Move source
+images - Perform arbitrary augmentation - Create final model classes
+without review - Overwrite cleaned_raw
+
+Future model-specific datasets must be generated from Dataset v1.
+
+======================================================================
+19. GIT / GITHUB HISTORY
+======================================================================
+
+Repository: https://github.com/Sagarnag774/PlantScanAI.git
+
+Important commits:
+
+0c61c33 docs: define PlantScan AI architecture fae73a3 data: validate
+and normalize plant disease dataset 0ab645d data: verify near duplicate
+images 9e20a21 data: finalize duplicate audit 03259a8 data: validate
+cleaned dataset v1 6bb6bbb chore: ignore local datasets and generated
+files 5518c2a chore: clean dataset gitignore rules f098b2a data: add
+reproducible clean dataset builder 536b5ea chore: define project
+dependencies
+
+Current baseline: 536b5ea
+
+Current branches: main feature/dataset-cleaning
+feature/model-development feature/backend-treatment
+
+All four were synchronized to: 536b5ea
+
+======================================================================
+20. GIT RULES
+======================================================================
+
+-   Do not push feature work directly to main.
+-   Work on the assigned feature branch.
+-   Keep commits logical.
+-   Push the feature branch.
+-   Integrate into main through the agreed workflow.
+-   Do not commit the full image dataset to GitHub.
+-   Do not commit requirements-full.txt.
+-   Keep dataset-generation scripts reproducible.
+
+======================================================================
+21. .gitignore / DATASET STORAGE
+======================================================================
+
+Ignored: - Python cache - Virtual environments - TensorFlow model
+artifacts - datasets/raw/ - datasets/processed/ - datasets/train/ -
+datasets/validation/ - datasets/test/ - IDE files - logs - build/dist -
+.env - generated review JPGs - requirements-full.txt
+
+Important CSV reports are NOT globally ignored because important audit
+and validation reports are intentionally versioned.
+
+======================================================================
+22. PYTHON / DEPENDENCIES
+======================================================================
+
+Python: 3.12.9
+
+TensorFlow: 2.21.0
+
+Pillow: 12.3.0
+
+ImageHash: 4.3.2
+
+Project requirements.txt contains: tensorflow==2.21.0 keras==3.15.1
+numpy==2.5.1 pandas==3.0.5 scipy==1.18.0 scikit-learn==1.9.0
+Pillow==12.3.0 opencv-python==5.0.0.93 ImageHash==4.3.2
+PyWavelets==1.9.0 matplotlib==3.11.1 seaborn==0.13.2
+
+Dependency import test passed: PlantScan AI dependencies OK TensorFlow:
+2.21.0
+
+======================================================================
+23. CURRENT PROJECT STRUCTURE
+======================================================================
+
+PlantScanAI/ ├── backend/ ├── config/ ├── data_collection/ │ ├── labels/
+│ └── scripts/ ├── datasets/ │ ├── processed/ │ ├── raw/ │ ├── test/ │
+├── train/ │ └── validation/ ├── docs/ ├── experiments/ ├── ml/ │ ├──
+disease_classifier/ │ ├── inference/ │ ├── plant_part_classifier/ │ ├──
+training/ │ ├── unknown_detector/ │ └── weights/ ├── mobile_app/ ├──
+notebooks/ ├── preprocessing/ ├── treatment_database/ │ ├── chemical/ │
+├── organic/ │ ├── prevention/ │ └── translations/ ├── utils/ ├──
+.gitignore ├── README.md └── requirements.txt
+
+DECISION: Use ml/ as the model subsystem. Do not create a duplicate
+models/ hierarchy just to match an older planning tree.
+
+======================================================================
+24. COMPLETED WORK
+======================================================================
+
+[YES] Architecture defined. [YES] Three independent AI-model concept
+defined. [YES] Approx. 10-crop target established. [YES] Offline +
+online concept established. [YES] Plant Health Score planned. [YES]
+Treatment priority defined. [YES] Multiple-language support planned.
+[YES] Dataset sources collected. [YES] Dataset normalized and validated.
+[YES] Nested PlantVillage duplicate removed. [YES] Perceptual
+near-duplicate scan completed. [YES] Distance-0 matches verified with
+SHA-256. [YES] Exact duplicate groups analyzed. [YES] Duplicate
+conflicts reviewed. [YES] Duplicate audit created. [YES] 258 audited
+files excluded. [YES] Dataset v1 generated. [YES] Dataset v1 validation
+passed. [YES] 0 corrupt images in final validation. [YES] 0 exact
+duplicate groups remaining. [YES] 0 train/test exact duplicate groups
+remaining. [YES] Reproducible cleaning script committed. [YES]
+Validation script committed. [YES] Git branches established. [YES]
+.gitignore configured. [YES] requirements.txt configured. [YES] GitHub
+main synchronized. [YES] Feature branches synchronized to 536b5ea.
+
+======================================================================
+25. REMAINING WORK
+======================================================================
+
+[OPEN] Final disease model class structure. [OPEN] Final crop/model
+relationship. [OPEN] Model-specific training datasets. [OPEN] Plant-part
+training dataset. [OPEN] Unknown/out-of-scope dataset. [OPEN] Plant-part
+classifier training. [OPEN] Disease classifier training. [OPEN] Unknown
+detector training. [OPEN] Model evaluation. [OPEN] Model comparison.
+[OPEN] Mobile optimization. [OPEN] TensorFlow Lite conversion. [OPEN]
+Backend API. [OPEN] Treatment database completion. [OPEN] Plant Health
+Score implementation. [OPEN] Multilingual response system. [OPEN]
+Offline/online integration. [OPEN] Android integration. [OPEN]
+End-to-end testing. [OPEN] Final documentation. [OPEN] Final
+results/presentation.
+
+======================================================================
+26. IMMEDIATE NEXT STEP: CLASS INVENTORY
+======================================================================
+
+Do NOT immediately train a 47-class disease model.
+
+First create: data_collection/scripts/build_model_class_inventory.py
+
+Output: datasets/reports/model/class_inventory.csv
+
+Inventory fields: - dataset - split - class - image_count
+
+Review: - disease classes - healthy classes - ambiguous classes -
+low-sample classes - review-required classes - cross-dataset naming
+issues
+
+IMPORTANT: Do not guess plant-part labels from disease folder names.
+
+If reliable plant-part labels cannot be derived from Dataset v1, report
+that they are not available instead of fabricating labels.
+
+======================================================================
+27. MODEL-SPECIFIC DATASET PLAN
+======================================================================
+
+Dataset v1 | +–> Disease dataset | +–> Plant-part dataset | +–>
+Unknown/out-of-scope dataset
+
+Only after class structure approval: - Generate train/validation/test
+datasets. - Perform controlled augmentation. - Begin model training.
+
+======================================================================
+28. TEAM ASSIGNMENTS
+======================================================================
+
+MEMBER 1 Branch: feature/dataset-cleaning
+
+Task: Model class inventory and training-data specification.
+
+Deliverables: - class_inventory.csv - review/classification report -
+recommendation for final disease class structure
+
+Must not: - modify Dataset v1 - delete source images - train final
+models yet - invent plant-part labels - arbitrarily create final splits
+
+MEMBER 2 Branch: feature/model-development
+
+Task: Develop: 1. Plant-part classifier 2. Disease classifier 3.
+Unknown/out-of-scope detector
+
+Later deliverables: - training scripts - evaluation scripts - metrics -
+model artifacts - mobile-ready/TFLite artifacts - inference interface
+
+Training should begin after class inventory and dataset structure are
+approved.
+
+MEMBER 3 Branch: feature/backend-treatment
+
+Task: - Prediction API - Plant Health Score - Treatment recommendation
+engine - Organic solution - Chemical solution - Prevention -
+Translation/multilingual support - Model inference integration
+
+Backend and model teams must agree on a stable inference contract before
+integration.
+
+PROJECT LEAD Branch: main
+
+Responsibilities: - Architecture - Integration - Code review - Model/API
+contract - Mobile integration - Final testing - Documentation - Project
+presentation - Team coordination
+
+======================================================================
+29. TEAM RULES
+======================================================================
+
+1.  Dataset v1 is frozen.
+2.  Do not delete images without a new documented review.
+3.  Perceptual hash distance 0 is not by itself proof of exact
+    duplication.
+4.  SHA-256 was used to confirm exact duplicates.
+5.  The 47 disease classes are not final.
+6.  Do not invent plant-part labels.
+7.  Do not train on guessed labels.
+8.  Do not push feature work directly to main.
+9.  Do not commit the full image dataset to GitHub.
+10. Do not commit requirements-full.txt.
+11. Keep scripts reproducible.
+12. Record important experiments.
+13. Separate literature results from PlantScan AI results.
+14. Do not silently change Dataset v1.
+15. Coordinate interfaces before integration.
+
+======================================================================
+30. RECOMMENDED ORDER FROM HERE
+======================================================================
+
+1.  Build class inventory.
+2.  Review disease/healthy/ambiguous classes.
+3.  Approve final disease model structure.
+4.  Determine plant-part label availability.
+5.  Define unknown/out-of-scope data strategy.
+6.  Generate reproducible model-specific datasets.
+7.  Train disease classifier.
+8.  Train plant-part classifier.
+9.  Train unknown detector.
+10. Evaluate all three.
+11. Optimize mobile models.
+12. Convert to TensorFlow Lite where appropriate.
+13. Define model inference contract.
+14. Build backend prediction API.
+15. Build treatment engine.
+16. Implement Plant Health Score.
+17. Implement multilingual responses.
+18. Integrate Android app.
+19. Implement offline/online switching.
+20. End-to-end testing.
+21. Final documentation.
+22. Final demonstration/presentation.
+
+======================================================================
+31. CURRENT STATUS IN ONE VIEW
+======================================================================
+
+PROJECT: PlantScan AI
+
+DATASET V1: 35,004 images
+
+SOURCE DATASETS: Banana Cotton Mango PlantDoc PlantVillage Rice
+
+FINAL VALIDATION: PASS
+
+CORRUPT: 0
+
+EXACT DUPLICATES REMAINING: 0
+
+TRAIN/TEST EXACT DUPLICATE GROUPS: 0
+
+AUDIT EXCLUSIONS REMAINING: 0
+
+GITHUB BASELINE: 536b5ea
+
+PYTHON: 3.12.9
+
+TENSORFLOW: 2.21.0
+
+IMMEDIATE TASK: Build and review model class inventory.
+
+MOST IMPORTANT: Dataset v1 is frozen. 47 disease classes are not final.
+The three AI models are independent. No more random dataset deletions.
+No final training before class-structure review. main is the integration
+branch.
+
+======================================================================
+END OF PLANTSCAN AI HANDOFF
+======================================================================
