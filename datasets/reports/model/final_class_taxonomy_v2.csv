@@ -1,0 +1,92 @@
+dataset,raw_class,image_count,crop,category,canonical_class,decision,reason
+Banana,cordana,558,Banana,disease,cordana,include,Disease label identified by explicit disease terminology.
+Banana,healthy,482,Banana,healthy,banana_healthy,include,Corrected to crop-specific healthy canonical class.
+Banana,pestalotiopsis,572,Banana,disease,pestalotiopsis,include,Disease label identified by explicit disease terminology.
+Banana,sigatoka,873,Banana,disease,sigatoka,include,Disease label identified by explicit disease terminology.
+Cotton,bacterial_blight,432,Cotton,disease,bacterial_blight,include,Disease label identified by explicit disease terminology.
+Cotton,curl_virus,379,Cotton,disease,curl_virus,include,Disease label identified by explicit disease terminology.
+Cotton,fussarium_wilt,395,Cotton,disease,fusarium_wilt,include,Disease label identified by explicit disease terminology.
+Cotton,healthy,385,Cotton,healthy,cotton_healthy,include,Corrected to crop-specific healthy canonical class.
+Mango,Anthracnose,486,Mango,disease,anthracnose,include,Disease label identified by explicit disease terminology.
+Mango,Bacterial Canker,500,Mango,disease,bacterial_canker,include,Disease label identified by explicit disease terminology.
+Mango,Cutting Weevil,500,Mango,disease,cutting_weevil,include,Disease label identified by explicit disease terminology.
+Mango,Die Back,493,Mango,disease,die_back,include,Disease label identified by explicit disease terminology.
+Mango,Gall Midge,500,Mango,disease,gall_midge,include,Disease label identified by explicit disease terminology.
+Mango,Healthy,500,Mango,healthy,mango_healthy,include,Corrected to crop-specific healthy canonical class.
+Mango,Powdery Mildew,500,Mango,disease,powdery_mildew,include,Disease label identified by explicit disease terminology.
+Mango,Sooty Mould,500,Mango,disease,sooty_mould,include,Disease label identified by explicit disease terminology.
+PlantDoc,Apple Scab Leaf,10,Apple,disease,apple_scab,include,Verified PlantDoc class mapping.
+PlantDoc,Apple leaf,9,Apple,healthy,apple_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Apple rust leaf,10,Apple,disease,apple_rust,include,Verified PlantDoc class mapping.
+PlantDoc,Bell_pepper leaf,8,Bell pepper,healthy,bell_pepper_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Bell_pepper leaf spot,9,Bell pepper,disease,bell_pepper_leaf_spot,include,Verified PlantDoc class mapping.
+PlantDoc,Blueberry leaf,11,Blueberry,healthy,blueberry_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Cherry leaf,10,Cherry,healthy,cherry_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Corn Gray leaf spot,3,Maize,disease,maize_gray_leaf_spot,include,Verified PlantDoc class mapping.
+PlantDoc,Corn leaf blight,10,Maize,disease,maize_leaf_blight,include,Verified PlantDoc class mapping.
+PlantDoc,Corn rust leaf,10,Maize,disease,maize_rust,include,Verified PlantDoc class mapping.
+PlantDoc,Peach leaf,9,Peach,healthy,peach_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Potato leaf early blight,7,Potato,disease,potato_early_blight,include,Verified PlantDoc class mapping.
+PlantDoc,Potato leaf late blight,5,Potato,disease,potato_late_blight,include,Verified PlantDoc class mapping.
+PlantDoc,Raspberry leaf,7,Raspberry,healthy,raspberry_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Soyabean leaf,8,Soybean,healthy,soybean_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Squash Powdery mildew leaf,6,Squash,disease,squash_powdery_mildew,include,Verified PlantDoc class mapping.
+PlantDoc,Strawberry leaf,8,Strawberry,healthy,strawberry_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato Early blight leaf,9,Tomato,disease,tomato_early_blight,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato Septoria leaf spot,11,Tomato,disease,tomato_septoria_leaf_spot,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato leaf,8,Tomato,healthy,tomato_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato leaf bacterial spot,8,Tomato,disease,tomato_bacterial_spot,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato leaf late blight,10,Tomato,disease,tomato_late_blight,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato leaf mosaic virus,10,Tomato,disease,tomato_mosaic_virus,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato leaf yellow virus,6,Tomato,disease,tomato_yellow_leaf_curl_virus,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato mold leaf,6,Tomato,disease,tomato_leaf_mold,include,Verified PlantDoc class mapping.
+PlantDoc,grape leaf,12,Grape,healthy,grape_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,grape leaf black rot,8,Grape,disease,grape_black_rot,include,Verified PlantDoc class mapping.
+PlantDoc,Apple Scab Leaf,77,Apple,disease,apple_scab,include,Verified PlantDoc class mapping.
+PlantDoc,Apple leaf,82,Apple,healthy,apple_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Apple rust leaf,79,Apple,disease,apple_rust,include,Verified PlantDoc class mapping.
+PlantDoc,Bell_pepper leaf,53,Bell pepper,healthy,bell_pepper_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Bell_pepper leaf spot,62,Bell pepper,disease,bell_pepper_leaf_spot,include,Verified PlantDoc class mapping.
+PlantDoc,Blueberry leaf,104,Blueberry,healthy,blueberry_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Cherry leaf,47,Cherry,healthy,cherry_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Corn Gray leaf spot,62,Maize,disease,maize_gray_leaf_spot,include,Verified PlantDoc class mapping.
+PlantDoc,Corn leaf blight,179,Maize,disease,maize_leaf_blight,include,Verified PlantDoc class mapping.
+PlantDoc,Corn rust leaf,106,Maize,disease,maize_rust,include,Verified PlantDoc class mapping.
+PlantDoc,Peach leaf,103,Peach,healthy,peach_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Potato leaf early blight,105,Potato,disease,potato_early_blight,include,Verified PlantDoc class mapping.
+PlantDoc,Potato leaf late blight,95,Potato,disease,potato_late_blight,include,Verified PlantDoc class mapping.
+PlantDoc,Raspberry leaf,109,Raspberry,healthy,raspberry_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Soyabean leaf,57,Soybean,healthy,soybean_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Squash Powdery mildew leaf,123,Squash,disease,squash_powdery_mildew,include,Verified PlantDoc class mapping.
+PlantDoc,Strawberry leaf,88,Strawberry,healthy,strawberry_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato Early blight leaf,74,Tomato,disease,tomato_early_blight,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato Septoria leaf spot,135,Tomato,disease,tomato_septoria_leaf_spot,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato leaf,54,Tomato,healthy,tomato_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato leaf bacterial spot,98,Tomato,disease,tomato_bacterial_spot,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato leaf late blight,101,Tomato,disease,tomato_late_blight,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato leaf mosaic virus,44,Tomato,disease,tomato_mosaic_virus,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato leaf yellow virus,68,Tomato,disease,tomato_yellow_leaf_curl_virus,include,Verified PlantDoc class mapping.
+PlantDoc,Tomato mold leaf,85,Tomato,disease,tomato_leaf_mold,include,Verified PlantDoc class mapping.
+PlantDoc,grape leaf,57,Grape,healthy,grape_healthy,include,Verified PlantDoc class mapping.
+PlantDoc,grape leaf black rot,56,Grape,disease,grape_black_rot,include,Verified PlantDoc class mapping.
+PlantVillage,Pepper__bell___Bacterial_spot,997,Bell pepper,disease,bell_pepper_bacterial_spot,include,Disease label identified by explicit disease terminology.
+PlantVillage,Pepper__bell___healthy,1478,Bell pepper,healthy,bell_pepper_healthy,include,Healthy label.
+PlantVillage,Potato___Early_blight,1000,Potato,disease,potato_early_blight,include,Disease label identified by explicit disease terminology.
+PlantVillage,Potato___Late_blight,1000,Potato,disease,potato_late_blight,include,Disease label identified by explicit disease terminology.
+PlantVillage,Potato___healthy,152,Potato,healthy,potato_healthy,include,Healthy label.
+PlantVillage,Tomato_Bacterial_spot,2127,Tomato,disease,tomato_bacterial_spot,include,Disease label identified by explicit disease terminology.
+PlantVillage,Tomato_Early_blight,1000,Tomato,disease,tomato_early_blight,include,Disease label identified by explicit disease terminology.
+PlantVillage,Tomato_Late_blight,1901,Tomato,disease,tomato_late_blight,include,Disease label identified by explicit disease terminology.
+PlantVillage,Tomato_Leaf_Mold,952,Tomato,disease,tomato_leaf_mold,include,Disease label identified by explicit disease terminology.
+PlantVillage,Tomato_Septoria_leaf_spot,1771,Tomato,disease,tomato_septoria_leaf_spot,include,Disease label identified by explicit disease terminology.
+PlantVillage,Tomato_Spider_mites_Two_spotted_spider_mite,1676,Tomato,disease,tomato_spider_mites,include,Disease label identified by explicit disease terminology.
+PlantVillage,Tomato__Target_Spot,1404,Tomato,disease,tomato_target_spot,include,Disease label identified by explicit disease terminology.
+PlantVillage,Tomato__Tomato_YellowLeaf__Curl_Virus,3208,Tomato,disease,tomato_yellow_leaf_curl_virus,include,Disease label identified by explicit disease terminology.
+PlantVillage,Tomato__Tomato_mosaic_virus,373,Tomato,disease,tomato_mosaic_virus,include,Disease label identified by explicit disease terminology.
+PlantVillage,Tomato_healthy,1585,Tomato,healthy,tomato_healthy,include,Healthy label.
+Rice,Bacterial Leaf Blight,632,Rice,disease,bacterial_leaf_blight,include,Disease label identified by explicit disease terminology.
+Rice,Brown Spot,637,Rice,disease,brown_spot,include,Disease label identified by explicit disease terminology.
+Rice,Healthy Rice Leaf,650,Rice,healthy,healthy_rice_leaf,include,Healthy label.
+Rice,Leaf Blast,619,Rice,disease,leaf_blast,include,Disease label identified by explicit disease terminology.
+Rice,Leaf scald,628,Rice,disease,leaf_scald,include,Disease label identified by explicit disease terminology.
+Rice,Sheath Blight,628,Rice,disease,sheath_blight,include,Disease label identified by explicit disease terminology.
