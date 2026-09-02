@@ -1,0 +1,253 @@
+{
+  "crop": "Mango",
+  "diseases": {
+    "anthracnose": {
+      "class_name": "anthracnose",
+      "display_name": "Mango Anthracnose",
+      "pathogen": "Colletotrichum gloeosporioides (Fungal)",
+      "base_health_score": 45,
+      "symptoms": "Dark brown to black angular spots on leaves, blossom blight, tear-stain black lesions on maturing fruit.",
+      "organic_measures": [
+        {
+          "name": "Bordeaux Mixture 1% / Copper Spray",
+          "method": "Spray 1% Bordeaux mixture or copper oxychloride (3 g/L) before panicle emergence and fruit set.",
+          "application": "Canopy spray",
+          "frequency": "Every 14 days during flowering and rainy period",
+          "caution_level": "Low"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Azoxystrobin 23% SC or Carbendazim 50% WP",
+          "active_ingredient": "Azoxystrobin / Carbendazim",
+          "dosage": "1.0 ml / 1.0 g per liter",
+          "safety_precautions": "Observe 14-day pre-harvest interval for fruit safety.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Prune dead twigs and crisscross branches after fruit harvest.",
+        "Perform hot water treatment of harvested fruits (52°C for 5 mins)."
+      ],
+      "sources": [
+        "ICAR - Central Institute for Subtropical Horticulture (CISH) Mango Guide",
+        "UC Davis IPM Mango Anthracnose"
+      ]
+    },
+    "bacterial_canker": {
+      "class_name": "bacterial_canker",
+      "display_name": "Mango Bacterial Canker",
+      "pathogen": "Xanthomonas citri pv. mangiferaeindicae (Bacterial)",
+      "base_health_score": 40,
+      "symptoms": "Water-soaked angular spots on leaves turning dark brown with chlorotic halos; star-shaped cracks oozing gum on fruits.",
+      "organic_measures": [
+        {
+          "name": "Copper Hydroxide Spray",
+          "method": "Apply copper hydroxide (2.5 g/L) with sticker-spreader.",
+          "application": "Canopy spray",
+          "frequency": "Every 10 to 12 days",
+          "caution_level": "Low"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Streptocycline + Copper Oxychloride",
+          "active_ingredient": "Streptomycin sulphate + COC",
+          "dosage": "0.1 g + 2.5 g per liter of water",
+          "safety_precautions": "Wear PPE. Apply during early morning.",
+          "caution_level": "High"
+        }
+      ],
+      "prevention_measures": [
+        "Collect and burn fallen leaves and cankered twigs.",
+        "Plant windbreak trees around orchard borders."
+      ],
+      "sources": [
+        "ICAR-CISH Bacterial Canker Advisory"
+      ]
+    },
+    "cutting_weevil": {
+      "class_name": "cutting_weevil",
+      "display_name": "Mango Leaf Cutting Weevil",
+      "pathogen": "Deporaus marginatus (Pest)",
+      "base_health_score": 55,
+      "symptoms": "Newly emerged pinkish tender leaves cut off sharply near the base as if clipped with scissors.",
+      "organic_measures": [
+        {
+          "name": "Neem Seed Kernel Extract (NSKE 5%)",
+          "method": "Spray NSKE 5% or Azadirachtin 10,000 ppm (3 ml/L) on new leaf flushes.",
+          "application": "Foliar spray on new flush",
+          "frequency": "Upon new flush emergence",
+          "caution_level": "Low"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Quinalphos 25% EC or Lambda-cyhalothrin 5% EC",
+          "active_ingredient": "Quinalphos / Lambda-cyhalothrin",
+          "dosage": "2.0 ml / 0.5 ml per liter",
+          "safety_precautions": "Spray only when fresh flush is being attacked.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Rake and destroy fallen cut leaves under canopy containing weevil eggs.",
+        "Plough orchard soil under basin to expose pupae."
+      ],
+      "sources": [
+        "ICAR-CISH Mango Pest Management Handbook"
+      ]
+    },
+    "die_back": {
+      "class_name": "die_back",
+      "display_name": "Mango Die Back",
+      "pathogen": "Lasiodiplodia theobromae (Fungal)",
+      "base_health_score": 35,
+      "symptoms": "Dying of twigs from top downwards, brown discolored wood inside stems, leaf scorching and leaf drop.",
+      "organic_measures": [
+        {
+          "name": "Pruning & Copper Paste Application",
+          "method": "Prune affected twigs 7-10 cm below the dead wood margin. Paste cut ends with 10% Bordeaux paste or copper oxychloride paste.",
+          "application": "Pruning & stem paste",
+          "frequency": "Post-monsoon pruning",
+          "caution_level": "Low"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Tebuconazole + Trifloxystrobin 75% WG",
+          "active_ingredient": "Tebuconazole + Trifloxystrobin",
+          "dosage": "0.7 g per liter of water",
+          "safety_precautions": "Avoid spraying during peak heat.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Avoid stem injuries during pruning or harvesting.",
+        "Control stem borer infestations promptly."
+      ],
+      "sources": [
+        "ICAR-CISH Orchard Sanitation Guidelines"
+      ]
+    },
+    "gall_midge": {
+      "class_name": "gall_midge",
+      "display_name": "Mango Leaf Gall Midge",
+      "pathogen": "Procontarinia spp. (Dipteran Pest)",
+      "base_health_score": 50,
+      "symptoms": "Conical or wart-like galls on leaf blades, causing leaf deformation and premature drop.",
+      "organic_measures": [
+        {
+          "name": "Neem Oil & Basin Raking",
+          "method": "Rake tree basin soil. Spray Neem oil (5 ml/L) on lower canopy during midge emergence.",
+          "application": "Soil basin raking & foliar spray",
+          "frequency": "Every 10 days during flush",
+          "caution_level": "Low"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Dimethoate 30% EC or Imidacloprid 17.8% SL",
+          "active_ingredient": "Dimethoate / Imidacloprid",
+          "dosage": "1.5 ml / 0.3 ml per liter",
+          "safety_precautions": "Do not spray during flowering to protect pollinators.",
+          "caution_level": "High"
+        }
+      ],
+      "prevention_measures": [
+        "Expose soil pupae by deep basin tilling in summer."
+      ],
+      "sources": [
+        "ICAR-CISH Mango Insect Pest Guide"
+      ]
+    },
+    "powdery_mildew": {
+      "class_name": "powdery_mildew",
+      "display_name": "Mango Powdery Mildew",
+      "pathogen": "Oidium mangiferae (Fungal)",
+      "base_health_score": 40,
+      "symptoms": "White powdery fungal coating on panicles, leaves, and young fruits; causing flower drop and fruit shedding.",
+      "organic_measures": [
+        {
+          "name": "Wettable Sulfur 80% WP",
+          "method": "Spray wettable sulfur (3 g/L) or potassium bicarbonate (4 g/L).",
+          "application": "Foliar canopy spray",
+          "frequency": "At panicle emergence and post-flowering",
+          "caution_level": "Low"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Hexaconazole 5% EC or Myclobutanil 10% WP",
+          "active_ingredient": "Hexaconazole / Myclobutanil",
+          "dosage": "1.0 ml / 0.5 g per liter",
+          "safety_precautions": "Avoid spraying when temperatures exceed 35°C to prevent phytotoxicity.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Monitor weather during panicle development (cloudy/cool weather favors mildew).",
+        "Maintain open tree architecture."
+      ],
+      "sources": [
+        "ICAR-CISH Powdery Mildew Advisory"
+      ]
+    },
+    "sooty_mould": {
+      "class_name": "sooty_mould",
+      "display_name": "Mango Sooty Mould",
+      "pathogen": "Meliola mangiferae / Capnodium spp. (Saprophytic Fungal)",
+      "base_health_score": 60,
+      "symptoms": "Black velvet-like superficial fungal layer covering leaf upper surfaces, stems, and fruits fed on insect honeydew.",
+      "organic_measures": [
+        {
+          "name": "Starch Wash & Sucking Pest Control",
+          "method": "Spray 2% boiling starch solution (cool before spraying). As starch dries, it flakes off the black mold layer. Spray neem oil (5 ml/L) to kill hoppers/scale insects.",
+          "application": "Foliar canopy wash",
+          "frequency": "Repeat after 10 days",
+          "caution_level": "Low"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Thiamethoxam 25% WG (Control Honeydew Insects)",
+          "active_ingredient": "Thiamethoxam",
+          "dosage": "0.2 g per liter of water",
+          "safety_precautions": "Target the underlying sap-sucking insects (hoppers, mealybugs) rather than just the mold.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Control mango leafhoppers, scale insects, and mealybugs early.",
+        "Prune dense interior branches."
+      ],
+      "sources": [
+        "ICAR-CISH Sooty Mould Protocol"
+      ]
+    },
+    "mango_healthy": {
+      "class_name": "mango_healthy",
+      "display_name": "Healthy Mango Tree",
+      "pathogen": "None (Healthy Crop)",
+      "base_health_score": 95,
+      "symptoms": "Lush dark green leathery leaves, clean bark, disease-free panicles and fruit clusters.",
+      "organic_measures": [
+        {
+          "name": "Annual Manuring & Micronutrient Spray",
+          "method": "Apply 50 kg FYM + 1 kg Neem cake per mature tree. Spray 0.5% zinc sulphate + 0.2% boric acid during flush.",
+          "application": "Basal application & foliar micronutrients",
+          "frequency": "Post-harvest annual dose",
+          "caution_level": "Low"
+        }
+      ],
+      "chemical_measures": [],
+      "prevention_measures": [
+        "Perform annual post-harvest pruning.",
+        "Maintain orchard sanitation."
+      ],
+      "sources": [
+        "ICAR-CISH Cultivation Practices"
+      ]
+    }
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "crop": "Rice",
+  "diseases": {
+    "bacterial_leaf_blight": {
+      "class_name": "bacterial_leaf_blight",
+      "display_name": "Rice Bacterial Leaf Blight",
+      "pathogen": "Xanthomonas oryzae pv. oryzae (Bacterial)",
+      "base_health_score": 40,
+      "symptoms": "Water-soaked streaks starting from leaf margins turning grayish-white; bacterial ooze droplets on leaves in morning.",
+      "organic_measures": [
+        {
+          "name": "Fresh Cow Dung Slurry / Copper Spray",
+          "method": "Spray 2% cow dung slurry supernatant or copper hydroxide (2 g/L) to suppress bacterial population.",
+          "application": "Foliar spray",
+          "frequency": "Every 7 to 10 days",
+          "caution_level": "Low"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Streptocycline + Copper Oxychloride",
+          "active_ingredient": "Streptomycin + COC",
+          "dosage": "0.15 g + 2.5 g per liter",
+          "safety_precautions": "Drain standing water temporary if possible. Avoid excess nitrogen.",
+          "caution_level": "High"
+        }
+      ],
+      "prevention_measures": [
+        "Avoid heavy nitrogenous fertilizers; split N applications.",
+        "Grow resistant varieties (e.g., Improved Samba Mahsuri).",
+        "Maintain proper field water management."
+      ],
+      "sources": [
+        "ICAR - National Rice Research Institute (NRRI) Advisory",
+        "IRRI Rice Knowledge Bank: Bacterial Blight"
+      ]
+    },
+    "brown_spot": {
+      "class_name": "brown_spot",
+      "display_name": "Rice Brown Spot",
+      "pathogen": "Bipolaris oryzae / Helminthosporium oryzae (Fungal)",
+      "base_health_score": 50,
+      "symptoms": "Oval or sesame seed shaped brown spots with yellow halos evenly distributed on leaves and glumes.",
+      "organic_measures": [
+        {
+          "name": "Seed Treatment & Bio-control",
+          "method": "Treat seeds with Trichoderma harzianum (10 g/kg seed). Apply foliar spray of Pseudomonas fluorescens (10 g/L).",
+          "application": "Seed treatment & foliar spray",
+          "frequency": "At nursery and tillering stage",
+          "caution_level": "Low"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Mancozeb 75% WP or Edifenphos 50% EC",
+          "active_ingredient": "Mancozeb / Edifenphos",
+          "dosage": "2.0 g / 1.0 ml per liter",
+          "safety_precautions": "Wear PPE. Apply during tillering and panicle initiation.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Correct soil nutrient deficiencies (especially Potassium, Manganese, Silicon).",
+        "Avoid water stress during vegetative phase."
+      ],
+      "sources": [
+        "ICAR-NRRI Brown Spot Management Guide",
+        "IRRI Rice Doctor"
+      ]
+    },
+    "leaf_blast": {
+      "class_name": "leaf_blast",
+      "display_name": "Rice Leaf Blast",
+      "pathogen": "Magnaporthe oryzae / Pyricularia oryzae (Fungal)",
+      "base_health_score": 35,
+      "symptoms": "Spindle-shaped (diamond-like) lesions with grayish-white centers and reddish-brown margins on leaves.",
+      "organic_measures": [
+        {
+          "name": "Silicon Amendment & Bio-fungicide",
+          "method": "Apply calcium silicate to soil. Spray Pseudomonas fluorescens (10 g/L) or neem oil (5 ml/L).",
+          "application": "Soil silicon & foliar spray",
+          "frequency": "Every 7 to 10 days",
+          "caution_level": "Low"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Tricyclazole 75% WP or Isoprothiolane 40% EC",
+          "active_ingredient": "Tricyclazole / Isoprothiolane",
+          "dosage": "0.6 g / 1.5 ml per liter of water",
+          "safety_precautions": "Spray at initial appearance of leaf blast lesions.",
+          "caution_level": "High"
+        }
+      ],
+      "prevention_measures": [
+        "Avoid excessive nitrogenous fertilizer application.",
+        "Maintain continuous shallow flooding in paddy field."
+      ],
+      "sources": [
+        "IRRI Global Rice Blast Protocol",
+        "ICAR-NRRI Rice Blast Advisory"
+      ]
+    },
+    "leaf_scald": {
+      "class_name": "leaf_scald",
+      "display_name": "Rice Leaf Scald",
+      "pathogen": "Microdochium oryzae (Fungal)",
+      "base_health_score": 50,
+      "symptoms": "Zonate light brown lesions starting from leaf tips/margins with alternating dark and light brown bands.",
+      "organic_measures": [
+        {
+          "name": "Botanical Fungicide & Balanced N",
+          "method": "Spray Neem oil 10,000 ppm (3 ml/L) or garlic clove extract 5%.",
+          "application": "Foliar spray",
+          "frequency": "Every 10 to 14 days",
+          "caution_level": "Low"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Benomyl 50% WP or Carbendazim + Mancozeb",
+          "active_ingredient": "Carbendazim + Mancozeb",
+          "dosage": "2.0 g per liter",
+          "safety_precautions": "Follow standard pesticide application precautions.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Use certified clean seed.",
+        "Avoid high plant density in nursery."
+      ],
+      "sources": [
+        "ICAR-NRRI Rice Pathology Manual"
+      ]
+    },
+    "sheath_blight": {
+      "class_name": "sheath_blight",
+      "display_name": "Rice Sheath Blight",
+      "pathogen": "Rhizoctonia solani (Fungal)",
+      "base_health_score": 40,
+      "symptoms": "Oval green-gray water-soaked lesions on leaf sheaths near waterline, expanding into irregular serpentine spots.",
+      "organic_measures": [
+        {
+          "name": "Biological Control (Pseudomonas fluorescens)",
+          "method": "Foliar spray and soil application of Pseudomonas fluorescens (10 g/L or 2.5 kg/ha in FYM).",
+          "application": "Foliar & root drench",
+          "frequency": "At tillering and booting stage",
+          "caution_level": "Low"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Validamycin 3% L or Hexaconazole 5% EC",
+          "active_ingredient": "Validamycin / Hexaconazole",
+          "dosage": "2.0 ml / 1.0 ml per liter",
+          "safety_precautions": "Direct spray towards lower leaf sheaths near water line.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Remove sclerotia floating on water surface during land preparation.",
+        "Ensure optimum plant spacing (20x15 cm)."
+      ],
+      "sources": [
+        "ICAR-NRRI Sheath Blight Protocol",
+        "IRRI Rice Doctor"
+      ]
+    },
+    "healthy_rice_leaf": {
+      "class_name": "healthy_rice_leaf",
+      "display_name": "Healthy Rice Crop",
+      "pathogen": "None (Healthy Crop)",
+      "base_health_score": 95,
+      "symptoms": "Clean, erect green tillers without lesions, lesions, or insect feeding scars.",
+      "organic_measures": [
+        {
+          "name": "Azolla Bio-fertilizer & Zinc Application",
+          "method": "Incorporate Azolla (500 kg/ha) into paddy soil. Apply Zinc sulphate (25 kg/ha basal).",
+          "application": "Soil incorporation",
+          "frequency": "At field preparation",
+          "caution_level": "Low"
+        }
+      ],
+      "chemical_measures": [],
+      "prevention_measures": [
+        "Maintain alternate wetting and drying (AWD) irrigation.",
+        "Monitor light traps for leafhopper/planthopper activity."
+      ],
+      "sources": [
+        "ICAR-NRRI Rice Production Guide"
+      ]
+    }
+  }
+}

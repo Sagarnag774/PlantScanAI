@@ -20,7 +20,7 @@ from sklearn.utils.class_weight import compute_class_weight
 
 SEED = 42
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 DATASET_DIR = PROJECT_ROOT / "datasets" / "model" / "tomato"
 
