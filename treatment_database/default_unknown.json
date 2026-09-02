@@ -1,0 +1,40 @@
+{
+  "class_name": "unknown",
+  "crop": "Unknown",
+  "disease_name": "Unknown / Unverified Issue",
+  "pathogen_type": "Indeterminate",
+  "severity_level": "Unknown",
+  "summary": "The model could not identify the plant or disease with sufficient diagnostic certainty. No treatment should be administered blindly.",
+  "organic_measures": [
+    {
+      "name": "General Field Hygiene",
+      "method": "Inspect adjacent plants for similar symptoms. Prune any visibly rotten or dead plant material using sterilized tools.",
+      "application": "Morning hours",
+      "frequency": "As needed during weekly monitoring"
+    },
+    {
+      "name": "Neem Oil / Botanical Repellent (Preventive only)",
+      "method": "If general sucking insect pests are visible, a mild spray of cold-pressed neem oil (3-5 ml per liter with mild soap) can act as a broad deterrent.",
+      "application": "Foliar spray during low-sunlight hours (early morning or late evening)",
+      "frequency": "Once a week"
+    }
+  ],
+  "chemical_measures": [],
+  "prevention_measures": [
+    "Capture a clear, well-focused close-up photo of the affected plant part in natural daylight.",
+    "Ensure the photo shows both healthy and symptomatic leaf or stem areas without severe shadows, blur, or glare.",
+    "Avoid applying broad-spectrum synthetic chemical pesticides without a verified diagnostic confirmation.",
+    "Take fresh physical plant samples to your nearest agricultural university, Krishi Vigyan Kendra (KVK), or certified crop consultant."
+  ],
+  "photo_guidance": [
+    "Ensure good natural daylight (avoid direct harsh midday sun or deep shadows).",
+    "Focus sharply on the lesion or affected area.",
+    "Include both the top surface and underside of the leaf if possible.",
+    "Avoid taking photos with messy backgrounds, hands covering symptoms, or heavy motion blur."
+  ],
+  "sources": [
+    "ICAR Extension Field Handbook",
+    "FAO Integrated Pest Management Guidelines",
+    "UC Davis IPM Plant Health Diagnostic Series"
+  ]
+}

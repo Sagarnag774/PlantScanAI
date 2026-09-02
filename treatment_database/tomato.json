@@ -1,0 +1,444 @@
+{
+  "crop": "Tomato",
+  "diseases": {
+    "tomato_early_blight": {
+      "class_name": "tomato_early_blight",
+      "display_name": "Tomato Early Blight",
+      "pathogen": "Alternaria solani (Fungal)",
+      "base_health_score": 45,
+      "symptoms": "Dark brown to black spots with concentric rings ('target board' pattern), usually starting on older bottom leaves. Leaves yellow and drop prematurely.",
+      "organic_measures": [
+        {
+          "name": "Copper Hydroxide / Bordeaux Mixture Spray",
+          "method": "Apply copper-based organic fungicide (1-2 g per liter) thoroughly on both leaf surfaces.",
+          "application": "Foliar spray during cool morning or evening hours",
+          "frequency": "Every 7 to 10 days until disease progression halts"
+        },
+        {
+          "name": "Bio-fungicide (Trichoderma viride / Bacillus subtilis)",
+          "method": "Spray Trichoderma viride or Bacillus subtilis formulation (5 g/ml per liter of water) to outcompete fungal spores.",
+          "application": "Soil drenching and foliar spray",
+          "frequency": "Every 10 to 14 days"
+        },
+        {
+          "name": "Bottom Foliage Sanitation",
+          "method": "Prune and remove infected lower leaves (up to 12 inches from ground). Dispose of debris away from the field; do not compost infected material.",
+          "application": "Manual pruning with disinfected shears",
+          "frequency": "Weekly monitoring"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Mancozeb 75% WP",
+          "active_ingredient": "Mancozeb",
+          "dosage": "2.0 - 2.5 g per liter of water",
+          "safety_precautions": "Wear PPE (gloves, mask, goggles). Do not spray during bloom period. Pre-harvest interval (PHI): 7 days.",
+          "caution_level": "Moderate"
+        },
+        {
+          "name": "Chlorothalonil or Azoxystrobin + Difenoconazole",
+          "active_ingredient": "Azoxystrobin 18.2% + Difenoconazole 11.4% SC",
+          "dosage": "1.0 ml per liter of water",
+          "safety_precautions": "Rotate chemical modes of action to prevent fungal resistance. Strict compliance with label instructions required.",
+          "caution_level": "High"
+        }
+      ],
+      "prevention_measures": [
+        "Practice 2-3 year crop rotation with non-solanaceous crops (avoid potatoes, peppers, eggplants).",
+        "Use drip irrigation instead of overhead watering to keep foliage dry.",
+        "Apply organic straw or plastic mulch around the plant base to prevent soil-splash onto lower leaves.",
+        "Ensure adequate plant spacing (at least 45-60 cm) for good air circulation."
+      ],
+      "sources": [
+        "ICAR - Indian Institute of Horticultural Research (IIHR) Tomato Disease Guide",
+        "University of Florida IFAS Extension: Early Blight of Tomato",
+        "FAO Integrated Pest Management in Vegetable Production"
+      ]
+    },
+    "tomato_late_blight": {
+      "class_name": "tomato_late_blight",
+      "display_name": "Tomato Late Blight",
+      "pathogen": "Phytophthora infestans (Oomycete)",
+      "base_health_score": 25,
+      "symptoms": "Large, irregular water-soaked pale green to dark brown lesions on leaves and stems, with white velvety fungal growth on leaf undersides in humid conditions.",
+      "organic_measures": [
+        {
+          "name": "Fixed Copper Compounds",
+          "method": "Apply copper octanoate or copper oxychloride (2.5 g per liter) immediately upon first suspicion.",
+          "application": "Complete foliar coverage including undersides",
+          "frequency": "Every 5 to 7 days during cool, wet weather"
+        },
+        {
+          "name": "Immediate Roguing of Severely Infected Plants",
+          "method": "Bag and uproot heavily infected plants during dry weather to prevent rapid airborne spore spread.",
+          "application": "Field sanitization",
+          "frequency": "Daily monitoring during humid periods"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Metalaxyl-M + Mancozeb (Ridomil Gold 68 WG)",
+          "active_ingredient": "Metalaxyl-M 4% + Mancozeb 64%",
+          "dosage": "2.5 g per liter of water",
+          "safety_precautions": "Systemic and contact action. Wear full PPE. Pre-harvest interval (PHI): 14 days. Avoid overuse to curb resistance.",
+          "caution_level": "High"
+        },
+        {
+          "name": "Cymoxanil + Mancozeb 72% WP",
+          "active_ingredient": "Cymoxanil 8% + Mancozeb 64%",
+          "dosage": "2.0 g per liter of water",
+          "safety_precautions": "Apply at early symptom stage. Follow local agrochemical regulations.",
+          "caution_level": "High"
+        }
+      ],
+      "prevention_measures": [
+        "Plant certified disease-free transplants or resistant varieties (e.g., Defiant, Mountain Magic).",
+        "Avoid planting tomatoes near potato fields.",
+        "Eliminate volunteer tomato and potato plants and weed hosts like nightshade.",
+        "Maximize canopy aeration with staking and trellis systems."
+      ],
+      "sources": [
+        "Cornell University Vegetable MD Online: Late Blight on Tomato",
+        "ICAR - National Research Centre for Integrated Pest Management (NCIPM)",
+        "European and Mediterranean Plant Protection Organization (EPPO) Data Sheets"
+      ]
+    },
+    "tomato_bacterial_spot": {
+      "class_name": "tomato_bacterial_spot",
+      "display_name": "Tomato Bacterial Spot",
+      "pathogen": "Xanthomonas spp. (Bacterial)",
+      "base_health_score": 40,
+      "symptoms": "Small, dark brown, water-soaked circular lesions on leaves, often with a yellow halo. Centers may dry out and tear. Fruit may show raised scab-like spots.",
+      "organic_measures": [
+        {
+          "name": "Copper Soap (Copper Octanoate) + Bacillus amyloliquefaciens",
+          "method": "Tank-mix biological bactericide (Bacillus amyloliquefaciens) with low-rate copper soap.",
+          "application": "Foliar spray",
+          "frequency": "Every 7 days in warm, rainy weather"
+        },
+        {
+          "name": "Hot Water Seed Treatment (Prior to planting)",
+          "method": "Soak seeds at 50°C (122°F) for 25 minutes to eliminate seed-borne bacteria.",
+          "application": "Seed treatment prior to nursery sowing",
+          "frequency": "Once per seed lot"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Streptomycin Sulphate + Tetracycline Hydrochloride (Agricultural grade) + Copper Oxychloride",
+          "active_ingredient": "Streptocycline 90:10 (0.5 g/10 L) + COC 50 WP (2.5 g/L)",
+          "dosage": "As per local extension prescription only",
+          "safety_precautions": "Antibiotic use strictly governed by local agricultural policies. Wear PPE. Do not apply close to harvest.",
+          "caution_level": "High"
+        }
+      ],
+      "prevention_measures": [
+        "Use certified pathogen-free seeds and nursery stock.",
+        "Never work in wet fields or handle foliage when leaves are damp to avoid mechanical bacterial transmission.",
+        "Disinfect pruning tools with 70% alcohol or 10% bleach solution between rows.",
+        "Rotate fields away from solanaceous crops for at least 2 seasons."
+      ],
+      "sources": [
+        "University of California Statewide Integrated Pest Management Program (UC IPM)",
+        "ICAR-IIHR Tomato Disease Advisory",
+        "APS Plant Pathology Compendium of Tomato Diseases"
+      ]
+    },
+    "tomato_septoria_leaf_spot": {
+      "class_name": "tomato_septoria_leaf_spot",
+      "display_name": "Tomato Septoria Leaf Spot",
+      "pathogen": "Septoria lycopersici (Fungal)",
+      "base_health_score": 50,
+      "symptoms": "Numerous small circular spots (2-3 mm) with dark brown margins and sunken grayish-white centers with tiny black dots (pycnidia). Leaves turn yellow and drop from base upward.",
+      "organic_measures": [
+        {
+          "name": "Copper-based Organic Protectant",
+          "method": "Foliar spray of copper hydroxide (2 g/L) at the first sign of leaf spotting.",
+          "application": "Foliar spray",
+          "frequency": "7 to 10 days interval"
+        },
+        {
+          "name": "Lower Canopy Stripping",
+          "method": "Prune symptomatic lower leaves promptly to prevent upward splash dispersion.",
+          "application": "Manual sanitation",
+          "frequency": "Weekly during wet spells"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Chlorothalonil 75% WP or Mancozeb 75% WP",
+          "active_ingredient": "Chlorothalonil / Mancozeb",
+          "dosage": "2.0 g per liter of water",
+          "safety_precautions": "Contact protectant fungicide. Ensure full leaf coverage. Wear PPE. Follow label PHI.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Implement drip irrigation or furrow watering to minimize leaf wetness.",
+        "Mulch beds heavily to create a physical barrier against soil-borne spores.",
+        "Deep plow crop residues after harvest to bury fungal inocula.",
+        "Provide wide row spacing for maximum airflow and sun penetration."
+      ],
+      "sources": [
+        "Purdue Extension Vegetable Crops Hotline",
+        "Penn State Extension: Septoria Leaf Spot on Tomato",
+        "ICAR NCIPM Guidelines"
+      ]
+    },
+    "tomato_leaf_mold": {
+      "class_name": "tomato_leaf_mold",
+      "display_name": "Tomato Leaf Mold",
+      "pathogen": "Passalora fulva / Cladosporium fulvum (Fungal)",
+      "base_health_score": 55,
+      "symptoms": "Pale greenish-yellow chlorotic patches on the upper leaf surface, with dense olive-green to brown velvety spore growth on the corresponding lower surface.",
+      "organic_measures": [
+        {
+          "name": "Potassium Bicarbonate or Bio-fungicide Spray",
+          "method": "Spray potassium bicarbonate (3 g/L) or Bacillus subtilis (3 ml/L) on leaf undersides.",
+          "application": "Underside foliar spray",
+          "frequency": "Every 7 days"
+        },
+        {
+          "name": "Greenhouse Humidity Reduction",
+          "method": "Improve ventilation, install exhaust fans, and reduce relative humidity below 85%.",
+          "application": "Microclimate management",
+          "frequency": "Continuous"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Difenoconazole 25% EC or Azoxystrobin 23% SC",
+          "active_ingredient": "Difenoconazole / Azoxystrobin",
+          "dosage": "1.0 ml per liter of water",
+          "safety_precautions": "Apply at early symptom emergence. Observe 5-7 days pre-harvest interval.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Prune suckers and dense foliage to promote rapid air movement through the plant canopy.",
+        "Avoid overhead irrigation; water early in the day so foliage dries rapidly.",
+        "Grow leaf-mold resistant hybrid varieties in greenhouse or polytunnel setups.",
+        "Maintain greenhouse temperatures and adequate venting during cool, foggy mornings."
+      ],
+      "sources": [
+        "University of Massachusetts Amherst Greenhouse Crops and Floriculture Program",
+        "Ohio State University Extension: Leaf Mold of Tomato",
+        "FAO Protective Cultivation Handbook"
+      ]
+    },
+    "tomato_spider_mites": {
+      "class_name": "tomato_spider_mites",
+      "display_name": "Tomato Two-Spotted Spider Mites",
+      "pathogen": "Tetranychus urticae (Arachnid Pest)",
+      "base_health_score": 50,
+      "symptoms": "Tiny yellow or white speckling (stippling) on leaves. As infestation progresses, leaves bronze, dry out, and fine silken webbing covers leaf undersides and shoot tips.",
+      "organic_measures": [
+        {
+          "name": "Neem Oil Extract / Azadirachtin 1% EC",
+          "method": "Spray cold-pressed neem oil (5 ml/L with soap emulsifier) or Azadirachtin (2 ml/L) thoroughly on leaf undersides.",
+          "application": "High-pressure underside foliar spray",
+          "frequency": "Every 5 to 7 days for 3 cycles"
+        },
+        {
+          "name": "Biological Predatory Mites (Phytoseiulus persimilis)",
+          "method": "Release beneficial predatory mites in infested patches early before heavy webbing forms.",
+          "application": "Biological control release",
+          "frequency": "As recommended by bio-control supplier"
+        },
+        {
+          "name": "Insecticidal Soap / Horticultural Oil",
+          "method": "Spray potassium soap solution (5-10 ml/L) directly contacting the mites.",
+          "application": "Foliar contact spray",
+          "frequency": "Weekly until suppressed"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Spiromesifen 22.9% SC or Propargite 57% EC",
+          "active_ingredient": "Spiromesifen / Propargite",
+          "dosage": "1.0 ml per liter of water",
+          "safety_precautions": "Target undersides where mites feed. Alternate miticide classes to avoid rapid resistance development. Wear PPE.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Keep field borders free of broadleaf weeds that harbor overwintering mite colonies.",
+        "Avoid water-stressing tomato plants; drought-stressed plants are significantly more susceptible.",
+        "Avoid excessive use of broad-spectrum pyrethroid insecticides which eliminate natural mite predators.",
+        "Wash dust off farm roads and field edges as dust promotes spider mite outbreaks."
+      ],
+      "sources": [
+        "UC IPM: Tomato Spider Mites Pest Management Guidelines",
+        "ICAR-NCIPM Mite Management Protocol",
+        "Texas A&M AgriLife Extension"
+      ]
+    },
+    "tomato_target_spot": {
+      "class_name": "tomato_target_spot",
+      "display_name": "Tomato Target Spot",
+      "pathogen": "Corynespora cassiicola (Fungal)",
+      "base_health_score": 45,
+      "symptoms": "Small brown necrotic spots with subtle yellow halos that expand to 5-10 mm circular lesions with light brown centers and dark concentric rings.",
+      "organic_measures": [
+        {
+          "name": "Copper Hydroxide + Bio-stimulant Spray",
+          "method": "Apply copper hydroxide (2 g/L) combined with seaweed extract to strengthen plant cell wall resistance.",
+          "application": "Foliar spray",
+          "frequency": "Every 7 to 10 days"
+        },
+        {
+          "name": "Canopy Airflow Enhancement",
+          "method": "Prune overcrowded foliage and stake branches firmly off wet ground.",
+          "application": "Cultural management",
+          "frequency": "Ongoing"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Fluxapyroxad + Pyraclostrobin or Azoxystrobin",
+          "active_ingredient": "Pyraclostrobin / Azoxystrobin",
+          "dosage": "1.0 ml per liter of water",
+          "safety_precautions": "Follow label timing. Rotate with multi-site contact protectants like Chlorothalonil.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Eliminate solanaceous and cucurbit crop residues after harvest.",
+        "Ensure wide plant spacing for sunlight penetration.",
+        "Use drip irrigation to maintain dry leaf surfaces.",
+        "Implement crop rotation with monocots like corn or sorghum."
+      ],
+      "sources": [
+        "University of Florida EDIS: Target Spot of Tomato",
+        "ICAR-IIHR Plant Pathology Division",
+        "CABI Crop Protection Compendium"
+      ]
+    },
+    "tomato_yellow_leaf_curl_virus": {
+      "class_name": "tomato_yellow_leaf_curl_virus",
+      "display_name": "Tomato Yellow Leaf Curl Virus (TYLCV)",
+      "pathogen": "Tomato yellow leaf curl virus (Begomovirus, vectored by Bemisia tabaci Whitefly)",
+      "base_health_score": 30,
+      "symptoms": "Severe plant stunting, erect bushy shoots, cupped and curled leaves with prominent interveinal and marginal yellowing (chlorosis), and flower drop.",
+      "organic_measures": [
+        {
+          "name": "Yellow Sticky Traps for Whitefly Vector Monitoring",
+          "method": "Install yellow sticky cards (15-20 traps per acre) at canopy height to trap adult whitefly vectors.",
+          "application": "Field-wide physical trap setup",
+          "frequency": "Inspect and replace weekly"
+        },
+        {
+          "name": "Neem / Botanical Insecticide (Azadirachtin)",
+          "method": "Foliar spray of 1% Azadirachtin (2 ml/L) targeting leaf undersides to repel whiteflies and disrupt nymph molting.",
+          "application": "Early morning spray on leaf undersides",
+          "frequency": "Every 5 to 7 days"
+        },
+        {
+          "name": "Immediate Roguing of Symptomatic Plants",
+          "method": "Carefully remove and bag infected plants early to prevent whiteflies from acquiring the virus and spreading it across the field.",
+          "application": "Field sanitation",
+          "frequency": "Immediate upon symptom detection"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Thiamethoxam 25% WG or Acetamiprid 20% SP (Vector management)",
+          "active_ingredient": "Thiamethoxam / Acetamiprid",
+          "dosage": "0.5 g per liter of water",
+          "safety_precautions": "Note: Chemical controls manage the insect vector (whitefly), NOT the virus itself. Strictly avoid spraying during active honeybee pollination hours. Pre-harvest interval (PHI): 5-7 days.",
+          "caution_level": "High"
+        }
+      ],
+      "prevention_measures": [
+        "Plant TYLCV-resistant or tolerant tomato hybrids (e.g., US 440, Sakata varieties with Ty-1/Ty-3 resistance genes).",
+        "Raise seedlings under 40-50 mesh insect-proof nylon net houses to prevent early nursery vector transmission.",
+        "Use reflective silver plastic mulch to disorient flying whiteflies and reduce alighting on young transplants.",
+        "Maintain a host-free crop-break period between successive tomato seasons."
+      ],
+      "sources": [
+        "ICAR-Indian Institute of Vegetable Research (IIVR) Whitefly and TYLCV Management",
+        "UC Davis IPM: Tomato Yellow Leaf Curl",
+        "World Vegetable Center (AVRDC) Fact Sheet"
+      ]
+    },
+    "tomato_mosaic_virus": {
+      "class_name": "tomato_mosaic_virus",
+      "display_name": "Tomato Mosaic Virus (ToMV)",
+      "pathogen": "Tomato mosaic virus (Tobamovirus, mechanically transmitted)",
+      "base_health_score": 35,
+      "symptoms": "Mottled light and dark green mosaic patterns on leaves, leaf distortion or 'fern-leaf' thinning, slight stunting, and internal brown necrosis in fruit.",
+      "organic_measures": [
+        {
+          "name": "Milk Spray / Protein Solution (Mechanochemical barrier)",
+          "method": "Spray 20% skimmed milk in water solution on seedlings prior to transplanting/pruning to denature viral particles and reduce mechanical transmission.",
+          "application": "Foliar contact spray before handling plants",
+          "frequency": "Before each pruning / staking session"
+        },
+        {
+          "name": "Sanitation with Trisodium Phosphate (TSP) / Soap",
+          "method": "Wash hands and dip pruning tools in 10% Trisodium Phosphate (TSP) solution or soapy water before touching healthy plants.",
+          "application": "Tool & hand decontamination",
+          "frequency": "Between every plant row"
+        },
+        {
+          "name": "Roguing and Disposal",
+          "method": "Carefully pull out infected plants, bag them, and destroy away from the field. Do not burn or compost.",
+          "application": "Sanitary removal",
+          "frequency": "Immediate upon identification"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "No Chemical Cure Available",
+          "active_ingredient": "None",
+          "dosage": "N/A",
+          "safety_precautions": "There are no synthetic chemical viricides for plant viruses. Chemical pesticide sprays are ineffective against ToMV and should not be used.",
+          "caution_level": "None"
+        }
+      ],
+      "prevention_measures": [
+        "Use certified virus-free seeds treated with heat (70°C for 3 days) or TSP.",
+        "Grow ToMV-resistant cultivars (designated with 'T' or 'ToMV' resistance on seed packets).",
+        "Enforce strict field hygiene: prohibit tobacco smoking/handling near plants (tobacco mosaic virus can cross-contaminate).",
+        "Avoid handling plants when leaves are wet."
+      ],
+      "sources": [
+        "University of California IPM: Tomato Mosaic Virus",
+        "ICAR-IIVR Solanaceous Crop Virus Guide",
+        "Cornell Vegetable Pathology Series"
+      ]
+    },
+    "tomato_healthy": {
+      "class_name": "tomato_healthy",
+      "display_name": "Healthy Tomato Plant",
+      "pathogen": "None (Plant is healthy)",
+      "base_health_score": 95,
+      "symptoms": "Vibrant green uniform foliage, strong stem growth, normal flowering and fruit set with no visible lesions, wilting, mosaic, or insect damage.",
+      "organic_measures": [
+        {
+          "name": "Preventive Bio-fertilizer & Micro-nutrient Boost",
+          "method": "Apply balanced compost tea, Panchagavya (3% foliar spray), or seaweed extract to maintain robust plant vigor and natural immunity.",
+          "application": "Soil drench or foliar spray",
+          "frequency": "Every 15 days"
+        },
+        {
+          "name": "Routine Monitoring",
+          "method": "Continue weekly inspection of lower leaves, stems, and leaf undersides for early pest presence.",
+          "application": "Visual inspection",
+          "frequency": "Weekly"
+        }
+      ],
+      "chemical_measures": [],
+      "prevention_measures": [
+        "Maintain consistent soil moisture using drip irrigation; avoid drought cycles to prevent blossom end rot.",
+        "Ensure balanced N-P-K fertilization with adequate calcium and potassium.",
+        "Keep staking and trellis structures clean and secure.",
+        "Maintain clean field borders to discourage weed hosts."
+      ],
+      "sources": [
+        "ICAR Good Agricultural Practices (GAP) for Tomato",
+        "FAO Tomato Production Manual"
+      ]
+    }
+  }
+}

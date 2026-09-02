@@ -1,0 +1,203 @@
+{
+  "crop": "Rice",
+  "diseases": {
+    "bacterial_leaf_blight": {
+      "class_name": "bacterial_leaf_blight",
+      "display_name": "Rice Bacterial Leaf Blight (BLB)",
+      "pathogen": "Xanthomonas oryzae pv. oryzae (Bacterial)",
+      "base_health_score": 40,
+      "symptoms": "Water-soaked lesions turning yellow to greyish-white along leaf margins, expanding longitudinally with wavy margins.",
+      "organic_measures": [
+        {
+          "name": "Cow Dung Slurry / Neem Cake Application",
+          "method": "Spray filtered cow dung slurry extract (20%) or fresh neem cake extract (5%) to induce systemic resistance.",
+          "application": "Foliar spray",
+          "frequency": "Every 10 days"
+        },
+        {
+          "name": "Water Drainage",
+          "method": "Drain standing water temporarily from affected paddies to curb bacterial circulation.",
+          "application": "Field water management",
+          "frequency": "Immediate upon outbreak"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Streptomycin Sulphate + Copper Oxychloride",
+          "active_ingredient": "Streptocycline 1 g / 10 L + COC 2.5 g / L",
+          "dosage": "As permitted by local extension",
+          "safety_precautions": "Wear PPE. Apply during early morning.",
+          "caution_level": "High"
+        }
+      ],
+      "prevention_measures": [
+        "Avoid excessive split application of nitrogen fertilizer during cloudy or rainy weather.",
+        "Use resistant cultivars (e.g., Improved Samba Mahsuri, IR64).",
+        "Clip seedling tips only with sanitized tools if required."
+      ],
+      "sources": [
+        "ICAR-National Rice Research Institute (NRRI) Cuttack Advisory",
+        "IRRI Rice Knowledge Bank: Bacterial Blight"
+      ]
+    },
+    "brown_spot": {
+      "class_name": "brown_spot",
+      "display_name": "Rice Brown Spot",
+      "pathogen": "Bipolaris oryzae (Fungal)",
+      "base_health_score": 45,
+      "symptoms": "Small oval to circular dark brown lesions with yellow halos distributed over the leaf surface and grain glumes.",
+      "organic_measures": [
+        {
+          "name": "Seed Biopriming with Trichoderma",
+          "method": "Treat seeds with Trichoderma harzianum (10 g/kg seed) before nursery sowing.",
+          "application": "Seed treatment",
+          "frequency": "Once at sowing"
+        },
+        {
+          "name": "Soil Nutrition Correction",
+          "method": "Apply balanced potassium and organic farmyard manure (FYM) to remediate nutrient-deficient soils.",
+          "application": "Soil basal / top dressing",
+          "frequency": "As per soil test"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Mancozeb 75% WP or Propiconazole 25% EC",
+          "active_ingredient": "Mancozeb / Propiconazole",
+          "dosage": "1.0 - 2.0 g/ml per liter",
+          "safety_precautions": "Wear protective gear. Follow label safety instructions.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Correct soil silicon and potassium deficiencies.",
+        "Ensure optimal water holding capacity in the paddy.",
+        "Use certified clean seed lots."
+      ],
+      "sources": [
+        "IRRI Knowledge Bank: Brown Spot",
+        "ICAR-Indian Institute of Rice Research (IIRR) Hyderabad"
+      ]
+    },
+    "leaf_blast": {
+      "class_name": "leaf_blast",
+      "display_name": "Rice Leaf Blast",
+      "pathogen": "Magnaporthe oryzae (Fungal)",
+      "base_health_score": 30,
+      "symptoms": "Diamond-shaped or spindle-shaped lesions with grey or whitish centers and reddish-brown margins. Severe infections cause 'burned' canopy appearance.",
+      "organic_measures": [
+        {
+          "name": "Pseudomonas fluorescens Foliar Spray",
+          "method": "Spray liquid formulation of Pseudomonas fluorescens (5 ml/L) at tillering and panicle emergence.",
+          "application": "Foliar spray",
+          "frequency": "Every 10 days"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Tricyclazole 75% WP or Isoprothiolane 40% EC",
+          "active_ingredient": "Tricyclazole / Isoprothiolane",
+          "dosage": "0.6 g / L (Tricyclazole) or 1.5 ml / L (Isoprothiolane)",
+          "safety_precautions": "Apply at boot leaf / early heading. Observe pre-harvest interval.",
+          "caution_level": "High"
+        }
+      ],
+      "prevention_measures": [
+        "Avoid excessive basal or top-dressed nitrogen.",
+        "Plant blast-resistant certified paddy varieties.",
+        "Ensure continuous shallow flooding in the paddy during susceptible stages."
+      ],
+      "sources": [
+        "IRRI Rice Blast Diagnostic Protocols",
+        "ICAR-NRRI Cuttack"
+      ]
+    },
+    "leaf_scald": {
+      "class_name": "leaf_scald",
+      "display_name": "Rice Leaf Scald",
+      "pathogen": "Microdochium oryzae (Fungal)",
+      "base_health_score": 50,
+      "symptoms": "Zonate bands with alternating light brown and dark brown chevron-like wavy stripes starting from leaf tips or edges.",
+      "organic_measures": [
+        {
+          "name": "Copper Oxychloride + Plant Vigor Spray",
+          "method": "Foliar spray of copper oxychloride (2.5 g/L).",
+          "application": "Foliar spray",
+          "frequency": "Every 10 days"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Benomyl or Carbendazim + Mancozeb",
+          "active_ingredient": "Carbendazim 12% + Mancozeb 63% WP",
+          "dosage": "2.0 g per liter",
+          "safety_precautions": "Wear PPE. Apply when disease threshold is crossed.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Avoid close planting in dense clusters.",
+        "Balance potassium and nitrogen ratios."
+      ],
+      "sources": [
+        "IRRI Rice Doctor",
+        "ICAR-IIRR Hyderabad"
+      ]
+    },
+    "sheath_blight": {
+      "class_name": "sheath_blight",
+      "display_name": "Rice Sheath Blight",
+      "pathogen": "Rhizoctonia solani (Fungal)",
+      "base_health_score": 35,
+      "symptoms": "Oval or greenish-grey spots on leaf sheaths near the water level, enlarging to irregular 'snake-skin' lesions with brown borders.",
+      "organic_measures": [
+        {
+          "name": "Trichoderma viride + Pseudomonas fluorescens Soil & Canopy Application",
+          "method": "Apply bio-control consortium (1 kg/acre mixed with 50 kg farmyard manure).",
+          "application": "Soil & basal canopy",
+          "frequency": "At tillering"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Hexaconazole 5% SC or Validamycin 3% L",
+          "active_ingredient": "Hexaconazole / Validamycin",
+          "dosage": "2.0 ml per liter",
+          "safety_precautions": "Direct spray towards the lower stem and sheath region. Wear PPE.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Skim floating sclerotial bodies during land preparation before transplanting.",
+        "Wider spacing (20x15 cm) to facilitate lower-canopy aeration."
+      ],
+      "sources": [
+        "ICAR-IIRR Rice Sheath Blight Protocol",
+        "IRRI Rice Knowledge Bank"
+      ]
+    },
+    "healthy_rice_leaf": {
+      "class_name": "healthy_rice_leaf",
+      "display_name": "Healthy Rice Crop",
+      "pathogen": "None (Plant is healthy)",
+      "base_health_score": 95,
+      "symptoms": "Erect, clean green leaves, sturdy tillers, no sheath or leaf discoloration.",
+      "organic_measures": [
+        {
+          "name": "Azospirillum & Phosphobacteria Bio-fertilizer",
+          "method": "Apply beneficial bio-fertilizers to support root nitrogen fixation and phosphorus solubilization.",
+          "application": "Soil application",
+          "frequency": "During vegetative stage"
+        }
+      ],
+      "chemical_measures": [],
+      "prevention_measures": [
+        "Maintain water depth according to growth stage.",
+        "Conduct weekly agro-ecosystem analysis (AESA)."
+      ],
+      "sources": [
+        "ICAR-NRRI Good Agronomic Practices for Rice"
+      ]
+    }
+  }
+}
