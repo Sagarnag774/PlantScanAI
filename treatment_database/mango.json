@@ -1,0 +1,248 @@
+{
+  "crop": "Mango",
+  "diseases": {
+    "anthracnose": {
+      "class_name": "anthracnose",
+      "display_name": "Mango Anthracnose",
+      "pathogen": "Colletotrichum gloeosporioides (Fungal)",
+      "base_health_score": 45,
+      "symptoms": "Dark brown to black necrotic spots with chlorotic margins on tender leaves, blossom blight causing flower drop, and black tear-stain rot on fruit.",
+      "organic_measures": [
+        {
+          "name": "Copper Oxychloride + Canopy Pruning",
+          "method": "Prune dead twigs 5 cm below infected zone; spray copper oxychloride (3 g/L).",
+          "application": "Foliar spray & canopy sanitation",
+          "frequency": "Before blossom and after fruit set"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Azoxystrobin 23% SC or Carbendazim 50% WP",
+          "active_ingredient": "Azoxystrobin / Carbendazim",
+          "dosage": "1.0 ml/g per liter",
+          "safety_precautions": "Wear PPE. Apply during flush and panicle emergence.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Post-harvest hot water treatment of fruit (52°C for 5-10 minutes).",
+        "Keep orchard floor clean of fallen twigs and leaves."
+      ],
+      "sources": [
+        "ICAR-Central Institute for Subtropical Horticulture (CISH) Lucknow",
+        "University of Florida IFAS Mango Diseases"
+      ]
+    },
+    "bacterial_canker": {
+      "class_name": "bacterial_canker",
+      "display_name": "Mango Bacterial Canker",
+      "pathogen": "Xanthomonas citri pv. mangiferaeindicae (Bacterial)",
+      "base_health_score": 40,
+      "symptoms": "Water-soaked angular dark brown lesions surrounded by clear yellow halos on leaves, raised corky canker lesions on twigs and fruit with gum exudation.",
+      "organic_measures": [
+        {
+          "name": "Copper Hydroxide + Canopy Pruning",
+          "method": "Spray copper hydroxide (2.5 g/L) and remove cankered twigs.",
+          "application": "Canopy spray",
+          "frequency": "Monthly during rainy season"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Streptocycline + Copper Oxychloride",
+          "active_ingredient": "Streptocycline 1 g/10 L + COC 2.5 g/L",
+          "dosage": "As per local extension prescription",
+          "safety_precautions": "Wear PPE. Apply before fruit maturation.",
+          "caution_level": "High"
+        }
+      ],
+      "prevention_measures": [
+        "Establish windbreaks around orchard edges to minimize wind-driven leaf abrasions.",
+        "Disinfect harvesting clippers."
+      ],
+      "sources": [
+        "ICAR-CISH Mango Advisory"
+      ]
+    },
+    "powdery_mildew": {
+      "class_name": "powdery_mildew",
+      "display_name": "Mango Powdery Mildew",
+      "pathogen": "Oidium mangiferae (Fungal)",
+      "base_health_score": 40,
+      "symptoms": "White powdery fungal coating on inflorescence, young leaves, and tender fruits, causing heavy blossom drop and fruitlet drop.",
+      "organic_measures": [
+        {
+          "name": "Wettable Sulphur 80% WP or Potassium Bicarbonate",
+          "method": "Spray wettable sulphur (2-3 g/L) or potassium bicarbonate (3 g/L).",
+          "application": "Canopy and panicle spray",
+          "frequency": "At bud burst and fruit set"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Hexaconazole 5% EC or Dinocap 48% EC",
+          "active_ingredient": "Hexaconazole / Dinocap",
+          "dosage": "1.0 ml per liter",
+          "safety_precautions": "Wear PPE. Do not spray during extreme heat (>35°C) to avoid phytotoxicity.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Ensure good sunlight penetration through annual pruning.",
+        "Scout panicles weekly during foggy cool mornings."
+      ],
+      "sources": [
+        "ICAR-CISH Powdery Mildew Guidelines"
+      ]
+    },
+    "die_back": {
+      "class_name": "die_back",
+      "display_name": "Mango Die Back",
+      "pathogen": "Lasiodiplodia theobromae (Fungal)",
+      "base_health_score": 35,
+      "symptoms": "Drying and die-off of twigs and branches progressing from top downwards. Leaves turn brown, roll, and remain attached to dead twigs.",
+      "organic_measures": [
+        {
+          "name": "Deep Pruning & Bordeaux Paste Dressing",
+          "method": "Prune affected branches 7-10 cm below the dead margin and paste fresh 10% Bordeaux paste or copper oxychloride paste onto cut surfaces.",
+          "application": "Wound dressing & branch pruning",
+          "frequency": "Immediate upon identification"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Thiophanate Methyl 70% WP or Carbendazim",
+          "active_ingredient": "Thiophanate Methyl / Carbendazim",
+          "dosage": "1.0 - 1.5 g per liter",
+          "safety_precautions": "Foliar spray over remaining canopy after pruning. Wear PPE.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Avoid stem borer and insect injuries which provide entry wounds for fungal spores.",
+        "Paint tree trunks with lime-copper wash."
+      ],
+      "sources": [
+        "ICAR-CISH Dieback Management"
+      ]
+    },
+    "cutting_weevil": {
+      "class_name": "cutting_weevil",
+      "display_name": "Mango Leaf Cutting Weevil",
+      "pathogen": "Deporaus marginatus (Insect Pest)",
+      "base_health_score": 50,
+      "symptoms": "Tender new leaves cleanly cut near the base like by scissors and lying scattered beneath tree canopy.",
+      "organic_measures": [
+        {
+          "name": "Collection of Cut Leaves & Neem Spray",
+          "method": "Collect and destroy dropped cut leaves (which contain weevil eggs). Spray 5% Neem Seed Kernel Extract (NSKE) during new flush.",
+          "application": "Foliar spray during new leaf flush",
+          "frequency": "Every 7-10 days during flush"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Quinalphos 25% EC or Lambda-cyhalothrin 5% EC",
+          "active_ingredient": "Quinalphos / Lambda-cyhalothrin",
+          "dosage": "1.5 - 2.0 ml per liter",
+          "safety_precautions": "Wear PPE. Apply only on tender flushes if damage exceeds threshold.",
+          "caution_level": "High"
+        }
+      ],
+      "prevention_measures": [
+        "Till soil under tree basin to expose pupae to predatory birds and sun."
+      ],
+      "sources": [
+        "ICAR-CISH Insect Pest Guide"
+      ]
+    },
+    "gall_midge": {
+      "class_name": "gall_midge",
+      "display_name": "Mango Leaf Gall Midge",
+      "pathogen": "Procontarinia spp. (Dipteran Pest)",
+      "base_health_score": 55,
+      "symptoms": "Small wart-like or cone-shaped galls on upper and lower leaf surfaces, resulting in leaf curl and premature drop.",
+      "organic_measures": [
+        {
+          "name": "Neem Oil & Pruning Galled Leaves",
+          "method": "Prune heavily galled shoots before adult midges emerge. Spray neem oil (5 ml/L).",
+          "application": "Pruning & spray",
+          "frequency": "During flush emergence"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Dimethoate 30% EC or Imidacloprid 17.8% SL",
+          "active_ingredient": "Dimethoate / Imidacloprid",
+          "dosage": "0.5 - 1.5 ml per liter",
+          "safety_precautions": "Target new flush. Avoid during bloom. Wear PPE.",
+          "caution_level": "High"
+        }
+      ],
+      "prevention_measures": [
+        "Rake and expose orchard basin soil to destroy pupae."
+      ],
+      "sources": [
+        "ICAR-CISH Gall Midge Advisory"
+      ]
+    },
+    "sooty_mould": {
+      "class_name": "sooty_mould",
+      "display_name": "Mango Sooty Mould",
+      "pathogen": "Meliola mangiferae / Capnodium spp. (Saprophytic Fungi on Insect Honeydew)",
+      "base_health_score": 60,
+      "symptoms": "Black velvety superficial powdery/crust layer covering leaf surfaces, reducing photosynthesis, accompanied by hoppers/scale insects.",
+      "organic_measures": [
+        {
+          "name": "Starch / Maida Paste Spray",
+          "method": "Boil 1 kg wheat flour (maida) / starch in 5 L water, dilute to 20 L (5% starch solution) and spray on leaves. Dries into flakes and peels off mold.",
+          "application": "Foliar wash",
+          "frequency": "Once on sunny day"
+        },
+        {
+          "name": "Neem Spray against Sucking Insects",
+          "method": "Spray neem oil (5 ml/L) to control hoppers and mealybugs that secrete the honeydew.",
+          "application": "Foliar spray",
+          "frequency": "Weekly"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Wettable Sulphur + Imidacloprid (for vector insects)",
+          "active_ingredient": "Wettable Sulphur 2 g/L + Imidacloprid 0.3 ml/L",
+          "dosage": "As specified",
+          "safety_precautions": "Wear PPE. Targets both saprophytic mold and honeydew insects.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Control mango hopper and scale insect populations early before honeydew accumulates."
+      ],
+      "sources": [
+        "ICAR-CISH Sooty Mould Advisory"
+      ]
+    },
+    "mango_healthy": {
+      "class_name": "mango_healthy",
+      "display_name": "Healthy Mango Tree",
+      "pathogen": "None (Plant is healthy)",
+      "base_health_score": 95,
+      "symptoms": "Glossy dark green leaves, vigorous shoot flushes, clear bark, healthy panicles.",
+      "organic_measures": [
+        {
+          "name": "Basal Organic Manuring",
+          "method": "Apply 50 kg well-decomposed farmyard manure + 2 kg neem cake per mature tree basin.",
+          "application": "Basal ring application",
+          "frequency": "Post-monsoon (August-September)"
+        }
+      ],
+      "chemical_measures": [],
+      "prevention_measures": [
+        "Maintain annual post-harvest center-opening canopy pruning."
+      ],
+      "sources": [
+        "ICAR-CISH Mango Package of Practices"
+      ]
+    }
+  }
+}

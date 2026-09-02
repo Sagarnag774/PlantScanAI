@@ -1,0 +1,100 @@
+{
+  "crop": "Potato",
+  "diseases": {
+    "potato_early_blight": {
+      "class_name": "potato_early_blight",
+      "display_name": "Potato Early Blight",
+      "pathogen": "Alternaria solani (Fungal)",
+      "base_health_score": 50,
+      "symptoms": "Brown to black spots on older lower leaves with concentric dark rings resembling a target board. Leaf tissue yellows around spots.",
+      "organic_measures": [
+        {
+          "name": "Bordeaux Mixture / Copper Hydroxide",
+          "method": "Spray 1% Bordeaux mixture or copper hydroxide (2 g/L) at early detection.",
+          "application": "Foliar spray",
+          "frequency": "Every 7 to 10 days"
+        },
+        {
+          "name": "Debris Removal",
+          "method": "Remove and safely destroy heavily infected haulms/vines.",
+          "application": "Field sanitation",
+          "frequency": "Weekly"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Mancozeb 75% WP or Chlorothalonil",
+          "active_ingredient": "Mancozeb / Chlorothalonil",
+          "dosage": "2.0 - 2.5 g per liter",
+          "safety_precautions": "Wear PPE. Observe 14-day pre-harvest interval.",
+          "caution_level": "Moderate"
+        }
+      ],
+      "prevention_measures": [
+        "Rotate fields away from solanaceous crops for 3 years.",
+        "Ensure optimal nitrogen and potassium fertilization to prevent early senescence.",
+        "Maintain hill height to protect tubers from spore wash-in."
+      ],
+      "sources": [
+        "ICAR-Central Potato Research Institute (CPRI) Disease Advisory",
+        "Cornell Extension Potato Pathology"
+      ]
+    },
+    "potato_late_blight": {
+      "class_name": "potato_late_blight",
+      "display_name": "Potato Late Blight",
+      "pathogen": "Phytophthora infestans (Oomycete)",
+      "base_health_score": 25,
+      "symptoms": "Dark brown water-soaked lesions expanding rapidly across leaves and stems with white mold fringe on underside during damp conditions.",
+      "organic_measures": [
+        {
+          "name": "Fixed Copper Fungicide",
+          "method": "Apply copper oxychloride (3 g/L) before blight spreads across field canopy.",
+          "application": "Full foliar coverage",
+          "frequency": "Every 5 days in cool wet weather"
+        }
+      ],
+      "chemical_measures": [
+        {
+          "name": "Metalaxyl 8% + Mancozeb 64% WP",
+          "active_ingredient": "Metalaxyl + Mancozeb",
+          "dosage": "2.5 g per liter",
+          "safety_precautions": "Wear full PPE. Systemic protectant. Comply with strict harvest withdrawal intervals.",
+          "caution_level": "High"
+        }
+      ],
+      "prevention_measures": [
+        "Use certified blight-free seed tubers.",
+        "Destroy cull piles before season start.",
+        "Kill haulms (de-haulming) 10-14 days before harvest to protect tubers."
+      ],
+      "sources": [
+        "ICAR-CPRI Late Blight Forecasting System",
+        "FAO Potato Field Guidelines"
+      ]
+    },
+    "potato_healthy": {
+      "class_name": "potato_healthy",
+      "display_name": "Healthy Potato",
+      "pathogen": "None (Plant is healthy)",
+      "base_health_score": 95,
+      "symptoms": "Sturdy green stems, lush foliage without blemishes, regular tuberization.",
+      "organic_measures": [
+        {
+          "name": "Organic Soil Vigor Management",
+          "method": "Ensure proper earthing up and balanced organic compost / biofertilizer application.",
+          "application": "Soil incorporation",
+          "frequency": "At earthing up"
+        }
+      ],
+      "chemical_measures": [],
+      "prevention_measures": [
+        "Monitor fields routinely for aphids and early blight symptoms.",
+        "Ensure well-drained ridge planting."
+      ],
+      "sources": [
+        "ICAR-CPRI Good Farming Practices"
+      ]
+    }
+  }
+}
