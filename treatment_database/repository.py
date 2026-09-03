@@ -24,7 +24,7 @@ class TreatmentRepository:
         # Load crop JSON files
         json_files = list(self.db_dir.glob("*.json"))
         for json_file in json_files:
-            if json_file.stem in {"disclaimers", "unknown_crop"}:
+            if json_file.stem in {"disclaimers", "unknown_crop", "default_unknown"}:
                 continue
 
             try:
