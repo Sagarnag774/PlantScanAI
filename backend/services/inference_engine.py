@@ -586,8 +586,62 @@ def get_inference_engine() -> BaseModelEngine:
             try:
                 _engine_instance = TFLiteModelEngine(tflite_path)
             except Exception as e:
+                if settings.ENVIRONMENT == "production" and not settings.ENABLE_MOCK_FALLBACK:
+                    raise RuntimeError(f"Critical: Failed to load TFLite model in production ({e}) and mock fallback is disabled.")
                 print(f"Notice: TFLite engine initialization skipped ({e}), falling back to MockModelEngine.")
                 _engine_instance = MockModelEngine()
         else:
+            if settings.ENVIRONMENT == "production" and not settings.ENABLE_MOCK_FALLBACK:
+                raise RuntimeError(f"Critical: TFLite model file missing at {tflite_path} in production and mock fallback is disabled.")
             _engine_instance = MockModelEngine()
     return _engine_instance
+
+
+def check_engine_readiness() -> Dict[str, Any]:
+    """
+    Validates model engine operational readiness for production probes (/ready).
+    """
+    global _engine_instance
+    tflite_path = settings.WEIGHTS_DIR / "disease_classifier.tflite"
+    weights_exist = tflite_path.exists()
+
+    if _engine_instance is None:
+        try:
+            engine = get_inference_engine()
+        except Exception as e:
+            return {
+                "ready": False,
+                "engine_name": "None",
+                "is_mock": False,
+                "weights_exist": weights_exist,
+                "error": str(e),
+            }
+    else:
+        engine = _engine_instance
+
+    is_mock = isinstance(engine, MockModelEngine)
+
+    # In production without mock fallback, serving synthetic predictions is unsafe
+    if settings.ENVIRONMENT == "production" and is_mock and not settings.ENABLE_MOCK_FALLBACK:
+        return {
+            "ready": False,
+            "engine_name": engine.engine_name,
+            "is_mock": True,
+            "weights_exist": weights_exist,
+            "error": "Real model weights required in production; mock fallback disabled.",
+        }
+
+    return {
+        "ready": True,
+        "engine_name": engine.engine_name,
+        "is_mock": is_mock,
+        "weights_exist": weights_exist,
+        "error": None,
+    }
+
+
+def reset_inference_engine() -> None:
+    """Clear cached engine instance during graceful shutdown or testing."""
+    global _engine_instance
+    _engine_instance = None
+

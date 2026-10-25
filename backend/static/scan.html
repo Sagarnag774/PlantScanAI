@@ -17,6 +17,8 @@
 </head>
 
 <body>
+  <!-- Accessibility: Skip to Main Content -->
+  <a href="#dashboardMain" class="skip-link">Skip to main content</a>
 
   <!-- Ambient Subtle Monochrome Header Glow -->
   <div class="ambient-glow-top"></div>
@@ -51,7 +53,8 @@
   </header>
 
   <!-- Sticky Dashboard Navigation Sub-Bar -->
-  <nav class="dashboard-nav-strip" id="dashboardNavStrip">
+  <nav class="dashboard-nav-strip" id="dashboardNavStrip" aria-label="Dashboard navigation">
+
     <div class="dashboard-nav-inner">
       <div class="dash-nav-group">
         <a href="/app" class="dash-nav-btn" data-page="home">
@@ -166,7 +169,8 @@
           </div>
 
           <!-- Live Diagnosis Results Dashboard -->
-          <div class="results-content" id="resultsContent">
+          <div class="results-content" id="resultsContent" aria-live="polite">
+
 
             <div class="diagnosis-header">
               <div class="diagnosis-meta">

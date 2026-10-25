@@ -46,9 +46,18 @@ Thumbs.db
 dist/
 build/
 
-# Environment
+# Environment & Secrets
 .env
+.env.*
+
 # Local environment snapshot
 requirements-full.txt
 # Local model datasets
 datasets/model/
+
+# Test artifacts & cache
+.pytest_cache/
+tests/*.png
+
+
+

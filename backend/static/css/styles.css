@@ -2015,7 +2015,36 @@
       text-decoration: underline;
     }
 
-    /* Accessibility Support */
+    /* Accessibility Support: High-Contrast Focus Rings & Skip Links */
+    :focus-visible {
+      outline: 2px solid var(--border-focus, #ffffff);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm, 4px);
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -120px;
+      left: 20px;
+      z-index: 10000;
+      padding: 10px 18px;
+      background: #ffffff;
+      color: #000000;
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: var(--radius-sm, 6px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      transition: top 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .skip-link:focus {
+      top: 16px;
+      outline: 3px solid #000000;
+      outline-offset: 2px;
+    }
+
     @media (prefers-reduced-motion: reduce) {
 
       *,
@@ -2026,4 +2055,4 @@
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
       }
-    }
+    }
