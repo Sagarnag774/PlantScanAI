@@ -49,6 +49,8 @@ class PredictionResponse(BaseModel):
     confidence: float = Field(..., ge=0.0, le=1.0, description="Model prediction confidence score [0.0 - 1.0]")
     is_healthy: bool = Field(default=False, description="Flag indicating if the crop is healthy")
     plant_part: Optional[str] = Field(default="Leaf", description="Plant part identified (Leaf, Fruit, Stem, Bark)")
+    plant_part_confidence: Optional[float] = Field(default=None, description="Stage 1 plant part classification confidence")
+    plant_part_probabilities: Optional[Dict[str, float]] = Field(default=None, description="Stage 1 anatomical part distribution")
     plant_health_score: int = Field(..., ge=0, le=100, description="Estimated Plant Health Score (0 - 100)")
     recommendation: Optional[RecommendationResponse] = Field(None, description="Structured care and treatment advice")
     lesion_analysis: Optional[LesionAnalysis] = Field(None, description="Detailed foliar lesion analysis and overlay visualization")

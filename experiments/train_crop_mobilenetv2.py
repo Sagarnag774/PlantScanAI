@@ -182,16 +182,12 @@ def build_mobilenetv2_model(
 
     augmentation = tf.keras.Sequential(
         [
-            tf.keras.layers.RandomFlip(
-                mode="horizontal"
-            ),
-            tf.keras.layers.RandomRotation(
-                factor=0.15
-            ),
-            tf.keras.layers.RandomZoom(
-                height_factor=0.1,
-                width_factor=0.1,
-            ),
+            tf.keras.layers.RandomFlip(mode="horizontal"),
+            tf.keras.layers.RandomRotation(factor=0.15),
+            tf.keras.layers.RandomZoom(height_factor=0.1, width_factor=0.1),
+            tf.keras.layers.RandomBrightness(factor=0.15, value_range=(0, 255)),
+            tf.keras.layers.RandomContrast(factor=0.15),
+            tf.keras.layers.GaussianNoise(stddev=0.03),
         ],
         name="data_augmentation",
     )

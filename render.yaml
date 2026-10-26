@@ -1,0 +1,40 @@
+# PlantScan AI - Render.com Infrastructure Blueprint
+# Authoritative Phase 1 Cloud Deployment Specification
+# Service Type: Web Service (FastAPI ASGI)
+
+services:
+  - type: web
+    name: plantscan-ai-api
+    runtime: python
+    region: oregon
+    plan: starter
+    branch: feature/phase-2-backend-docs
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    startCommand: "uvicorn backend.main:app --host 0.0.0.0 --port $PORT --workers 2"
+    healthCheckPath: /api/v1/health
+    autoDeploy: false
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: ENVIRONMENT
+        value: production
+      - key: PLANTSCAN_ENV
+        value: production
+      - key: PLANTSCAN_DEBUG
+        value: "false"
+      - key: PLANTSCAN_CONFIDENCE_THRESHOLD
+        value: "0.70"
+      - key: PLANTSCAN_ENABLE_MOCK_FALLBACK
+        value: "false"
+      - key: PLANTSCAN_ENABLE_SIMULATION_HEADERS
+        value: "false"
+      - key: PLANTSCAN_RATE_LIMIT_ENABLED
+        value: "true"
+      - key: PLANTSCAN_RATE_LIMIT_RPM
+        value: "60"
+      - key: PLANTSCAN_MAX_CONCURRENT_INFERENCES
+        value: "4"
+      - key: PLANTSCAN_CORS_ORIGINS
+        value: "http://localhost:8000,http://127.0.0.1:8000,https://plantscan-ai.onrender.com"
+      - key: PLANTSCAN_CORS_ALLOW_CREDENTIALS
+        value: "false"

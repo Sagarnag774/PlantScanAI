@@ -1,9 +1,9 @@
 # PlantScan AI — Model Training, Evaluation & Optimization Guide
 
-**Version:** 1.0.0  
-**Target Architecture:** MobileNetV2 Transfer Learning  
-**Target Runtimes:** Edge TFLite (Mobile) & Cloud FastAPI (Inference Server)  
-**Artifact Directory:** `ml/weights/<crop>/`  
+**Version:** 1.0.0
+**Target Architecture:** MobileNetV2 Transfer Learning
+**Target Runtimes:** Edge TFLite (Mobile) & Cloud FastAPI (Inference Server)
+**Artifact Directory:** `ml/weights/<crop>/`
 
 ---
 
@@ -40,7 +40,7 @@ Dense (num_classes, activation="softmax")
 ### 2.2 Unified Classification Head Standardization
 > [!IMPORTANT]
 > **Universal Softmax Formulation**: All crop heads (including binary 2-class datasets such as Grape) are strictly parameterized with `Dense(num_classes, activation="softmax")` and trained with `loss="sparse_categorical_crossentropy"`.
-> 
+>
 > *Historical Post-Mortem*: Previous pipelines used `Dense(1, activation="sigmoid")` for binary datasets. In TFLite edge runtimes, `np.argmax(probs)` on a 1D scalar `[p]` always returned index `0`, making it impossible to predict the healthy class. Standardizing on `num_classes >= 2` outputs `[p_0, p_1]` where $p_0 + p_1 = 1$, enabling seamless `np.argmax(probs)` resolution across both cloud and mobile edge runtimes.
 
 ---
@@ -143,3 +143,35 @@ python experiments/train_crop_mobilenetv2.py --crop all --epochs 15
 ```bash
 python experiments/evaluate_crop_models.py --crop all
 ```
+
+---
+
+## 8. Stage 1 MobileNetV2 Plant-Part Classifier Training
+
+To reproduce the anatomical part classifier (Bark, Fruit, Leaf, Stem):
+```bash
+# Prepare the stratified dataset with duplicate filtering
+python datasets/scripts/prepare_plant_parts_dataset.py
+
+# Train MobileNetV2 transfer learning model and export TFLite
+python ml/plant_part_classifier/train_plant_part_classifier.py --epochs 8
+```
+- Output Model: `ml/weights/plant_part_classifier/plant_part_model.tflite` (2.42 MB)
+- Classes: `ml/weights/plant_part_classifier/classes.json`
+- Test Evaluation: `datasets/reports/model/plant_part_classifier/evaluation_report.json` (**81.97% test accuracy**)
+
+---
+
+## 9. PlantVillage 38-Class Benchmark Training
+
+To reproduce the unified PlantVillage benchmark model with Phase 3 field augmentations:
+```bash
+# 1. Prepare benchmark split and audit missing classes
+python datasets/scripts/prepare_plantvillage_38_benchmark.py --max_samples 30 --no_download
+
+# 2. Train MobileNetV2 benchmark with field augmentations
+python experiments/train_plantvillage_38_benchmark.py --epochs 3
+```
+- Augmentation pipeline includes: `RandomFlip`, `RandomRotation(0.15)`, `RandomZoom(0.1)`, `RandomBrightness(0.15)`, `RandomContrast(0.15)`, and `GaussianNoise(0.03)`.
+- Output Report: `datasets/reports/model/plantvillage_38_evaluation_report.json`
+- Output Weights: `ml/weights/plantvillage_38/plantvillage_benchmark.tflite` (2.44 MB)

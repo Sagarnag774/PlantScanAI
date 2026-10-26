@@ -1,8 +1,8 @@
 # PlantScan AI — Production Deployment & Operations Guide
 
-**Version:** 1.0.0  
-**Stack:** FastAPI (Python 3.10+), TensorFlow Lite (CPU Inference), Docker, NGINX  
-**Target Environments:** Cloud VM / Container Engine, Docker Compose, Local Dev, Edge Mobile  
+**Version:** 1.0.0
+**Stack:** FastAPI (Python 3.10+), TensorFlow Lite (CPU Inference), Docker, NGINX
+**Target Environments:** Cloud VM / Container Engine, Docker Compose, Local Dev, Edge Mobile
 
 ---
 
@@ -194,7 +194,7 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        
+
         # Micro-caching for static treatment queries
         proxy_read_timeout 60s;
         proxy_connect_timeout 10s;
@@ -233,3 +233,63 @@ For Flutter / React Native offline deployment:
   }
   ```
 - **Latency Monitoring**: Each diagnostic response returns `inference_time_ms` capturing raw neural network inference and processing latency.
+
+---
+
+## 8. Render.com Cloud Deployment
+
+The Phase 1 specification defines cloud deployment of the FastAPI backend to **Render.com**.
+
+### 8.1 Automated Blueprint (`render.yaml`)
+A root `render.yaml` specification defines the web service configuration:
+```yaml
+services:
+  - type: web
+    name: plantscan-ai-api
+    runtime: python
+    region: oregon
+    plan: starter
+    branch: feature/phase-2-backend-docs
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    startCommand: "uvicorn backend.main:app --host 0.0.0.0 --port $PORT --workers 2"
+    healthCheckPath: /api/v1/health
+    autoDeploy: false
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: ENVIRONMENT
+        value: production
+      - key: PLANTSCAN_CONFIDENCE_THRESHOLD
+        value: "0.70"
+      - key: PLANTSCAN_ENABLE_MOCK_FALLBACK
+        value: "false"
+      - key: PLANTSCAN_RATE_LIMIT_ENABLED
+        value: "true"
+```
+
+### 8.2 Production Container Deployment (`Dockerfile`)
+Alternatively, deploy using the multi-stage production Docker container:
+```bash
+# Build production container image
+docker build -t plantscan-ai-backend:v1 .
+
+# Run container locally with health check validation
+docker run -d -p 8000:8000 --name plantscan-api plantscan-ai-backend:v1
+
+# Test health probe
+curl http://localhost:8000/api/v1/health
+```
+
+### 8.3 Live Deployment Status
+- **Current State**: **NOT DEPLOYED (Ready for Deployment)**.
+- **Reason**: Live cloud deployment requires user Render.com account credentials and authorization.
+- **Verification Steps upon Deployment**:
+  1. Verify liveness probe: `curl https://<render-url>/api/v1/health`
+  2. Verify API documentation: Browse `https://<render-url>/docs`
+  3. Execute prediction request with test image:
+     ```bash
+     curl -X POST https://<render-url>/api/v1/predict \
+       -F "file=@datasets/model/tomato/test/tomato_early_blight/sample.jpg" \
+       -F "crop_hint=Tomato"
+     ```
+  4. Update Mobile App `SettingsScreen` with the verified production URL.

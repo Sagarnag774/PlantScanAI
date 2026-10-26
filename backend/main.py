@@ -14,7 +14,7 @@ from .services.treatment_service import get_treatment_service
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print("=" * 60)
-    print(f"Starting {settings.PROJECT_NAME} API v{settings.VERSION}")
+    print(f"Starting {settings.PROJECT_NAME} API v{settings.VERSION} [{settings.ENVIRONMENT}]")
     print("=" * 60)
     treatment_svc = get_treatment_service()
     engine = get_inference_engine()
@@ -25,6 +25,9 @@ async def lifespan(app: FastAPI):
     print("=" * 60)
     yield
     print(f"Shutting down {settings.PROJECT_NAME} API...")
+    from .services.inference_engine import reset_inference_engine
+    reset_inference_engine()
+    print("[OK] Inference engine cache and resources released.")
 
 
 app = FastAPI(
@@ -36,9 +39,9 @@ app = FastAPI(
         "and Integrated Pest Management (IPM) treatment recommendations."
     ),
     lifespan=lifespan,
-    docs_url="/docs",
-    redoc_url="/redoc",
-    openapi_url="/openapi.json",
+    docs_url="/docs" if settings.DEBUG else None,
+    redoc_url="/redoc" if settings.DEBUG else None,
+    openapi_url="/openapi.json" if settings.DEBUG else None,
 )
 
 app.add_middleware(
@@ -50,10 +53,22 @@ app.add_middleware(
 )
 
 
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next):
+    response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "SAMEORIGIN"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    return response
+
+
+
 @app.exception_handler(HTTPException)
 async def custom_http_exception_handler(request: Request, exc: HTTPException):
+    headers = exc.headers if exc.headers else None
     if isinstance(exc.detail, dict):
-        return JSONResponse(status_code=exc.status_code, content=exc.detail)
+        return JSONResponse(status_code=exc.status_code, content=exc.detail, headers=headers)
     return JSONResponse(
         status_code=exc.status_code,
         content={
@@ -62,7 +77,9 @@ async def custom_http_exception_handler(request: Request, exc: HTTPException):
             "message": str(exc.detail),
             "hint": "Check request parameters and try again.",
         },
+        headers=headers,
     )
+
 
 
 @app.exception_handler(RequestValidationError)
@@ -149,9 +166,11 @@ async def root(request: Request):
         "status": "operational",
         "documentation": "/docs",
         "health_check": "/api/v1/health",
+        "readiness_probe": "/api/v1/ready",
         "predict_endpoint": "/api/v1/predict",
         "web_ui": "/app",
     }
+
 
 
 app.include_router(api_router, prefix=settings.API_PREFIX)

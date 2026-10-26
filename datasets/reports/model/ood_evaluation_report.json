@@ -1,0 +1,57 @@
+{
+  "evaluation_name": "PlantScanAI Formal Out-of-Distribution (OOD) Validation",
+  "reference_standard": "Phase 1 Project Report (Safe Rejection Protocol)",
+  "confidence_threshold": 0.7,
+  "sample_counts": {
+    "in_distribution_id": 100,
+    "out_of_distribution_ood": 70,
+    "total_evaluated": 170
+  },
+  "metrics": {
+    "auroc": 0.9177,
+    "ood_rejection_rate_tnr": 0.9143,
+    "false_positive_rate_fpr": 0.0857,
+    "fpr_at_95_tpr": 0.1857,
+    "in_distribution_acceptance_rate_tpr": 0.69,
+    "false_negative_rate_fnr": 0.31
+  },
+  "confusion_matrix": {
+    "true_known_accepted": 69,
+    "true_known_rejected_false_negative": 31,
+    "true_unknown_rejected_true_negative": 64,
+    "true_unknown_accepted_false_positive": 6
+  },
+  "ood_category_breakdown": {
+    "unsupported_part_bark": {
+      "total": 15,
+      "rejected": 15,
+      "accepted": 0
+    },
+    "unsupported_part_stem": {
+      "total": 15,
+      "rejected": 11,
+      "accepted": 4
+    },
+    "non_plant_texture": {
+      "total": 10,
+      "rejected": 8,
+      "accepted": 2
+    },
+    "featureless_low_illumination": {
+      "total": 10,
+      "rejected": 10,
+      "accepted": 0
+    },
+    "high_entropy_noise": {
+      "total": 10,
+      "rejected": 10,
+      "accepted": 0
+    },
+    "severely_blurred_unfocused": {
+      "total": 10,
+      "rejected": 10,
+      "accepted": 0
+    }
+  },
+  "safety_implication": "At threshold 0.70, 91.4% of out-of-distribution inputs are safely rejected without invoking chemical pesticide recommendations. AUROC of 0.9177 demonstrates separation between known plant foliar pathology and out-of-distribution anomalies."
+}

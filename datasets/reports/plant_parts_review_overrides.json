@@ -1,0 +1,832 @@
+{
+  "train/bark/bark_0024.jpg": {
+    "status": "reject",
+    "category": "non_plant_object",
+    "reason": "Digital military camouflage textile fabric pattern, not botanical tree bark."
+  },
+  "train/bark/bark_0003.jpg": {
+    "status": "reject",
+    "category": "ambiguous_organ_boundary",
+    "reason": "Confirmed reject: Firewood log stack showing circular transverse cut wood rings/cross-sections, not outer bark texture."
+  },
+  "train/bark/bark_0064.jpg": {
+    "status": "reject",
+    "category": "organ_occlusion",
+    "reason": "Confirmed reject: Tree trunk heavily occluded (>50% surface) by dense English ivy foliage."
+  },
+  "train/bark/bark_0066.jpg": {
+    "status": "reject",
+    "category": "artifact_present",
+    "reason": "Confirmed reject: Archival forestry plate featuring prominent Macbeth color calibration target chart and scale ruler."
+  },
+  "test/bark/bark_0010.jpg": {
+    "status": "keep",
+    "category": "confirmed_photograph",
+    "reason": "Restored to cleaned: Genuine photograph of birch tree trunks with distinctive white peeling bark."
+  },
+  "train/leaf/leaf_0047.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Stock photo of a whole red apple fruit with Shutterstock watermark, not a leaf."
+  },
+  "val/leaf/leaf_0005.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Alamy stock photograph of two green apple fruits with scab lesions, not a leaf."
+  },
+  "val/leaf/leaf_0013.jpg": {
+    "status": "reject",
+    "category": "scanned_document_text",
+    "reason": "Agricultural diagnostic card featuring comparison photographs with a printed paragraph of identification text below."
+  },
+  "train/leaf/leaf_0018.jpg": {
+    "status": "reject",
+    "category": "atypical_specimen",
+    "reason": "Confirmed reject: Curled, shriveled, dead brown tubular necrotic leaf debris from mango dieback; lacks foliar morphology."
+  },
+  "train/leaf/leaf_0023.jpg": {
+    "status": "reject",
+    "category": "atypical_specimen",
+    "reason": "Confirmed reject: Curled, shriveled, dead brown tubular necrotic leaf debris from mango dieback; lacks foliar morphology."
+  },
+  "train/leaf/leaf_0062.jpg": {
+    "status": "reject",
+    "category": "atypical_specimen",
+    "reason": "Confirmed reject: Curled, shriveled, dead brown tubular necrotic leaf debris from mango dieback; lacks foliar morphology."
+  },
+  "train/leaf/leaf_0037.jpg": {
+    "status": "reject",
+    "category": "ambiguous_organ_boundary",
+    "reason": "Confirmed reject: Compound maize plant section depicting stalk, ear shoot, silks, and leaves with CIMMYT copyright watermark."
+  },
+  "val/leaf/leaf_0003.jpg": {
+    "status": "reject",
+    "category": "ambiguous_organ_boundary",
+    "reason": "Confirmed reject: Prominently depicts green winged stem node/axis and thorns with clipped leaflet tip; predominantly stem."
+  },
+  "val/leaf/leaf_0011.jpg": {
+    "status": "reject",
+    "category": "distorted_aspect_ratio_or_blur",
+    "reason": "Confirmed reject: Severe aspect-ratio warp distortion with vertical smeared-edge interpolation artifacts."
+  },
+  "train/fruit/fruit_0036.jpg": {
+    "status": "reject",
+    "category": "non_plant_object",
+    "reason": "Prepared culinary dish (bruschetta bread with tomato topping on restaurant table), not agricultural plant organ."
+  },
+  "train/fruit/fruit_0061.jpg": {
+    "status": "reject",
+    "category": "non_plant_object",
+    "reason": "Prepared culinary dish (bruschetta bread with tomato topping on restaurant table), not agricultural plant organ."
+  },
+  "train/fruit/fruit_0063.jpg": {
+    "status": "reject",
+    "category": "non_plant_object",
+    "reason": "Prepared culinary dish (bruschetta bread with tomato topping on restaurant table), not agricultural plant organ."
+  },
+  "val/fruit/fruit_0011.jpg": {
+    "status": "reject",
+    "category": "non_plant_object",
+    "reason": "Prepared culinary dish (bruschetta bread with tomato topping on restaurant table), not agricultural plant organ."
+  },
+  "val/fruit/fruit_0014.jpg": {
+    "status": "reject",
+    "category": "non_plant_object",
+    "reason": "Ancient Greek/Roman bronze coin depicting Pegasus from museum numismatic archive, not a plant organ."
+  },
+  "val/fruit/fruit_0006.jpg": {
+    "status": "reject",
+    "category": "non_plant_object",
+    "reason": "William Morris floral wallpaper / textile repeating decorative pattern, not a real plant."
+  },
+  "train/fruit/fruit_0014.jpg": {
+    "status": "reject",
+    "category": "non_plant_object",
+    "reason": "Vintage photograph of institutional brick architecture covered in ivy, no fruit depicted."
+  },
+  "train/fruit/fruit_0046.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Bare dormant tree sapling with wires and numeral card '3'; completely devoid of fruit."
+  },
+  "test/fruit/fruit_0003.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Apple flower blossoms on branch, floral organ rather than fruit."
+  },
+  "test/fruit/fruit_0013.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Grapevine leaves and immature microscopic flower clusters, no developed fruit."
+  },
+  "train/fruit/fruit_0002.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "19th-century botanical lithograph of 'The Delaware Grape' cluster with text."
+  },
+  "train/fruit/fruit_0003.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Antique color lithograph illustration of grape cluster on paper."
+  },
+  "train/fruit/fruit_0004.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Antique seed catalog woodcut engraving '5 Grand Tomatoes'."
+  },
+  "train/fruit/fruit_0009.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Antique anatomical cross-section engraving of a pear fruit."
+  },
+  "train/fruit/fruit_0011.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Antique pencil/ink botanical sketch of plant branches with bean pods."
+  },
+  "train/fruit/fruit_0017.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Antique botanical book plate illustration with printed caption."
+  },
+  "train/fruit/fruit_0018.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Vintage seed catalog page featuring tomato engraving and printed text."
+  },
+  "train/fruit/fruit_0023.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Woodcut engraving of 'The Matchless Tomato' from historical seed catalog."
+  },
+  "train/fruit/fruit_0025.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Botanical line drawing of foliage and entomological beetle illustration."
+  },
+  "train/fruit/fruit_0026.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Historical monochrome engraving of grape cluster."
+  },
+  "train/fruit/fruit_0027.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Historical seed catalog engraving of '5 Grand Tomatoes'."
+  },
+  "train/fruit/fruit_0028.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Historical monochrome engraving of grape cluster."
+  },
+  "train/fruit/fruit_0029.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Historical monochrome engraving of grape cluster on tinted paper."
+  },
+  "train/fruit/fruit_0030.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Historical botanical engraving of an apple fruit."
+  },
+  "train/fruit/fruit_0031.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Minimalist line drawing outline of an apple fruit on parchment."
+  },
+  "train/fruit/fruit_0032.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Scanned vintage book page with inset tomato halftone reproduction."
+  },
+  "train/fruit/fruit_0040.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Historical monochrome engraving of grape cluster."
+  },
+  "train/fruit/fruit_0049.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Pencil/ink artistic sketch of tomato with kitchen knife."
+  },
+  "train/fruit/fruit_0052.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Circular decorative woodcut engraving of floral and fruit motifs."
+  },
+  "train/fruit/fruit_0053.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Botanical lithograph of grape cluster on aged paper."
+  },
+  "train/fruit/fruit_0055.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Botanical lithograph of grape cluster on paper."
+  },
+  "train/fruit/fruit_0056.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Historical seed catalog engraving of '5 Grand Tomatoes'."
+  },
+  "train/fruit/fruit_0057.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Botanical engraving of grape cluster on vine."
+  },
+  "train/fruit/fruit_0068.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Historical 'Valiant' tomato catalog page with illustrations and columns of printed text."
+  },
+  "val/fruit/fruit_0001.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Botanical color lithograph of grape cluster on paper."
+  },
+  "val/fruit/fruit_0002.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "High-contrast monochrome engraving of grape cluster on black background."
+  },
+  "val/fruit/fruit_0007.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Botanical color lithograph of grape cluster."
+  },
+  "val/fruit/fruit_0009.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Pencil/charcoal still-life drawing of three apples on paper."
+  },
+  "val/fruit/fruit_0010.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Historical seed catalog engraving of tomato cluster with text."
+  },
+  "test/fruit/fruit_0000.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Botanical color lithograph of grape cluster on aged paper."
+  },
+  "test/fruit/fruit_0001.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Monochrome lithograph of grape cluster and foliage."
+  },
+  "test/fruit/fruit_0004.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Scanned historical catalog page with tomato engraving and descriptions."
+  },
+  "test/fruit/fruit_0005.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Historical botanical engraving of grape cluster."
+  },
+  "test/fruit/fruit_0006.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Historical seed catalog engraving of tomato cultivars."
+  },
+  "test/fruit/fruit_0007.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Monochrome botanical engraving of grape cluster."
+  },
+  "test/fruit/fruit_0009.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Pen-and-ink line drawing cross section of an apple."
+  },
+  "test/fruit/fruit_0014.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Charcoal/pencil sketch of two large tomatoes on paper."
+  },
+  "train/fruit/fruit_0001.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Vintage black-and-white landscape photograph of distant orchard; no fruit discernible."
+  },
+  "train/fruit/fruit_0005.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Distant photograph of dormant leafless thicket in winter field; no fruit depicted."
+  },
+  "train/fruit/fruit_0007.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Long garden pergola archway landscape path; no fruit depicted."
+  },
+  "train/fruit/fruit_0019.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Photograph of bare dormant tree trunks in winter; no fruit depicted."
+  },
+  "train/fruit/fruit_0020.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Wide landscape of dormant vineyard posts and bare winter ground; no fruit depicted."
+  },
+  "train/fruit/fruit_0022.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Landscape photo of bare dormant orchard tree in winter; no fruit depicted."
+  },
+  "train/fruit/fruit_0033.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Comparative split photo of bare dormant orchard trees; no fruit depicted."
+  },
+  "train/fruit/fruit_0035.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Dense shrub covered with small white flowers; no fruit depicted."
+  },
+  "train/fruit/fruit_0037.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Landscape photo of bare dormant tree in winter; no fruit depicted."
+  },
+  "train/fruit/fruit_0038.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Pastoral landscape photograph with trees and grazing livestock; no fruit depicted."
+  },
+  "train/fruit/fruit_0043.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Shrub covered with white flower blossoms; no fruit depicted."
+  },
+  "train/fruit/fruit_0044.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Historical halftone photo of whole apple tree from afar; no fruit discernible."
+  },
+  "train/fruit/fruit_0047.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Winter woodland landscape with distant hikers; no fruit depicted."
+  },
+  "train/fruit/fruit_0048.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Leafless winter forest landscape; no fruit depicted."
+  },
+  "train/fruit/fruit_0050.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Park lawn landscape with decorative tree; no fruit depicted."
+  },
+  "train/fruit/fruit_0051.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Landscape photo of dormant bare tree; no fruit depicted."
+  },
+  "train/fruit/fruit_0060.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Winter field landscape with bare trees; no fruit depicted."
+  },
+  "train/fruit/fruit_0062.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Comparative photo of bare dormant winter trees; no fruit depicted."
+  },
+  "train/fruit/fruit_0066.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Park landscape photo of bare tree trunk and canopy; no fruit depicted."
+  },
+  "train/fruit/fruit_0069.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Winter woodland landscape with distant person; no fruit depicted."
+  },
+  "val/fruit/fruit_0000.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Distant landscape of leafless winter woods; no fruit depicted."
+  },
+  "val/fruit/fruit_0004.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Winter woodland landscape with hikers in background; no fruit depicted."
+  },
+  "val/fruit/fruit_0005.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Vintage sepia photo of whole tree from distance; no fruit depicted."
+  },
+  "val/fruit/fruit_0012.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Historical sepia photograph of children standing under orchard tree; no fruit depicted."
+  },
+  "val/fruit/fruit_0013.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Wide shot of bare winter vineyard trellis rows; no fruit depicted."
+  },
+  "test/fruit/fruit_0010.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Historical photograph of whole shrub/vine from distance; fruit not discernible."
+  },
+  "train/fruit/fruit_0000.jpg": {
+    "status": "keep",
+    "category": "confirmed_photograph",
+    "reason": "Restored to cleaned: Genuine color photograph of fresh ripe vine tomatoes with green calyxes."
+  },
+  "train/fruit/fruit_0012.jpg": {
+    "status": "keep",
+    "category": "confirmed_photograph",
+    "reason": "Restored to cleaned: Genuine vintage monochrome photograph of olive branch with ripe olives."
+  },
+  "train/fruit/fruit_0024.jpg": {
+    "status": "keep",
+    "category": "confirmed_photograph",
+    "reason": "Restored to cleaned: Genuine historical photograph of apple fruit cluster on orchard tree."
+  },
+  "train/fruit/fruit_0059.jpg": {
+    "status": "reject",
+    "category": "organ_prominence",
+    "reason": "Confirmed reject: Close-up dominated by thick woody grapevine trunk/cordon; fruit clusters are distant and negligible."
+  },
+  "train/fruit/fruit_0064.jpg": {
+    "status": "reject",
+    "category": "vintage_halftone",
+    "reason": "Confirmed reject: Compound historical textbook plate with split figures and printed borders, not a raw photograph."
+  },
+  "test/fruit/fruit_0011.jpg": {
+    "status": "reject",
+    "category": "atypical_background",
+    "reason": "Confirmed reject: Retail grocery basket of packaged carrots and tomatoes in plastic; non-botanical commercial packaging context."
+  },
+  "train/stem/stem_0007.jpg": {
+    "status": "reject",
+    "category": "non_plant_object",
+    "reason": "Photograph of historic stone church building covered in ivy; architectural scene, not plant stem."
+  },
+  "train/stem/stem_0008.jpg": {
+    "status": "reject",
+    "category": "scanned_document_text",
+    "reason": "Scanned historical souvenir postcard with landscape photo and prominent printed text 'CAMPUS OAKS'."
+  },
+  "train/stem/stem_0014.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "19th-century artistic engraving depicting a hermit/person sitting in a rocky cave; non-botanical."
+  },
+  "train/stem/stem_0016.jpg": {
+    "status": "reject",
+    "category": "scanned_document_text",
+    "reason": "Scanned United States Patent specification text page (Wilmann Corn Husker claims); printed text."
+  },
+  "train/stem/stem_0022.jpg": {
+    "status": "reject",
+    "category": "scanned_document_text",
+    "reason": "Scanned antique seed catalog page with multiple botanical engravings and columns of printed text."
+  },
+  "train/stem/stem_0025.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Scientific technical diagram of plant root depth and root system profile plotted on grid paper."
+  },
+  "train/stem/stem_0026.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Antique botanical book plate with anatomical engravings of flowers and foliage."
+  },
+  "train/stem/stem_0029.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Sepia photograph of an outdoor garden pathway enclosed by stone walls; architectural landscape."
+  },
+  "train/stem/stem_0032.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Botanical pen-and-ink line drawing sketch of maple leaves on a branch on white background."
+  },
+  "train/stem/stem_0034.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Historical botanical painting/drawing of a potted plant in sepia tone."
+  },
+  "train/stem/stem_0037.jpg": {
+    "status": "reject",
+    "category": "non_plant_object",
+    "reason": "Historical engraving of an agricultural steam tractor engine with driver; machinery illustration."
+  },
+  "train/stem/stem_0053.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Botanical illustration of flowering plant branches on black background."
+  },
+  "train/stem/stem_0066.jpg": {
+    "status": "reject",
+    "category": "scanned_document_text",
+    "reason": "Scanned United States Patent Office specification document page with dense printed legal text."
+  },
+  "val/stem/stem_0001.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Botanical lithograph drawing of blanketflower 'Gaillardia aristata grandiflora' on aged paper."
+  },
+  "val/stem/stem_0003.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Botanical cross-section diagram showing anatomical reproductive structure of a flower."
+  },
+  "val/stem/stem_0006.jpg": {
+    "status": "reject",
+    "category": "scanned_document_text",
+    "reason": "Scanned patent schematic diagram of a mechanical corn husking machine (Patent Dec 22 1896)."
+  },
+  "test/stem/stem_0004.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Monochrome still-life photograph of cut daisy flowers in a vase; floral organ, not stem."
+  },
+  "test/stem/stem_0005.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Historical woodcut engraving of a dense shrub with foliage."
+  },
+  "test/stem/stem_0007.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Historical landscape photograph of a mature flowering tree in park; distant canopy, no stem depicted."
+  },
+  "test/stem/stem_0008.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Monochrome botanical engraving of poppy flowers and seed pods on aged paper."
+  },
+  "test/stem/stem_0010.jpg": {
+    "status": "reject",
+    "category": "illustration_or_drawing",
+    "reason": "Botanical watercolor painting of yellow coneflowers on paper."
+  },
+  "test/stem/stem_0011.jpg": {
+    "status": "reject",
+    "category": "landscape_no_organ",
+    "reason": "Upward photograph looking through tree canopy and leaves; leaf foliage, not stem."
+  },
+  "test/stem/stem_0012.jpg": {
+    "status": "reject",
+    "category": "non_plant_object",
+    "reason": "Engraving reproducing an antique decorative woven textile tapestry with garden scene."
+  },
+  "test/stem/stem_0014.jpg": {
+    "status": "reject",
+    "category": "scanned_document_text",
+    "reason": "Scanned page from historical Minneapolis seed catalog with castor bean / sunflower engravings and text."
+  },
+  "train/stem/stem_0017.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Yellow sunflower blossoms with leaves; floral organ, not stem."
+  },
+  "train/stem/stem_0044.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Orange Gerbera flower blossom; floral organ, not stem."
+  },
+  "val/stem/stem_0008.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Large purple ornamental cabbage/kale foliar leaf blade with water droplets; leaf, not stem."
+  },
+  "train/stem/stem_0003.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0004.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0005.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0010.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0011.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0015.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0021.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0028.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0031.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0035.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0036.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0039.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0040.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0041.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0042.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0043.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0047.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0048.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0049.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0050.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0055.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0056.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0057.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0058.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0060.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0061.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0062.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "val/stem/stem_0000.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "val/stem/stem_0002.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "val/stem/stem_0005.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "test/stem/stem_0000.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "test/stem/stem_0001.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "test/stem/stem_0009.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "test/stem/stem_0013.jpg": {
+    "status": "reject",
+    "category": "mislabeled_organ",
+    "reason": "Mislabeled: Dried curled dead mango leaf blade sampled from Mango Die Back collection; foliar debris, not stem/culm."
+  },
+  "train/stem/stem_0006.jpg": {
+    "status": "reject",
+    "category": "organ_prominence",
+    "reason": "Confirmed reject: Sprawling weed plant dominated by white flowers and leaves; stem is occluded and ambiguous."
+  },
+  "test/stem/stem_0002.jpg": {
+    "status": "reject",
+    "category": "organ_prominence",
+    "reason": "Confirmed reject: Seedling shoot is diminutive thread occupying <5% of frame; dominated by stony gravel ground."
+  },
+  "test/fruit/fruit_0008.jpg": {
+    "status": "keep",
+    "category": "confirmed_photograph",
+    "reason": "Restored to cleaned: Genuine color photograph of ripe persimmon fruit clusters on branch in snow."
+  },
+  "train/fruit/fruit_0045.jpg": {
+    "status": "keep",
+    "category": "confirmed_photograph",
+    "reason": "Restored to cleaned: Genuine studio photograph of ripe grape fruit bunch."
+  },
+  "test/leaf/leaf_0000.jpg": {
+    "status": "keep",
+    "category": "confirmed_photograph",
+    "reason": "Restored to cleaned: Genuine pathology photograph of mango leaf with anthracnose lesions."
+  },
+  "train/leaf/leaf_0007.jpg": {
+    "status": "keep",
+    "category": "confirmed_photograph",
+    "reason": "Restored to cleaned: Genuine pathology photograph of mango leaf with gall midge galls."
+  },
+  "train/leaf/leaf_0014.jpg": {
+    "status": "keep",
+    "category": "confirmed_photograph",
+    "reason": "Restored to cleaned: Genuine pathology photograph of mango leaf with gall midge galls."
+  },
+  "train/leaf/leaf_0017.jpg": {
+    "status": "keep",
+    "category": "confirmed_photograph",
+    "reason": "Restored to cleaned: Genuine pathology photograph of apple leaf with scab lesions."
+  },
+  "train/leaf/leaf_0038.jpg": {
+    "status": "keep",
+    "category": "confirmed_photograph",
+    "reason": "Restored to cleaned: Genuine photograph of fresh green mango leaf showing distinct blade and venation."
+  },
+  "train/leaf/leaf_0049.jpg": {
+    "status": "keep",
+    "category": "confirmed_photograph",
+    "reason": "Restored to cleaned: Genuine pathology photograph of mango leaf margin with insect galls."
+  },
+  "train/leaf/leaf_0055.jpg": {
+    "status": "keep",
+    "category": "confirmed_photograph",
+    "reason": "Restored to cleaned: Genuine studio photograph of grape leaves on vine shoot."
+  },
+  "train/leaf/leaf_0066.jpg": {
+    "status": "keep",
+    "category": "confirmed_photograph",
+    "reason": "Restored to cleaned: Genuine pathology photograph of mango leaf with powdery mildew on tabletop."
+  }
+}

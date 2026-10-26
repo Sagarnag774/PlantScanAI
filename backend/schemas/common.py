@@ -9,6 +9,7 @@ class PredictionStatus(str, Enum):
     UNKNOWN = "unknown"
     INVALID_IMAGE = "invalid_image"
     UNSUPPORTED_CROP = "unsupported_crop"
+    UNSUPPORTED_PART_DISEASE = "unsupported_part_disease"
     ERROR = "error"
 
 
@@ -38,3 +39,17 @@ class ErrorDetail(BaseModel):
     message: str = Field(..., description="Human-readable explanation of error")
     hint: Optional[str] = Field(None, description="Suggested action to resolve the issue")
     details: Optional[Dict[str, Any]] = None
+
+
+class ReadinessResponse(BaseModel):
+    status: str = Field(..., description="Readiness status ('ready', 'not_ready', 'degraded')")
+    service: str = Field(default="PlantScan AI API")
+    version: str = Field(..., description="API Version")
+    timestamp: str = Field(..., description="ISO 8601 timestamp")
+    model_ready: bool = Field(..., description="True if inference engine is ready to serve predictions")
+    model_engine: str = Field(..., description="Name of the active inference engine")
+    treatment_db_ready: bool = Field(..., description="True if treatment database is loaded")
+    supported_crops_count: int = Field(..., description="Total crops with treatment data")
+    classes_count: int = Field(..., description="Total canonical classes configured")
+    details: Optional[Dict[str, Any]] = None
+

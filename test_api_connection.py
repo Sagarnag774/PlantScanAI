@@ -40,6 +40,16 @@ def test_connection():
     except Exception as e:
         print(f"\n⚠️ Health Check Failed: {e}")
 
+    # 2b. Test Readiness Probe Endpoint
+    try:
+        req = urllib.request.urlopen(f"{BASE_URL}/api/v1/ready", timeout=5)
+        data = json.loads(req.read().decode('utf-8'))
+        print("\n✅ READINESS PROBE (/api/v1/ready) SUCCESS:")
+        print(json.dumps(data, indent=2))
+    except Exception as e:
+        print(f"\n⚠️ Readiness Probe Failed: {e}")
+
+
     # 3. Test Supported Crops Endpoint
     try:
         req = urllib.request.urlopen(f"{BASE_URL}/api/v1/treatments/crops", timeout=5)

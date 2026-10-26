@@ -1,0 +1,46 @@
+{
+  "classes": [
+    "bark",
+    "fruit",
+    "leaf",
+    "stem"
+  ],
+  "target_per_class": 100,
+  "summary": {
+    "bark": {
+      "total": 100,
+      "train": 70,
+      "val": 15,
+      "test": 15
+    },
+    "fruit": {
+      "total": 100,
+      "train": 70,
+      "val": 15,
+      "test": 15
+    },
+    "leaf": {
+      "total": 100,
+      "train": 70,
+      "val": 15,
+      "test": 15
+    },
+    "stem": {
+      "total": 97,
+      "train": 67,
+      "val": 14,
+      "test": 16
+    }
+  },
+  "split_ratio": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "image_resolution": "224x224",
+  "format": "JPEG",
+  "sources": [
+    "PlantScan AI Verified Multi-Crop Foliar Repository (Leaves, Rice Sheaths, Mango Twigs)",
+    "Wikimedia Commons CC-BY/CC-BY-SA/Public Domain Botanical Archives (Bark, Fruit, Stem)"
+  ]
+}
