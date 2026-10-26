@@ -19,6 +19,8 @@ class ModelPrediction:
     confidence: float
     is_healthy: bool
     plant_part: str = "Leaf"
+    plant_part_confidence: Optional[float] = None
+    plant_part_probabilities: Optional[Dict[str, float]] = None
     display_name: str = ""
     top_k: List[Dict[str, float]] = field(default_factory=list)
     raw_probabilities: Optional[List[float]] = None
@@ -155,18 +157,34 @@ class MockModelEngine(BaseModelEngine):
         except Exception:
             pass
 
+        # Stage 1: Plant Part Anatomical Classification
+        detected_part = plant_part_hint.capitalize() if plant_part_hint else None
+        part_conf = 1.0 if plant_part_hint else None
+        part_probs = {plant_part_hint.capitalize(): 1.0} if plant_part_hint else None
+
+        if not detected_part:
+            try:
+                from ml.plant_part_classifier.detector import PlantPartClassifier
+                detected_part, part_conf, part_probs = PlantPartClassifier.classify_with_probabilities(
+                    original_image if original_image is not None else image_array,
+                    crop_hint=crop_hint,
+                )
+            except Exception:
+                detected_part, part_conf, part_probs = "Leaf", 0.85, {"Leaf": 0.85}
+
         if force_simulation:
             forced_class = force_simulation.get("class", "tomato_early_blight")
             forced_conf = float(force_simulation.get("confidence", 0.94))
             forced_crop = force_simulation.get("crop", "Tomato")
             is_healthy = "healthy" in forced_class
-            detected_part = plant_part_hint or "Leaf"
             return ModelPrediction(
                 predicted_class=forced_class,
                 crop=forced_crop,
                 confidence=forced_conf,
                 is_healthy=is_healthy,
                 plant_part=detected_part,
+                plant_part_confidence=part_conf,
+                plant_part_probabilities=part_probs,
                 display_name=forced_class.replace("_", " ").title(),
                 top_k=[{"class": forced_class, "confidence": forced_conf}],
                 lesion_measurement=lesion_meas,
@@ -180,7 +198,9 @@ class MockModelEngine(BaseModelEngine):
                     crop=crop_hint.capitalize(),
                     confidence=0.15,
                     is_healthy=False,
-                    plant_part=plant_part_hint or "Unknown",
+                    plant_part=detected_part or "Unknown",
+                    plant_part_confidence=part_conf,
+                    plant_part_probabilities=part_probs,
                     display_name="Unsupported Crop",
                     top_k=[],
                     lesion_measurement=lesion_meas,
@@ -199,6 +219,43 @@ class MockModelEngine(BaseModelEngine):
                 target_crop_key = "tomato"
                 auto_detected = False
 
+        crop_display = target_crop_key.replace("_", " ").capitalize()
+        if target_crop_key == "bell_pepper":
+            crop_display = "Bell pepper"
+
+        # Stage 1 to Stage 2 Routing Gate:
+        # Stem and Bark disorders are not modeled in foliar leaf disease datasets.
+        if detected_part in ["Stem", "Bark"]:
+            return ModelPrediction(
+                predicted_class="unsupported_part_disease",
+                crop=crop_display,
+                confidence=0.25,
+                is_healthy=False,
+                plant_part=detected_part,
+                plant_part_confidence=part_conf,
+                plant_part_probabilities=part_probs,
+                display_name=f"Stem/Bark Pathology Not Supported ({detected_part})",
+                top_k=[],
+                crop_detected_automatically=auto_detected,
+                lesion_measurement=lesion_meas,
+            )
+
+        # Fruit routing check: only crops with fruit disease classes support Fruit part
+        if detected_part == "Fruit" and target_crop_key not in {"tomato", "apple", "grape", "bell_pepper", "mango"}:
+            return ModelPrediction(
+                predicted_class="unsupported_part_disease",
+                crop=crop_display,
+                confidence=0.25,
+                is_healthy=False,
+                plant_part="Fruit",
+                plant_part_confidence=part_conf,
+                plant_part_probabilities=part_probs,
+                display_name=f"Fruit Pathology Not Supported for {crop_display}",
+                top_k=[],
+                crop_detected_automatically=auto_detected,
+                lesion_measurement=lesion_meas,
+            )
+
         classes = self.CROP_CLASS_MAP.get(target_crop_key, self.CROP_CLASS_MAP["tomato"])
         img_mean = float(np.mean(image_array))
         img_std = float(np.std(image_array))
@@ -214,24 +271,14 @@ class MockModelEngine(BaseModelEngine):
             {"class": classes[(hash_val + 2) % len(classes)][0], "confidence": round((1.0 - confidence) * 0.3, 4)},
         ]
 
-        crop_display = target_crop_key.replace("_", " ").capitalize()
-        if target_crop_key == "bell_pepper":
-            crop_display = "Bell pepper"
-
-        detected_part = plant_part_hint
-        if not detected_part:
-            try:
-                from ml.plant_part_classifier.detector import PlantPartClassifier
-                detected_part, _ = PlantPartClassifier.classify(image_array, crop_hint=crop_display)
-            except Exception:
-                detected_part = "Leaf"
-
         return ModelPrediction(
             predicted_class=chosen_class,
             crop=crop_display,
             confidence=confidence,
             is_healthy=is_healthy,
             plant_part=detected_part,
+            plant_part_confidence=part_conf,
+            plant_part_probabilities=part_probs,
             display_name=display_name,
             top_k=top_k,
             crop_detected_automatically=auto_detected,
@@ -320,14 +367,20 @@ class TFLiteModelEngine(BaseModelEngine):
         force_simulation: Optional[Dict[str, any]] = None,
         original_image: Optional[Any] = None,
     ) -> ModelPrediction:
-        # Determine plant part (Fruit vs Leaf) first so lesion analysis knows the tissue structure
-        detected_part = plant_part_hint
+        # Stage 1: Plant Part Anatomical Classification
+        detected_part = plant_part_hint.capitalize() if plant_part_hint else None
+        part_conf = 1.0 if plant_part_hint else None
+        part_probs = {plant_part_hint.capitalize(): 1.0} if plant_part_hint else None
+
         if not detected_part:
             try:
                 from ml.plant_part_classifier.detector import PlantPartClassifier
-                detected_part, _ = PlantPartClassifier.classify(image_array, crop_hint=crop_hint)
+                detected_part, part_conf, part_probs = PlantPartClassifier.classify_with_probabilities(
+                    original_image if original_image is not None else image_array,
+                    crop_hint=crop_hint,
+                )
             except Exception:
-                detected_part = "Leaf"
+                detected_part, part_conf, part_probs = "Leaf", 0.85, {"Leaf": 0.85}
 
         # Simulation override for testing and reproduction
         if force_simulation:
@@ -349,6 +402,8 @@ class TFLiteModelEngine(BaseModelEngine):
                 confidence=forced_conf,
                 is_healthy=is_healthy,
                 plant_part=detected_part,
+                plant_part_confidence=part_conf,
+                plant_part_probabilities=part_probs,
                 display_name=forced_class.replace("_", " ").title(),
                 top_k=[{"class": forced_class, "confidence": forced_conf}],
                 candidate_crops=[],
@@ -376,6 +431,8 @@ class TFLiteModelEngine(BaseModelEngine):
                     candidate_crops=[],
                     is_healthy=False,
                     plant_part="Unknown",
+                    plant_part_confidence=part_conf,
+                    plant_part_probabilities=part_probs,
                     display_name="Ambiguous or Low Quality Image",
                     top_k=[],
                     lesion_measurement=lesion_meas,
@@ -406,6 +463,8 @@ class TFLiteModelEngine(BaseModelEngine):
                     candidate_crops=[],
                     is_healthy=False,
                     plant_part=detected_part or "Unknown",
+                    plant_part_confidence=part_conf,
+                    plant_part_probabilities=part_probs,
                     display_name="Unsupported Crop",
                     top_k=[],
                     lesion_measurement=lesion_meas,
@@ -444,6 +503,8 @@ class TFLiteModelEngine(BaseModelEngine):
                         candidate_crops=top_k,
                         is_healthy=False,
                         plant_part=detected_part or "Leaf",
+                        plant_part_confidence=part_conf,
+                        plant_part_probabilities=part_probs,
                         display_name=f"Crop Uncertain: Possible {pred_c} ({round(c_conf*100, 1)}%)",
                         top_k=[{"class": c["crop"], "confidence": c["confidence"]} for c in top_k],
                         lesion_measurement=lesion_meas,
@@ -459,9 +520,67 @@ class TFLiteModelEngine(BaseModelEngine):
                     candidate_crops=[],
                     is_healthy=False,
                     plant_part=detected_part or "Leaf",
+                    plant_part_confidence=part_conf,
+                    plant_part_probabilities=part_probs,
                     display_name="Crop Identification Failed",
                     top_k=[],
                     lesion_measurement=None,
+                )
+
+        # Stage 1 to Stage 2 Anatomical Routing Gate:
+        # Stem and Bark disorders are not modeled in foliar leaf disease datasets.
+        if detected_part in ["Stem", "Bark"]:
+            try:
+                from ml.lesion_detector.detector import PlantLesionDetector
+                lesion_input = original_image if original_image is not None else image_array
+                lesion_meas = PlantLesionDetector.analyze(
+                    lesion_input, plant_part=detected_part, is_healthy=False
+                )
+            except Exception:
+                lesion_meas = None
+            return ModelPrediction(
+                predicted_class="unsupported_part_disease",
+                crop=resolved_crop,
+                confidence=0.25,
+                crop_confidence=crop_confidence,
+                crop_detected_automatically=auto_detected_crop,
+                candidate_crops=candidate_crops,
+                is_healthy=False,
+                plant_part=detected_part,
+                plant_part_confidence=part_conf,
+                plant_part_probabilities=part_probs,
+                display_name=f"Stem/Bark Pathology Not Supported ({detected_part})",
+                top_k=[],
+                lesion_measurement=lesion_meas,
+            )
+
+        # Fruit routing check: only crops with fruit disease classes support Fruit part
+        if detected_part == "Fruit":
+            crops_supporting_fruit = {"tomato", "apple", "grape", "bell_pepper", "mango"}
+            clean_res = resolved_crop.strip().lower().replace(" ", "_")
+            if clean_res not in crops_supporting_fruit:
+                try:
+                    from ml.lesion_detector.detector import PlantLesionDetector
+                    lesion_input = original_image if original_image is not None else image_array
+                    lesion_meas = PlantLesionDetector.analyze(
+                        lesion_input, plant_part=detected_part, is_healthy=False
+                    )
+                except Exception:
+                    lesion_meas = None
+                return ModelPrediction(
+                    predicted_class="unsupported_part_disease",
+                    crop=resolved_crop,
+                    confidence=0.25,
+                    crop_confidence=crop_confidence,
+                    crop_detected_automatically=auto_detected_crop,
+                    candidate_crops=candidate_crops,
+                    is_healthy=False,
+                    plant_part="Fruit",
+                    plant_part_confidence=part_conf,
+                    plant_part_probabilities=part_probs,
+                    display_name=f"Fruit Pathology Not Supported for {resolved_crop}",
+                    top_k=[],
+                    lesion_measurement=lesion_meas,
                 )
 
         # Load target crop interpreter
@@ -485,6 +604,8 @@ class TFLiteModelEngine(BaseModelEngine):
                     candidate_crops=candidate_crops,
                     is_healthy=False,
                     plant_part=detected_part or "Leaf",
+                    plant_part_confidence=part_conf,
+                    plant_part_probabilities=part_probs,
                     display_name=f"Classifier Unavailable for {resolved_crop}",
                     top_k=[],
                     lesion_measurement=None,
@@ -565,6 +686,8 @@ class TFLiteModelEngine(BaseModelEngine):
             confidence=confidence,
             is_healthy=is_healthy,
             plant_part=detected_part,
+            plant_part_confidence=part_conf,
+            plant_part_probabilities=part_probs,
             display_name=display_name,
             top_k=top_k,
             raw_probabilities=[round(float(p), 4) for p in probs],

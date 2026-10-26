@@ -66,7 +66,7 @@ def test_decompression_bomb_rejection():
     with patch("PIL.Image.open") as mock_open:
         mock_img = mock_open.return_value
         mock_img.load.side_effect = Image.DecompressionBombError("Image exceeds safety limits")
-        
+
         with pytest.raises(ImageValidationError) as exc_info:
             ImageProcessor.validate_and_load_bytes(b"dummy_bytes_here", filename="bomb.jpg")
         assert exc_info.value.detail["error_code"] == "DECOMPRESSION_BOMB_DETECTED"
@@ -110,34 +110,57 @@ def test_simulation_headers_disabled_in_prod(client: TestClient, valid_leaf_imag
 def test_rate_limiter_exceeded(client: TestClient):
     """Verify rate limiter blocks client exceeding RPM."""
     from backend.services.rate_limiter import rate_limiter
-    
-    # Save original RPM and set to 3 for testing
-    orig_rpm = rate_limiter.requests_per_minute
-    try:
-        rate_limiter.requests_per_minute = 3
-        # Clear existing timestamps
-        rate_limiter._requests.clear()
-        
-        # Make 3 fast calls
-        for _ in range(3):
-            res = client.post(
+
+    with patch.object(settings, "RATE_LIMIT_ENABLED", True):
+        # Save original RPM and set to 3 for testing
+        orig_rpm = rate_limiter.requests_per_minute
+        try:
+            rate_limiter.requests_per_minute = 3
+            # Clear existing timestamps
+            rate_limiter._requests.clear()
+
+            # Make 3 fast calls
+            for _ in range(3):
+                res = client.post(
+                    "/api/v1/predict",
+                    files={"file": ("test.jpg", b"invalid_bytes", "image/jpeg")},
+                )
+                # Either 400 (bad image) or ok, but not 429
+                assert res.status_code != 429
+
+            # 4th call should hit rate limit
+            res4 = client.post(
                 "/api/v1/predict",
                 files={"file": ("test.jpg", b"invalid_bytes", "image/jpeg")},
             )
-            # Either 400 (bad image) or ok, but not 429
-            assert res.status_code != 429
+            assert res4.status_code == 429
+            assert res4.json()["error_code"] == "RATE_LIMIT_EXCEEDED"
+            assert "Retry-After" in res4.headers
+        finally:
+            rate_limiter.requests_per_minute = orig_rpm
+            rate_limiter._requests.clear()
 
-        # 4th call should hit rate limit
-        res4 = client.post(
-            "/api/v1/predict",
-            files={"file": ("test.jpg", b"invalid_bytes", "image/jpeg")},
-        )
-        assert res4.status_code == 429
-        assert res4.json()["error_code"] == "RATE_LIMIT_EXCEEDED"
-        assert "Retry-After" in res4.headers
-    finally:
-        rate_limiter.requests_per_minute = orig_rpm
-        rate_limiter._requests.clear()
+
+def test_rate_limiter_bypassed_when_disabled(client: TestClient):
+    """Verify rate limiter is bypassed when RATE_LIMIT_ENABLED is False."""
+    from backend.services.rate_limiter import rate_limiter
+
+    with patch.object(settings, "RATE_LIMIT_ENABLED", False):
+        orig_rpm = rate_limiter.requests_per_minute
+        try:
+            rate_limiter.requests_per_minute = 1
+            rate_limiter._requests.clear()
+
+            for _ in range(3):
+                res = client.post(
+                    "/api/v1/predict",
+                    files={"file": ("test.jpg", b"invalid_bytes", "image/jpeg")},
+                )
+                assert res.status_code != 429
+        finally:
+            rate_limiter.requests_per_minute = orig_rpm
+            rate_limiter._requests.clear()
+
 
 
 def test_readiness_probe_degraded_when_mock_in_production(client: TestClient):
@@ -157,4 +180,3 @@ def test_readiness_probe_degraded_when_mock_in_production(client: TestClient):
                 data = response.json()
                 assert data["status"] == "not_ready"
                 assert data["model_ready"] is False
-

@@ -143,3 +143,61 @@ def test_predict_json_base64_kannada(client: TestClient, valid_base64_image: str
     data = response.json()
     assert data["crop"] == "ಟೊಮೆಟೊ"
     assert "PlantScan AI" in data["recommendation"]["disclaimer"]
+
+
+def test_predict_stem_rejection_routes_unsupported(client: TestClient, valid_leaf_image_bytes: bytes):
+    files = {"file": ("stem.jpg", valid_leaf_image_bytes, "image/jpeg")}
+    response = client.post(
+        "/api/v1/predict",
+        files=files,
+        data={"crop_hint": "Tomato", "plant_part_hint": "Stem"},
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "unsupported_part_disease"
+    assert data["predicted_class"] == "unsupported_part_disease"
+    assert data["plant_part"] == "Stem"
+    assert data["plant_part_confidence"] is not None
+    assert len(data["recommendation"]["chemical"]) == 0
+    assert len(data["recommendation"]["safety_notes"]) >= 1
+    assert "chemical" in data["recommendation"]["safety_notes"][0].lower()
+
+
+def test_predict_bark_rejection_routes_unsupported(client: TestClient, valid_leaf_image_bytes: bytes):
+    files = {"file": ("bark.jpg", valid_leaf_image_bytes, "image/jpeg")}
+    response = client.post(
+        "/api/v1/predict",
+        files=files,
+        data={"crop_hint": "Apple", "plant_part_hint": "Bark"},
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "unsupported_part_disease"
+    assert data["predicted_class"] == "unsupported_part_disease"
+    assert data["plant_part"] == "Bark"
+    assert len(data["recommendation"]["chemical"]) == 0
+
+
+def test_predict_unsupported_fruit_crop_routes_unsupported(client: TestClient, valid_leaf_image_bytes: bytes):
+    files = {"file": ("rice_fruit.jpg", valid_leaf_image_bytes, "image/jpeg")}
+    response = client.post(
+        "/api/v1/predict",
+        files=files,
+        data={"crop_hint": "Rice", "plant_part_hint": "Fruit"},
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "unsupported_part_disease"
+    assert data["plant_part"] == "Fruit"
+
+
+def test_predict_stage1_confidence_and_probabilities_populated(client: TestClient, valid_leaf_image_bytes: bytes):
+    files = {"file": ("leaf.jpg", valid_leaf_image_bytes, "image/jpeg")}
+    response = client.post("/api/v1/predict", files=files)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["plant_part"] in ["Leaf", "Stem", "Fruit", "Bark"]
+    assert "plant_part_confidence" in data
+    assert data["plant_part_confidence"] is not None
+    assert "plant_part_probabilities" in data
+    assert isinstance(data["plant_part_probabilities"], dict)

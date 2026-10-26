@@ -9,6 +9,7 @@ class PredictionStatus(str, Enum):
     UNKNOWN = "unknown"
     INVALID_IMAGE = "invalid_image"
     UNSUPPORTED_CROP = "unsupported_crop"
+    UNSUPPORTED_PART_DISEASE = "unsupported_part_disease"
     ERROR = "error"
 
 

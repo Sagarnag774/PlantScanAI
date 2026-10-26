@@ -1,0 +1,348 @@
+{
+  "benchmark_name": "PlantVillage 38-Class Authoritative Benchmark",
+  "reference_standard": "Phase 1 Project Report (Mohanty et al., 2016)",
+  "total_required_classes": 38,
+  "total_crops": 14,
+  "classes_prepared": 15,
+  "missing_classes_count": 23,
+  "missing_classes": [
+    "Apple___Apple_scab",
+    "Apple___Black_rot",
+    "Apple___Cedar_apple_rust",
+    "Apple___healthy",
+    "Blueberry___healthy",
+    "Cherry_(including_sour)___Powdery_mildew",
+    "Cherry_(including_sour)___healthy",
+    "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot",
+    "Corn_(maize)___Common_rust_",
+    "Corn_(maize)___Northern_Leaf_Blight",
+    "Corn_(maize)___healthy",
+    "Grape___Black_rot",
+    "Grape___Esca_(Black_Measles)",
+    "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+    "Grape___healthy",
+    "Orange___Haunglongbing_(Citrus_greening)",
+    "Peach___Bacterial_spot",
+    "Peach___healthy",
+    "Raspberry___healthy",
+    "Soybean___healthy",
+    "Squash___Powdery_mildew",
+    "Strawberry___Leaf_scorch",
+    "Strawberry___healthy"
+  ],
+  "locally_sourced_classes": [
+    "Pepper,_bell___Bacterial_spot",
+    "Pepper,_bell___healthy",
+    "Potato___Early_blight",
+    "Potato___Late_blight",
+    "Potato___healthy",
+    "Tomato___Bacterial_spot",
+    "Tomato___Early_blight",
+    "Tomato___Late_blight",
+    "Tomato___Leaf_Mold",
+    "Tomato___Septoria_leaf_spot",
+    "Tomato___Spider_mites Two-spotted_spider_mite",
+    "Tomato___Target_Spot",
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+    "Tomato___Tomato_mosaic_virus",
+    "Tomato___healthy"
+  ],
+  "remotely_sourced_classes": [],
+  "summary": {
+    "train_images": 330,
+    "validation_images": 60,
+    "test_images": 60,
+    "total_images": 450,
+    "duplicate_images_filtered": 5,
+    "corrupt_images_rejected": 0
+  },
+  "crops_breakdown": {
+    "Apple": 4,
+    "Blueberry": 1,
+    "Cherry": 2,
+    "Corn_(maize)": 4,
+    "Grape": 4,
+    "Orange": 1,
+    "Peach": 2,
+    "Pepper,_bell": 2,
+    "Potato": 3,
+    "Raspberry": 1,
+    "Soybean": 1,
+    "Squash": 1,
+    "Strawberry": 2,
+    "Tomato": 10
+  },
+  "class_details": {
+    "Apple___Apple_scab": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Apple___Black_rot": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Apple___Cedar_apple_rust": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Apple___healthy": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Blueberry___healthy": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Cherry_(including_sour)___Powdery_mildew": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Cherry_(including_sour)___healthy": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Corn_(maize)___Common_rust_": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Corn_(maize)___Northern_Leaf_Blight": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Corn_(maize)___healthy": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Grape___Black_rot": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Grape___Esca_(Black_Measles)": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Grape___healthy": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Orange___Haunglongbing_(Citrus_greening)": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Peach___Bacterial_spot": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Peach___healthy": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Pepper,_bell___Bacterial_spot": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    },
+    "Pepper,_bell___healthy": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    },
+    "Potato___Early_blight": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    },
+    "Potato___Late_blight": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    },
+    "Potato___healthy": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    },
+    "Raspberry___healthy": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Soybean___healthy": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Squash___Powdery_mildew": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Strawberry___Leaf_scorch": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Strawberry___healthy": {
+      "train": 0,
+      "validation": 0,
+      "test": 0,
+      "total": 0,
+      "status": "MISSING_DATA"
+    },
+    "Tomato___Bacterial_spot": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    },
+    "Tomato___Early_blight": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    },
+    "Tomato___Late_blight": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    },
+    "Tomato___Leaf_Mold": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    },
+    "Tomato___Septoria_leaf_spot": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    },
+    "Tomato___Spider_mites Two-spotted_spider_mite": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    },
+    "Tomato___Target_Spot": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    },
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    },
+    "Tomato___Tomato_mosaic_virus": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    },
+    "Tomato___healthy": {
+      "train": 22,
+      "validation": 4,
+      "test": 4,
+      "total": 30,
+      "status": "PREPARED"
+    }
+  },
+  "provenance": {
+    "primary_source": "PlantVillage Open Access Repository (Sharada Mohanty, Marcel Salath\u00e9, 2016)",
+    "license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) / Public Domain",
+    "repository_url": "https://github.com/spMohanty/PlantVillage-Dataset"
+  }
+}

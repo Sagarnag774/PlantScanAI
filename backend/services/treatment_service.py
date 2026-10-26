@@ -88,7 +88,56 @@ class TreatmentService:
                 method_note=getattr(lm, "method_note", "Experimental Computer Vision Morphological & Chromaticity Analysis"),
             )
 
-        # 1. Handle Unsupported Crop Scenario
+        # 1. Handle Unsupported Plant Part Scenario (Stage 1 to Stage 2 Routing Gate)
+        if prediction.predicted_class == "unsupported_part_disease":
+            part_name = part_display or prediction.plant_part
+            summary_text = (
+                f"PlantScan AI Stage 1 identified plant anatomical tissue as '{part_name}'. "
+                f"The current disease diagnostic models are calibrated specifically for foliar (leaf) and selected fruit pathologies. "
+                f"Deep learning models for {part_name.lower()} vascular disorders and cankers are currently in development."
+            )
+            recommendation = RecommendationResponse(
+                summary=summary_text,
+                organic=[],
+                chemical=[],
+                prevention=[
+                    f"Inspect the {part_name.lower()} closely for structural cracks, boring insect frass, bacterial oozing, or gummosis.",
+                    "Sterilize pruning shears and tools with 70% isopropyl alcohol or 10% bleach solution between cuts to prevent pathogen transmission.",
+                    "Avoid overhead irrigation to minimize moisture persistence on woody and stem tissue.",
+                    "If foliar (leaf) symptoms are also present on the plant, submit a clear, well-lit photo of the affected leaf for foliar disease classification.",
+                    "Consult a certified local agricultural extension officer or plant pathology clinic for definitive vascular diagnostics.",
+                ],
+                safety_notes=[
+                    "CRITICAL SAFETY WARNING: Do NOT apply synthetic chemical fungicides or pesticides to stems or bark without laboratory diagnostic confirmation."
+                ],
+                photo_guidance=[
+                    "Submit a close-up photo of the crop's leaves in diffuse natural daylight for leaf disease diagnosis.",
+                    "Ensure the image is sharp, in-focus, and free of direct sun glare.",
+                ],
+                disclaimer=general_disclaimer,
+                sources=["PlantScan AI Diagnostic Protocol", "ICAR/FAO Integrated Pest Management Guidelines"],
+            )
+            return PredictionResponse(
+                status=PredictionStatus.UNSUPPORTED_PART_DISEASE,
+                crop=crop_display,
+                predicted_class="unsupported_part_disease",
+                display_name=f"Unsupported Plant Part ({part_name})",
+                confidence=prediction.confidence,
+                is_healthy=False,
+                plant_part=part_display,
+                plant_part_confidence=getattr(prediction, "plant_part_confidence", None),
+                plant_part_probabilities=getattr(prediction, "plant_part_probabilities", None),
+                plant_health_score=50,
+                recommendation=recommendation,
+                lesion_analysis=lesion_dto,
+                inference_time_ms=inference_time_ms,
+                crop_detected_automatically=prediction.crop_detected_automatically,
+                crop_confidence=getattr(prediction, "crop_confidence", None),
+                candidate_crops=getattr(prediction, "candidate_crops", []),
+                message=f"Plant part '{part_name}' is not currently supported for disease classification.",
+            )
+
+        # 2. Handle Unsupported Crop Scenario
         if prediction.predicted_class == "unsupported_crop":
             unknown_info = self.repository.default_unknown
             if "unsupported_crop" in t_summaries:
@@ -126,6 +175,8 @@ class TreatmentService:
                 confidence=prediction.confidence,
                 is_healthy=False,
                 plant_part=part_display,
+                plant_part_confidence=getattr(prediction, "plant_part_confidence", None),
+                plant_part_probabilities=getattr(prediction, "plant_part_probabilities", None),
                 plant_health_score=50,
                 recommendation=recommendation,
                 lesion_analysis=lesion_dto,
@@ -209,6 +260,8 @@ class TreatmentService:
                 confidence=prediction.confidence,
                 is_healthy=prediction.is_healthy,
                 plant_part=part_display,
+                plant_part_confidence=getattr(prediction, "plant_part_confidence", None),
+                plant_part_probabilities=getattr(prediction, "plant_part_probabilities", None),
                 plant_health_score=50,
                 recommendation=recommendation,
                 lesion_analysis=lesion_dto,
@@ -309,6 +362,8 @@ class TreatmentService:
             confidence=prediction.confidence,
             is_healthy=prediction.is_healthy,
             plant_part=part_display,
+            plant_part_confidence=getattr(prediction, "plant_part_confidence", None),
+            plant_part_probabilities=getattr(prediction, "plant_part_probabilities", None),
             plant_health_score=health_score,
             recommendation=recommendation,
             lesion_analysis=lesion_dto,

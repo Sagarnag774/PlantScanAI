@@ -60,4 +60,23 @@ datasets/model/
 tests/*.png
 
 
-
+
+# Mobile dependencies
+mobile_app/node_modules/
+
+# Local PlantScanAI datasets
+datasets/plant_parts/
+datasets/plant_parts_cleaned/
+datasets/plant_parts_quarantine/
+datasets/plant_parts_staging/
+datasets/plantvillage_38/
+
+# Generated review images and contact sheets
+datasets/reports/contact_sheets/
+
+# Locally generated model artifacts
+ml/weights/plant_part_classifier/
+ml/weights/plantvillage_38/
+
+# Temporary local backup of inference code
+ml/inference/crop_predictor.py.bak

@@ -1,0 +1,33 @@
+{
+  "title": "Plant-Part Classifier: Cleaned vs. Contaminated Dataset Comparative Analysis",
+  "contaminated_baseline": {
+    "dataset": "datasets/plant_parts (uncleaned)",
+    "status": "AFFECTED_BY_DATASET_CONTAMINATION",
+    "contamination_details": "Included 52 botanical illustrations/engravings, 7 patent text pages, 43 mislabeled organs (including 34 dead mango leaves as stems), 29 distant landscapes, and 11 non-plant objects (coins, food plates, machinery).",
+    "test_accuracy": 0.8197,
+    "macro_f1": 0.8171,
+    "weighted_f1": 0.8155,
+    "per_class_f1": {
+      "bark": 0.8966,
+      "fruit": 0.7273,
+      "leaf": 0.9091,
+      "stem": 0.7353
+    },
+    "test_sample_count": 61
+  },
+  "cleaned_evaluation": {
+    "dataset": "D:\\Sagarnag\\major project\\pgpt\\PlantScanAI\\datasets\\plant_parts_cleaned",
+    "test_accuracy": 0.939393937587738,
+    "macro_f1": 0.9371693121693122,
+    "weighted_f1": 0.9409972743306075,
+    "per_class_f1": {
+      "bark": 0.9629629629629629,
+      "fruit": 1.0,
+      "leaf": 0.9285714285714286,
+      "stem": 0.8571428571428571
+    },
+    "test_sample_count": 33
+  },
+  "accuracy_delta": 0.11969393758773805,
+  "scientific_conclusion": "The previous 81.97% test accuracy was measured on an uncleaned test set containing botanical engravings, historical sketches, scanned patent text, and mislabeled leaves. The new evaluation is measured on verified photographic plant specimens only. Current cleaned test accuracy is 93.94%. A sample shortage remains in Fruit and Stem which must be addressed before declaring Phase 1 benchmark completion."
+}

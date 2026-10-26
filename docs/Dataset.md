@@ -1,8 +1,8 @@
 # PlantScan AI — Dataset Architecture & Data Engineering Guide
 
-**Version:** 1.0.0  
-**Target Domain:** Multilingual Mobile & Cloud Plant Pathology  
-**Dataset Root:** `datasets/`  
+**Version:** 1.0.0
+**Target Domain:** Multilingual Mobile & Cloud Plant Pathology
+**Dataset Root:** `datasets/`
 
 ---
 
@@ -130,3 +130,94 @@ Certain field classes (e.g., *Grape Black Rot* or *Rice Sheath Blight*) have few
    $$w_c = \frac{N}{K \cdot N_c}$$
    Where $N$ is total samples, $K$ is number of classes, and $N_c$ is sample count for class $c$.
 2. **Selective Offline Augmentation**: Synthetic perturbations are pre-generated for severely under-represented minority classes until reaching a minimum threshold of 100 images per class.
+
+---
+
+## 7. Stage 1 Plant-Parts Anatomical Dataset & Quality Audit
+
+To fulfill the Phase 1 Report two-stage architectural mandate, a dedicated anatomical part dataset is maintained covering four botanical organs: `Leaf`, `Fruit`, `Stem`, and `Bark`.
+
+### 7.1 Dataset Quality Audit & Defect Findings
+An exhaustive quality audit of the initial 397-image dataset (`datasets/plant_parts/`) was conducted using automated quantitative screening combined with systematic human visual inspection across 12 generated contact sheets.
+
+The audit revealed that open-access botanical queries from Wikimedia Commons and agricultural collections contained significant non-photographic and unsuitable artifacts:
+1. **Botanical Drawings & Engravings (52 images)**: 19th-century lithographs ("The Delaware Grape"), seed catalog woodcuts ("5 Grand Tomatoes", "The Matchless Tomato"), and anatomical cross-section sketches.
+2. **Scanned Documents & Patent Text Pages (7 images)**: Scanned United States Patent specifications (e.g., Wilmann 1896 Corn Husker claims) and seed catalog advertising text columns.
+3. **Mislabeled Organs (43 images)**:
+   - 34 curled, dead necrotic mango leaf blades from `datasets/raw/Mango/Die Back` inappropriately ingested as "stems".
+   - Whole red apple fruit and Alamy apple scab fruits mislabeled as "leaves".
+   - Sunflower and Gerbera flower blossoms mislabeled as "stems".
+   - Bare dormant sapling twigs with label cards mislabeled as "fruit".
+4. **Distant Landscapes Without Discernible Organ (29 images)**: Winter woodland vistas, distant bare dormant trees, and pastoral sheep fields without close-up organ depictions.
+5. **Non-Plant Objects & Prepared Foods (11 images)**: Restaurant food plates (bruschetta bread with tomato topping), an ancient bronze coin depicting Pegasus, a steam tractor engine engraving, and military digital camouflage fabric pattern.
+
+### 7.2 Strict Data Preservation & Reversible Segregation
+To ensure zero data loss, the original dataset is strictly preserved without deletions, relabeling, or moves:
+- **Pristine Original Archive**: `datasets/plant_parts/` (all 397 original files remain untouched).
+- **Cleaned Dataset**: `datasets/plant_parts_cleaned/` (contains only the 227 confirmed genuine photographs).
+- **Quarantine Storage**: `datasets/plant_parts_quarantine/` (contains all 170 rejected and manual-review items alongside `quarantine_manifest.json` documenting the exact reason for every quarantined file).
+- **Reversal Procedure**: Cleanup can be reversed at any time via:
+  ```bash
+  python datasets/scripts/audit_plant_parts_dataset.py --reverse
+  ```
+
+### 7.3 Before-and-After Split & Class Distribution
+
+| Split | Anatomical Class | Original (Before) | Retained Photographs (`keep`) | Quarantined Unsuitable (`reject`) | Awaiting Manual Review | Final Cleaned Count |
+|---|---|---|---|---|---|---|
+| **Train** | **Bark** | 70 | 63 | 4 | 3 | **63** |
+| **Train** | **Fruit** | 70 | 15 | 49 | 6 | **15** |
+| **Train** | **Leaf** | 70 | 58 | 1 | 11 | **58** |
+| **Train** | **Stem** | 67 | 24 | 42 | 1 | **24** |
+| **Val** | **Bark** | 15 | 14 | 1 | 0 | **14** |
+| **Val** | **Fruit** | 15 | 2 | 13 | 0 | **2** |
+| **Val** | **Leaf** | 15 | 11 | 2 | 2 | **11** |
+| **Val** | **Stem** | 14 | 7 | 7 | 0 | **7** |
+| **Test** | **Bark** | 15 | 14 | 0 | 1 | **14** |
+| **Test** | **Fruit** | 15 | 2 | 11 | 2 | **2** |
+| **Test** | **Leaf** | 15 | 14 | 0 | 1 | **14** |
+| **Test** | **Stem** | 16 | 3 | 12 | 1 | **3** |
+| **TOTAL** | — | **397** | **227 (57.2%)** | **142 (35.8%)** | **28 (7.1%)** | **227** |
+
+### 7.4 Cryptographic Leakage & Deduplication Results
+- **Cryptographic SHA-256 Duplicates**: 0 duplicate groups across the dataset.
+- **Cross-Split Duplicate Leakage**: Exactly 0.0% leakage between train, val, and test splits.
+- **Near-Duplicate Perceptual Hash (dHash)**: Exactly 1 pair identified within training split; 0 cross-split near-duplicate leakage.
+
+### 7.5 Audit & Cleanup Tooling
+The automated screening, contact sheet generation, and segregation pipeline is executed via:
+```bash
+# 1. Run audit, generate contact sheets, and export inventory & audit reports:
+python datasets/scripts/audit_plant_parts_dataset.py --audit --contact-sheets
+
+# 2. Build segregated cleaned dataset and quarantine directory:
+python datasets/scripts/audit_plant_parts_dataset.py --clean
+
+# 3. Run regression and verification test suite:
+pytest ml/plant_part_classifier/test_plant_parts_audit.py -v
+```
+
+Generated reports:
+- Inventory: `datasets/reports/plant_parts_inventory.json` & `.csv`
+- Audit Decisions: `datasets/reports/plant_parts_audit_report.json` & `.csv`
+- Visual Contact Sheets: `datasets/reports/contact_sheets/contact_sheet_{split}_{class}.jpg` (12 sheets)
+- Quarantine Manifest: `datasets/plant_parts_quarantine/quarantine_manifest.json`
+
+### 7.6 Class Balance Findings & Readiness for Model Training
+1. **Bark & Leaf Readiness**: `Bark` (91 confirmed photos) and `Leaf` (83 confirmed photos) possess clean, high-resolution photographic representations across all partitions with rich natural texture and realistic field variations.
+2. **Fruit & Stem Shortage**: Purging non-photographic illustrations and mislabeled dried foliage left an acute sample shortage in `Fruit` (19 photos: 15 train, 2 val, 2 test) and `Stem` (34 photos: 24 train, 7 val, 3 test).
+3. **Training Recommendation**: While `datasets/plant_parts_cleaned/` is verified free of illustrations, sketches, and non-plant artifacts, **it is NOT recommended to train the final production MobileNetV2 model until `Fruit` and `Stem` classes are supplemented** with at least 50 additional genuine photographs each (sourced from local field captures or verified agricultural repositories like PlantDoc/PaddyDoctor). Training on 15 fruit and 24 stem images would result in severe class imbalance and poor validation generalization.
+
+---
+
+## 8. PlantVillage 38-Class Benchmark Dataset
+
+Per the Phase 1 Project Report (Mohanty et al., 2016), the standard benchmark comprises **38 disease and healthy classes across 14 crop species**:
+
+- **Preparation Script**: `datasets/scripts/prepare_plantvillage_38_benchmark.py`
+- **Output Directory**: `datasets/plantvillage_38/{train,validation,test}`
+- **Benchmark Report**: `datasets/reports/plantvillage_38_dataset_report.json`
+- **Status Breakdown**:
+  - **15 Classes Verified Locally**: Pepper (2), Potato (3), Tomato (10) sourced from verified PlantVillage archives.
+  - **23 Classes Cataloged for Ingestion**: Apple (4), Blueberry (1), Cherry (2), Corn (4), Grape (4), Orange (1), Peach (2), Raspberry (1), Soybean (1), Squash (1), Strawberry (2).
+  - Automated download harness connects directly to the official upstream repository (`https://github.com/spMohanty/PlantVillage-Dataset`).

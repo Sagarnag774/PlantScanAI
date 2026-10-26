@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "PlantScan AI",
+    "slug": "plantscan-ai",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1e3a24"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "PlantScan AI requires camera access to capture photographs of plant leaves, stems, and fruits for disease identification.",
+        "NSPhotoLibraryUsageDescription": "PlantScan AI requires photo library access to upload leaf photos for pathology analysis."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1e3a24"
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ],
+      "package": "org.plantscan.ai"
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow PlantScan AI to access your camera to diagnose crop diseases."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow PlantScan AI to access your photo gallery to select crop images."
+        }
+      ]
+    ]
+  }
+}

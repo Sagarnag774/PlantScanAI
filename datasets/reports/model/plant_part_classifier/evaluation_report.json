@@ -1,0 +1,107 @@
+{
+  "model_name": "Stage1_MobileNetV2_PlantPart_Cleaned",
+  "dataset": "D:\\Sagarnag\\major project\\pgpt\\PlantScanAI\\datasets\\plant_parts_cleaned",
+  "dataset_status": "CLEANED_VERIFIED_PHOTOGRAPHS",
+  "sample_counts": {
+    "train": {
+      "bark": 63,
+      "fruit": 15,
+      "leaf": 58,
+      "stem": 24
+    },
+    "val": {
+      "bark": 14,
+      "fruit": 2,
+      "leaf": 11,
+      "stem": 7
+    },
+    "test": {
+      "bark": 14,
+      "fruit": 2,
+      "leaf": 14,
+      "stem": 3
+    },
+    "total_test": 33
+  },
+  "num_classes": 4,
+  "classes": [
+    "bark",
+    "fruit",
+    "leaf",
+    "stem"
+  ],
+  "test_loss": 0.24268242716789246,
+  "test_accuracy": 0.939393937587738,
+  "weighted_precision": 0.946969696969697,
+  "weighted_recall": 0.9393939393939394,
+  "weighted_f1": 0.9409972743306075,
+  "macro_precision": 0.9196428571428572,
+  "macro_recall": 0.9642857142857143,
+  "macro_f1": 0.9371693121693122,
+  "classification_report": {
+    "bark": {
+      "precision": 1.0,
+      "recall": 0.9285714285714286,
+      "f1-score": 0.9629629629629629,
+      "support": 14.0
+    },
+    "fruit": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 2.0
+    },
+    "leaf": {
+      "precision": 0.9285714285714286,
+      "recall": 0.9285714285714286,
+      "f1-score": 0.9285714285714286,
+      "support": 14.0
+    },
+    "stem": {
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1-score": 0.8571428571428571,
+      "support": 3.0
+    },
+    "accuracy": 0.9393939393939394,
+    "macro avg": {
+      "precision": 0.9196428571428572,
+      "recall": 0.9642857142857143,
+      "f1-score": 0.9371693121693122,
+      "support": 33.0
+    },
+    "weighted avg": {
+      "precision": 0.946969696969697,
+      "recall": 0.9393939393939394,
+      "f1-score": 0.9409972743306075,
+      "support": 33.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      13,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      2,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      13,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      3
+    ]
+  ],
+  "target_met_85": true
+}
