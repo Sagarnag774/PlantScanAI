@@ -81,7 +81,7 @@ def test_predict_unsupported_crop(client: TestClient, valid_leaf_image_bytes: by
 
 def test_predict_invalid_corrupt_image(client: TestClient, corrupt_image_bytes: bytes):
     files = {"file": ("corrupt.jpg", corrupt_image_bytes, "image/jpeg")}
-    response = client.post("/api/v1/predict", files=files)
+    response = client.post("/api/v1/predict",files=files,data={"crop_hint": "Tomato"},)
     
     assert response.status_code == 400
     data = response.json()
