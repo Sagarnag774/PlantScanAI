@@ -80,3 +80,6 @@ ml/weights/plantvillage_38/
 
 # Temporary local backup of inference code
 ml/inference/crop_predictor.py.bak
+
+# Expo local state
+mobile_app/.expo/
