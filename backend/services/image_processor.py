@@ -2,7 +2,7 @@ import base64
 import io
 import logging
 from pathlib import Path
-from typing import Optional, Tuple
+from typing import Any, Dict, Optional, Tuple
 import numpy as np
 from PIL import Image, ImageOps, UnidentifiedImageError
 from fastapi import HTTPException, status
@@ -30,6 +30,35 @@ class ImageValidationError(HTTPException):
                 "error_code": error_code,
                 "message": message,
                 "hint": hint or "Please upload a valid JPEG, PNG, or WebP image under 10MB.",
+            },
+        )
+
+
+class PlantValidationError(HTTPException):
+    """
+    Raised when an uploaded image fails the Stage 0 plant presence validation
+    (e.g., non-plant images such as cars, people, animals, buildings, or blurry/ambiguous images).
+    Returns HTTP 422 Unprocessable Entity with structured failure details.
+    """
+
+    def __init__(
+        self,
+        message: str,
+        error_code: str = "NON_PLANT_IMAGE",
+        hint: Optional[str] = None,
+        status_code: int = getattr(status, "HTTP_422_UNPROCESSABLE_CONTENT", 422),
+        details: Optional[Dict[str, Any]] = None,
+    ):
+        super().__init__(
+            status_code=status_code,
+            detail={
+                "success": False,
+                "status": "invalid_image",
+                "error_code": error_code,
+                "message": message,
+                "hint": hint or "Please upload a clear image of a plant leaf or another supported plant part.",
+                "prediction": None,
+                "details": details or {},
             },
         )
 

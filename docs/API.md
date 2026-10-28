@@ -180,11 +180,54 @@ When model diagnostic certainty is below the confidence threshold (`0.70`), the 
 
 ### 3.3 Error Responses
 
+#### Non-Plant Image Rejection (HTTP 422 Unprocessable Content)
+When an uploaded image does not contain a plant or supported botanical part (e.g., person, car, animal, building, food, smartphone):
+```json
+{
+  "success": false,
+  "status": "invalid_image",
+  "error_code": "NON_PLANT_IMAGE",
+  "message": "The uploaded image does not appear to contain a plant. Please upload a clear image of a plant leaf or another supported plant part.",
+  "hint": "Please upload a clear image of a plant leaf or another supported plant part.",
+  "prediction": null,
+  "details": {
+    "plant_score": 0.30,
+    "threshold_used": 0.50
+  }
+}
+```
+
+#### Blurry Image Rejection (HTTP 422 Unprocessable Content)
+When an uploaded image fails the focus variance threshold (`blur_variance < 20.0`):
+```json
+{
+  "success": false,
+  "status": "invalid_image",
+  "error_code": "BLURRY_IMAGE",
+  "message": "The uploaded image is too blurry to reliably detect plant features. Please hold your camera steady and upload a sharp, well-focused photo.",
+  "hint": "Please upload a clear image of a plant leaf or another supported plant part.",
+  "prediction": null
+}
+```
+
+#### Ambiguous Image Rejection (HTTP 422 Unprocessable Content)
+When plant presence cannot be determined with sufficient confidence ($[0.35, 0.50)$):
+```json
+{
+  "success": false,
+  "status": "invalid_image",
+  "error_code": "AMBIGUOUS_IMAGE",
+  "message": "The presence of a plant or supported plant part cannot be reliably determined. Please upload a closer, clearer photo of the plant leaf or fruit.",
+  "hint": "Please upload a clear image of a plant leaf or another supported plant part.",
+  "prediction": null
+}
+```
+
 #### Corrupted / Non-Image File (HTTP 400 Bad Request)
 ```json
 {
   "status": "invalid_image",
-  "error_code": "INVALID_IMAGE",
+  "error_code": "UNIDENTIFIED_IMAGE",
   "message": "The uploaded file is not a recognized image or is severely corrupted.",
   "hint": "Ensure you are uploading a valid JPEG, PNG, BMP, or WebP image."
 }

@@ -90,6 +90,14 @@ class Settings:
     RATE_LIMIT_RPM: int = int(os.getenv("PLANTSCAN_RATE_LIMIT_RPM", "60"))
     MAX_CONCURRENT_INFERENCES: int = int(os.getenv("PLANTSCAN_MAX_CONCURRENT_INFERENCES", "4"))
 
+    # Plant presence validation & non-plant rejection thresholds
+    PLANT_VALIDATION_ENABLED: bool = (
+        os.getenv("PLANTSCAN_PLANT_VALIDATION_ENABLED", "true").strip().lower() in ("true", "1", "yes")
+    )
+    PLANT_VALIDATION_THRESHOLD: float = float(os.getenv("PLANTSCAN_PLANT_VALIDATION_THRESHOLD", "0.50"))
+    PLANT_AMBIGUOUS_THRESHOLD: float = float(os.getenv("PLANTSCAN_PLANT_AMBIGUOUS_THRESHOLD", "0.35"))
+    BLUR_THRESHOLD: float = float(os.getenv("PLANTSCAN_BLUR_THRESHOLD", "20.0"))
+
 
 settings = Settings()
 

@@ -19,15 +19,20 @@ The platform features a dual-engine architectural framework supporting both **cl
    - Prioritizes **Cultural & Biological Control**, **Organic Remedies**, followed by **Chemical Interventions**.
    - Includes mandatory **Personal Protective Equipment (PPE)** safety rules and **Pre-Harvest Intervals (PHI)**.
 
-3. **Out-of-Scope & Uncertainty Rejection**:
-   - Employs confidence thresholding ($<70\%$ confidence) to return an `Uncertain` diagnosis rather than inaccurate predictions.
+3. **Stage 0: Plant-Image Presence Validation & Non-Plant Rejection**:
+   - Executes before disease classification to detect and reject non-plant images (people, cars, animals, buildings, food, electronics, landscapes without plants) with HTTP 422 `NON_PLANT_IMAGE`.
+   - Incorporates blur/focus variance filtering (`BLURRY_IMAGE`), low-quality filtering (`LOW_QUALITY_IMAGE`), and ambiguity policies (`AMBIGUOUS_IMAGE`).
+   - Guarantees disease classification models are never called on non-plant or corrupted uploads.
+
+4. **Out-of-Scope & Uncertainty Rejection**:
+   - Employs confidence thresholding to return an `Uncertain` diagnosis rather than inaccurate predictions when plant presence is confirmed but symptom patterns are ambiguous.
    - Rejects non-plant/corrupt image uploads to maintain diagnostic reliability.
 
-4. **Dual Inference Engine Support**:
+5. **Dual Inference Engine Support**:
    - **Cloud Inference Engine**: Keras (`.keras`) / MobileNetV2 for high-precision server-side batch inference.
    - **Edge Inference Engine**: Quantized TensorFlow Lite (`.tflite`) for low-latency offline mobile scanning.
 
-5. **RESTful FastAPI Microservice**:
+6. **RESTful FastAPI Microservice**:
    - High-throughput asynchronous backend service with OpenAPI/Swagger interactive UI (`/docs`).
    - Standardized JSON responses for mobile and web integration.
 

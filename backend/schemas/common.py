@@ -34,10 +34,12 @@ class InfoResponse(BaseModel):
 
 
 class ErrorDetail(BaseModel):
+    success: Optional[bool] = Field(default=False, description="Success status flag")
     status: PredictionStatus = Field(default=PredictionStatus.ERROR)
     error_code: str = Field(..., description="Machine-readable error code")
     message: str = Field(..., description="Human-readable explanation of error")
     hint: Optional[str] = Field(None, description="Suggested action to resolve the issue")
+    prediction: Optional[Any] = Field(default=None, description="Prediction payload if applicable")
     details: Optional[Dict[str, Any]] = None
 
 

@@ -18,10 +18,11 @@ from starlette.concurrency import run_in_threadpool
 from ..config import settings
 from ..schemas.common import ErrorDetail, PredictionStatus
 from ..schemas.prediction import Base64PredictRequest, PredictionResponse
-from ..services.image_processor import ImageProcessor, ImageValidationError
+from ..services.image_processor import ImageProcessor, ImageValidationError, PlantValidationError
 from ..services.inference_engine import BaseModelEngine, get_inference_engine
 from ..services.rate_limiter import get_inference_semaphore, rate_limiter
 from ..services.treatment_service import TreatmentService, get_treatment_service
+from ml.plant_validator.validator import PlantImageValidator
 
 logger = logging.getLogger("plantscan.api.predict")
 
@@ -38,7 +39,7 @@ router = APIRouter(tags=["Disease Prediction"])
     ),
     responses={
         400: {"model": ErrorDetail, "description": "Invalid image format, corrupted file, or bad dimensions"},
-        422: {"description": "Unprocessable entity / validation error"},
+        422: {"model": ErrorDetail, "description": "Non-plant or ambiguous image rejected by validation stage"},
         429: {"model": ErrorDetail, "description": "Rate limit exceeded"},
         500: {"model": ErrorDetail, "description": "Internal server or inference failure"},
     },
@@ -80,6 +81,28 @@ async def predict_image(
                 "hint": "Ensure the uploaded file is an uncorrupted JPEG, PNG, or WebP image.",
             },
         )
+
+    # 2.5. Stage 0: Plant-Image Validation (Strict Gatekeeper)
+    # Rejects non-plant images (cars, people, buildings, animals, landscapes) and blurry photos BEFORE disease classification.
+    if settings.PLANT_VALIDATION_ENABLED:
+        validation_res = await run_in_threadpool(
+            PlantImageValidator.validate,
+            image=pil_image,
+            plant_part_hint=plant_part_hint,
+            crop_hint=crop_hint,
+            blur_threshold=settings.BLUR_THRESHOLD,
+            min_plant_score=settings.PLANT_VALIDATION_THRESHOLD,
+            ambiguous_threshold=settings.PLANT_AMBIGUOUS_THRESHOLD,
+        )
+        if not validation_res.is_valid:
+            logger.info("Plant validation rejected upload: %s (%s)", validation_res.error_code, validation_res.status)
+            raise PlantValidationError(
+                message=validation_res.message,
+                error_code=validation_res.error_code,
+                hint="Please upload a clear image of a plant leaf or another supported plant part.",
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                details=validation_res.details,
+            )
 
     input_array = await run_in_threadpool(ImageProcessor.preprocess_for_model, pil_image)
 
@@ -153,6 +176,7 @@ async def predict_image(
     description="Send a Base64-encoded image in a JSON payload for environments where multipart uploads are inconvenient.",
     responses={
         400: {"model": ErrorDetail, "description": "Invalid Base64 string or invalid image"},
+        422: {"model": ErrorDetail, "description": "Non-plant or ambiguous image rejected by validation stage"},
         429: {"model": ErrorDetail, "description": "Rate limit exceeded"},
         500: {"model": ErrorDetail, "description": "Internal server or inference failure"},
     },
@@ -184,6 +208,27 @@ async def predict_base64_json(
                 "hint": "Verify Base64 encoding and image format.",
             },
         )
+
+    # 2.5. Stage 0: Plant-Image Validation (Strict Gatekeeper)
+    if settings.PLANT_VALIDATION_ENABLED:
+        validation_res = await run_in_threadpool(
+            PlantImageValidator.validate,
+            image=pil_image,
+            plant_part_hint=request.plant_part_hint,
+            crop_hint=request.crop_hint,
+            blur_threshold=settings.BLUR_THRESHOLD,
+            min_plant_score=settings.PLANT_VALIDATION_THRESHOLD,
+            ambiguous_threshold=settings.PLANT_AMBIGUOUS_THRESHOLD,
+        )
+        if not validation_res.is_valid:
+            logger.info("Plant validation rejected base64 upload: %s (%s)", validation_res.error_code, validation_res.status)
+            raise PlantValidationError(
+                message=validation_res.message,
+                error_code=validation_res.error_code,
+                hint="Please upload a clear image of a plant leaf or another supported plant part.",
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                details=validation_res.details,
+            )
 
     input_array = await run_in_threadpool(ImageProcessor.preprocess_for_model, pil_image)
 

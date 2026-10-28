@@ -168,6 +168,35 @@
             </p>
           </div>
 
+          <!-- Plant Presence Rejection / Validation Warning Card -->
+          <div class="rejection-panel" id="rejectionPanel" style="display:none;" aria-live="assertive">
+            <div class="rejection-card">
+              <div class="rejection-header">
+                <div class="rejection-icon" id="rejectionIcon">🚫</div>
+                <div class="rejection-meta">
+                  <div class="rejection-badge" id="rejectionBadge">VALIDATION REJECTED</div>
+                  <h3 class="rejection-title" id="rejectionTitle">This image does not appear to contain a plant.</h3>
+                </div>
+              </div>
+              <p class="rejection-message" id="rejectionMessage">
+                The uploaded image does not appear to contain a plant. Please upload a clear image of a plant leaf or another supported plant part.
+              </p>
+              <div class="rejection-guidance-box" id="rejectionGuidanceBox">
+                <div class="guidance-title"><span>💡</span> Required Submission Criteria:</div>
+                <ul class="guidance-list" id="rejectionGuidanceList">
+                  <li>Capture a clear, in-focus close-up of the plant leaf, fruit, or stem.</li>
+                  <li>Ensure natural diffuse daylight (avoid heavy shadows or blinding flash).</li>
+                  <li>Avoid uploading photos of people, animals, cars, buildings, food, or landscape scenery.</li>
+                </ul>
+              </div>
+              <div class="rejection-actions">
+                <button type="button" class="btn-try-another" onclick="triggerNewUpload()">
+                  <span>📷</span> <span>Upload Another Plant Photo</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
           <!-- Live Diagnosis Results Dashboard -->
           <div class="results-content" id="resultsContent" aria-live="polite">
 
