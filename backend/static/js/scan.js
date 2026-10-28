@@ -127,6 +127,13 @@ function removeImage(e) {
   document.getElementById('dropzone').style.display = 'block';
   document.getElementById('btnAnalyze').disabled = true;
   document.getElementById('imageInput').value = '';
+
+  const rejectionPanel = document.getElementById('rejectionPanel');
+  if (rejectionPanel) rejectionPanel.style.display = 'none';
+  const resultsContent = document.getElementById('resultsContent');
+  if (resultsContent) resultsContent.style.display = 'none';
+  const placeholder = document.getElementById('resultsPlaceholder');
+  if (placeholder) placeholder.style.display = 'block';
 }
 
 function loadSample(sampleType) {
@@ -228,8 +235,28 @@ async function runDiagnosis() {
     });
 
     if (!res.ok) {
-      const err = await res.json();
-      throw new Error(err.message || 'Diagnosis failed');
+      let errData;
+      try {
+        errData = await res.json();
+      } catch (jsonErr) {
+        errData = { message: 'Network or server error (' + res.status + ')' };
+      }
+
+      // Check for Stage 0 Plant Validation Rejections (HTTP 422 or recognized error codes)
+      const isRejection = res.status === 422 ||
+        (errData && (
+          errData.error_code === 'NON_PLANT_IMAGE' ||
+          errData.error_code === 'BLURRY_IMAGE' ||
+          errData.error_code === 'AMBIGUOUS_IMAGE' ||
+          errData.error_code === 'LOW_QUALITY_IMAGE'
+        ));
+
+      if (isRejection) {
+        renderRejection(errData);
+        return;
+      }
+
+      throw new Error(errData.message || errData.detail || 'Diagnosis failed');
     }
 
     const data = await res.json();
@@ -279,7 +306,112 @@ function triggerCropOverride() {
   }
 }
 
+function renderRejection(data) {
+  // Ensure disease elements are not populated / displayed
+  window.currentResult = null;
+
+  // Toggle card visibility: hide placeholder and normal results, show rejection panel
+  const placeholder = document.getElementById('resultsPlaceholder');
+  const resultsContent = document.getElementById('resultsContent');
+  const rejectionPanel = document.getElementById('rejectionPanel');
+
+  if (placeholder) placeholder.style.display = 'none';
+  if (resultsContent) resultsContent.style.display = 'none';
+  if (rejectionPanel) rejectionPanel.style.display = 'block';
+
+  const card = rejectionPanel ? rejectionPanel.querySelector('.rejection-card') : null;
+  const icon = document.getElementById('rejectionIcon');
+  const badge = document.getElementById('rejectionBadge');
+  const title = document.getElementById('rejectionTitle');
+  const msg = document.getElementById('rejectionMessage');
+  const list = document.getElementById('rejectionGuidanceList');
+
+  const errCode = (data && data.error_code) ? data.error_code : 'NON_PLANT_IMAGE';
+  if (badge) badge.textContent = errCode.replace(/_/g, ' ');
+
+  if (errCode === 'NON_PLANT_IMAGE') {
+    if (card) card.classList.remove('ambiguous-mode');
+    if (icon) icon.textContent = '🚫';
+    if (title) title.textContent = 'This image does not appear to contain a plant.';
+    if (msg) msg.textContent = (data && data.message)
+      ? data.message
+      : 'The uploaded image does not appear to contain a plant. Please upload a clear image of a plant leaf or another supported plant part.';
+    if (list) {
+      list.innerHTML = `
+        <li>Capture a clear, in-focus close-up of the plant leaf, fruit, or stem.</li>
+        <li>Ensure natural diffuse daylight (avoid heavy shadows or blinding flash).</li>
+        <li>Avoid uploading photos of people, animals, vehicles, buildings, food, or landscape scenery.</li>
+      `;
+    }
+  } else if (errCode === 'BLURRY_IMAGE') {
+    if (card) card.classList.add('ambiguous-mode');
+    if (icon) icon.textContent = '🔍';
+    if (title) title.textContent = 'Image is Too Blurry to Diagnose';
+    if (msg) msg.textContent = (data && data.message)
+      ? data.message
+      : 'The uploaded image is too blurry for reliable plant analysis. Please upload a sharper, in-focus photograph.';
+    if (list) {
+      list.innerHTML = `
+        <li>Hold your camera steady or tap the screen to focus on the affected leaf.</li>
+        <li>Avoid moving leaves in windy conditions; steady the leaf gently with your finger.</li>
+        <li>Ensure adequate lighting to reduce camera shutter blur.</li>
+      `;
+    }
+  } else if (errCode === 'AMBIGUOUS_IMAGE') {
+    if (card) card.classList.add('ambiguous-mode');
+    if (icon) icon.textContent = '⚠️';
+    if (title) title.textContent = 'Ambiguous Image – Plant Presence Uncertain';
+    if (msg) msg.textContent = (data && data.message)
+      ? data.message
+      : 'Plant presence cannot be determined with sufficient confidence. Please upload a clearer image of the plant leaf or fruit.';
+    if (list) {
+      list.innerHTML = `
+        <li>Frame the plant leaf or affected part prominently in the center of the shot.</li>
+        <li>Avoid cluttered backgrounds with non-plant objects.</li>
+        <li>Ensure the image has sufficient resolution and contrast.</li>
+      `;
+    }
+  } else if (errCode === 'LOW_QUALITY_IMAGE') {
+    if (card) card.classList.add('ambiguous-mode');
+    if (icon) icon.textContent = '🌑';
+    if (title) title.textContent = 'Low-Quality or Low-Contrast Image';
+    if (msg) msg.textContent = (data && data.message)
+      ? data.message
+      : 'The uploaded image is too dark, washed out, or uniform for analysis. Please capture a well-lit photo.';
+    if (list) {
+      list.innerHTML = `
+        <li>Avoid extreme darkness or direct glare on the leaf surface.</li>
+        <li>Capture with balanced natural ambient lighting.</li>
+        <li>Check that the lens is clean and free of smudges.</li>
+      `;
+    }
+  } else {
+    if (card) card.classList.remove('ambiguous-mode');
+    if (icon) icon.textContent = '❌';
+    if (title) title.textContent = 'Image Validation Failed';
+    if (msg) msg.textContent = (data && data.message)
+      ? data.message
+      : 'The uploaded image could not be verified as a supported plant specimen.';
+  }
+
+  // Smooth scroll to rejection panel
+  const resCard = document.getElementById('resultsCard');
+  if (resCard) {
+    resCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+function triggerNewUpload() {
+  removeImage();
+  const input = document.getElementById('imageInput');
+  if (input) {
+    input.click();
+  }
+}
+
 function renderResults(data) {
+  const rejectionPanel = document.getElementById('rejectionPanel');
+  if (rejectionPanel) rejectionPanel.style.display = 'none';
   document.getElementById('resultsPlaceholder').style.display = 'none';
   document.getElementById('resultsContent').style.display = 'block';
 
