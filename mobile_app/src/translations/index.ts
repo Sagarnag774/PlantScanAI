@@ -25,6 +25,15 @@ export interface TranslationDictionary {
     offlineMessage: string;
     timeoutMessage: string;
     networkErrorMessage: string;
+    nonPlantTitle: string;
+    nonPlantMessage: string;
+    blurryTitle: string;
+    blurryMessage: string;
+    ambiguousTitle: string;
+    ambiguousMessage: string;
+    lowQualityTitle: string;
+    lowQualityMessage: string;
+    tryAnotherPhoto: string;
   };
   result: {
     title: string;
@@ -96,6 +105,15 @@ export const translations: Record<SupportedLanguage, TranslationDictionary> = {
       offlineMessage: 'No internet connection detected. Please connect to a mobile network or Wi-Fi to run diagnosis.',
       timeoutMessage: 'Server request timed out after 20 seconds. Please check server status and retry.',
       networkErrorMessage: 'Could not connect to PlantScan AI server. Check the configured Server URL in Settings.',
+      nonPlantTitle: 'Not a Plant',
+      nonPlantMessage: 'This image does not appear to be a plant. Please upload a clear photo of a plant leaf or supported plant part.',
+      blurryTitle: 'Blurry Image',
+      blurryMessage: 'The uploaded image is too blurry. Please hold your camera steady and upload a sharp, well-focused photo.',
+      ambiguousTitle: 'Ambiguous Image',
+      ambiguousMessage: 'Plant presence cannot be reliably determined. Please upload a clearer photo of a plant leaf or fruit.',
+      lowQualityTitle: 'Low Quality Image',
+      lowQualityMessage: 'The uploaded image is too dark or washed out. Please take a photo in good natural lighting.',
+      tryAnotherPhoto: 'Upload Another Photo',
     },
     result: {
       title: 'Diagnostic Report',
@@ -165,6 +183,15 @@ export const translations: Record<SupportedLanguage, TranslationDictionary> = {
       offlineMessage: 'ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವಿಲ್ಲ. ದಯವಿಟ್ಟು ನೆಟ್‌ವರ್ಕ್ ಸಂಪರ್ಕ ಪರಿಶೀಲಿಸಿ.',
       timeoutMessage: 'ಸರ್ವರ್ ವಿನಂತಿ ಸಮಯ ಮೀರಿದೆ (20 ಸೆಕೆಂಡುಗಳು). ದಯವಿಟ್ಟು ಪುನಃ ಪ್ರಯತ್ನಿಸಿ.',
       networkErrorMessage: 'ಪ್ಲಾಂಟ್‌ಸ್ಕ್ಯಾನ್ ಸರ್ವರ್ ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಾಗುತ್ತಿಲ್ಲ.',
+      nonPlantTitle: 'ಸಸ್ಯವಲ್ಲದ ಚಿತ್ರ',
+      nonPlantMessage: 'ಈ ಚಿತ್ರವು ಸಸ್ಯವನ್ನು ಹೊಂದಿಲ್ಲ. ದಯವಿಟ್ಟು ಸಸ್ಯದ ಎಲೆ ಅಥವಾ ಬೆಂಬಲಿತ ಭಾಗದ ಸ್ಪಷ್ಟ ಫೋಟೋ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ.',
+      blurryTitle: 'ಅಸ್ಪಷ್ಟ ಚಿತ್ರ',
+      blurryMessage: 'ಅಪ್‌ಲೋಡ್ ಮಾಡಿದ ಚಿತ್ರವು ತುಂಬಾ ಅಸ್ಪಷ್ಟವಾಗಿದೆ. ದಯವಿಟ್ಟು ಕ್ಯಾಮರಾವನ್ನು ಸ್ಥಿರವಾಗಿಟ್ಟು ಸ್ಪಷ್ಟ ಫೋಟೋ ತೆಗೆದುಕೊಳ್ಳಿ.',
+      ambiguousTitle: 'ಅನಿಶ್ಚಿತ ಚಿತ್ರ',
+      ambiguousMessage: 'ಸಸ್ಯದ ಉಪಸ್ಥಿತಿಯನ್ನು ವಿಶ್ವಾಸಾರ್ಹವಾಗಿ ನಿರ್ಧರಿಸಲಾಗುತ್ತಿಲ್ಲ. ದಯವಿಟ್ಟು ಸ್ಪಷ್ಟ ಫೋಟೋ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ.',
+      lowQualityTitle: 'ಕಡಿಮೆ ಗುಣಮಟ್ಟದ ಚಿತ್ರ',
+      lowQualityMessage: 'ಚಿತ್ರವು ತುಂಬಾ ಕತ್ತಲೆಯಾಗಿದೆ. ದಯವಿಟ್ಟು ಉತ್ತಮ ಬೆಳಕಿನಲ್ಲಿ ಫೋಟೋ ತೆಗೆದುಕೊಳ್ಳಿ.',
+      tryAnotherPhoto: 'ಮತ್ತೊಂದು ಫೋಟೋ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ',
     },
     result: {
       title: 'ರೋಗನಿರ್ಣಯ ವರದಿ',
@@ -234,6 +261,15 @@ export const translations: Record<SupportedLanguage, TranslationDictionary> = {
       offlineMessage: 'इंटरनेट कनेक्शन नहीं मिला। कृपया इंटरनेट कनेक्शन की जांच करें।',
       timeoutMessage: 'सर्वर अनुरोध का समय समाप्त (20 सेकंड)। कृपया पुनः प्रयास करें।',
       networkErrorMessage: 'प्लांटस्कैन सर्वर से कनेक्ट नहीं हो सका। सेटिंग्स में सर्वर URL जांचें।',
+      nonPlantTitle: 'पौधा नहीं है',
+      nonPlantMessage: 'यह चित्र किसी पौधे का नहीं लगता। कृपया पौधे की पत्ती या समर्थित अंग की स्पष्ट तस्वीर अपलोड करें।',
+      blurryTitle: 'धुंधली तस्वीर',
+      blurryMessage: 'अपलोड की गई तस्वीर बहुत धुंधली है। कृपया कैमरे को स्थिर रखें और साफ फोटो लें।',
+      ambiguousTitle: 'अस्पष्ट छवि',
+      ambiguousMessage: 'पौधे की उपस्थिति स्पष्ट रूप से निर्धारित नहीं की जा सकती। कृपया पौधे की स्पष्ट तस्वीर अपलोड करें।',
+      lowQualityTitle: 'कम गुणवत्ता वाली छवि',
+      lowQualityMessage: 'तस्वीर बहुत अंधेरी या धुंधली है। कृपया अच्छी प्राकृतिक रोशनी में फोटो लें।',
+      tryAnotherPhoto: 'दूसरी फोटो अपलोड करें',
     },
     result: {
       title: 'रोग निदान रिपोर्ट',

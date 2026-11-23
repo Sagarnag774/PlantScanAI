@@ -154,10 +154,20 @@ class PlantImageValidator:
         a_std = float(np.std(a_chan)) / 128.0
         b_std = float(np.std(b_chan)) / 128.0
 
-        # 4. Human Skin Tone Cluster (YCrCb standard)
+        # 4. Human Skin Tone Cluster (Multi-space: YCrCb + RGB melanin bounds + HSV)
         ycrcb = cv2.cvtColor(rgb, cv2.COLOR_RGB2YCrCb)
         y_c, cr_c, cb_c = cv2.split(ycrcb)
-        skin_mask = (y_c > 90) & (cr_c >= 133) & (cr_c <= 173) & (cb_c >= 77) & (cb_c <= 127)
+        skin_ycrcb = (y_c > 60) & (cr_c >= 133) & (cr_c <= 175) & (cb_c >= 77) & (cb_c <= 127)
+
+        r_c = rgb[:, :, 0].astype(np.int32)
+        g_c = rgb[:, :, 1].astype(np.int32)
+        b_c = rgb[:, :, 2].astype(np.int32)
+        skin_rgb = (r_c > 75) & (g_c > 40) & (b_c > 20) & (r_c > g_c) & (g_c > b_c) & ((r_c - g_c) >= 10)
+
+        h_c, s_c, v_c = cv2.split(hsv)
+        skin_hsv = ((h_c <= 22) | (h_c >= 168)) & (s_c >= 25) & (s_c <= 170) & (v_c >= 50)
+
+        skin_mask = (skin_ycrcb & skin_rgb) | (skin_ycrcb & skin_hsv)
         skin_ratio = float(np.count_nonzero(skin_mask)) / total_pixels
 
         # 5. Edges & Angular Orientation Entropy
@@ -192,9 +202,9 @@ class PlantImageValidator:
         blur_var = float(cv2.Laplacian(gray, cv2.CV_64F).var())
         norm_blur = min(1.0, blur_var / 500.0)
 
-        # 7. Spatial Morphological Cohesion
+        # 7. Spatial Morphological Cohesion (Excluding skin tissue)
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (7, 7))
-        botanical_raw = green_mask | cv2.inRange(hsv, (18, 30, 40), (32, 255, 255))
+        botanical_raw = (green_mask | cv2.inRange(hsv, (18, 30, 40), (32, 255, 255))) & (~skin_mask)
         cleaned = cv2.morphologyEx(botanical_raw, cv2.MORPH_CLOSE, kernel)
         contours, _ = cv2.findContours(cleaned, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         max_contour_area = 0.0
@@ -337,22 +347,36 @@ class PlantImageValidator:
         yellow_mask = cv2.inRange(hsv, (18, 30, 40), (32, 255, 255))
         yellow_ratio = float(np.count_nonzero(yellow_mask)) / total_pixels
 
-        # Fruit pigments (anthocyanins / carotenoids): red, orange, purple
-        red1 = cv2.inRange(hsv, (0, 45, 50), (18, 255, 255))
-        red2 = cv2.inRange(hsv, (162, 45, 50), (180, 255, 255))
-        purple = cv2.inRange(hsv, (125, 40, 30), (155, 255, 200))
-        fruit_mask = red1 | red2 | purple
-        fruit_ratio = float(np.count_nonzero(fruit_mask)) / total_pixels
-
-        # Bark & woody tissue: brown
-        brown_mask = cv2.inRange(hsv, (10, 30, 20), (28, 180, 130))
-        brown_ratio = float(np.count_nonzero(brown_mask)) / total_pixels
-
-        # Human skin detection (YCrCb)
+        # Human skin detection (Multi-space: YCrCb + RGB melanin bounds + HSV)
         ycrcb = cv2.cvtColor(rgb, cv2.COLOR_RGB2YCrCb)
         y_c, cr_c, cb_c = cv2.split(ycrcb)
-        skin_mask = (y_c > 90) & (cr_c >= 133) & (cr_c <= 173) & (cb_c >= 77) & (cb_c <= 127)
+        skin_ycrcb = (y_c > 60) & (cr_c >= 133) & (cr_c <= 175) & (cb_c >= 77) & (cb_c <= 127)
+
+        r_c = rgb[:, :, 0].astype(np.int32)
+        g_c = rgb[:, :, 1].astype(np.int32)
+        b_c = rgb[:, :, 2].astype(np.int32)
+        skin_rgb = (r_c > 75) & (g_c > 40) & (b_c > 20) & (r_c > g_c) & (g_c > b_c) & ((r_c - g_c) >= 10)
+
+        h_c, s_c, v_c = cv2.split(hsv)
+        skin_hsv = ((h_c <= 22) | (h_c >= 168)) & (s_c >= 25) & (s_c <= 170) & (v_c >= 50)
+
+        skin_mask = (skin_ycrcb & skin_rgb) | (skin_ycrcb & skin_hsv)
         skin_ratio = float(np.count_nonzero(skin_mask)) / total_pixels
+
+        # Fruit pigments (anthocyanins / carotenoids): red, orange, purple (strictly excluding skin)
+        red1 = cv2.inRange(hsv, (0, 75, 60), (18, 255, 255))
+        red2 = cv2.inRange(hsv, (162, 75, 60), (180, 255, 255))
+        purple = cv2.inRange(hsv, (125, 45, 30), (155, 255, 200))
+        fruit_mask = (red1 | red2 | purple) & (~skin_mask)
+        fruit_ratio = float(np.count_nonzero(fruit_mask)) / total_pixels
+
+        # Bark & woody tissue: brown (strictly excluding skin)
+        brown_mask = cv2.inRange(hsv, (10, 30, 20), (28, 180, 130)) & (~skin_mask)
+        brown_ratio = float(np.count_nonzero(brown_mask)) / total_pixels
+
+        # Yellow / chlorotic senescence: Hue [18, 32] (excluding skin)
+        yellow_mask = cv2.inRange(hsv, (18, 35, 40), (32, 255, 255)) & (~skin_mask)
+        yellow_ratio = float(np.count_nonzero(yellow_mask)) / total_pixels
 
         # Sky / atmospheric landscape blue
         sky_mask = cv2.inRange(hsv, (100, 25, 80), (130, 255, 255))
@@ -410,7 +434,9 @@ class PlantImageValidator:
         # 6. Scoring Synthesis (Computer Vision Heuristic)
         # -------------------------------------------------------------
         foliar_score = min(1.0, (green_ratio * 1.5) + (exg_ratio * 1.0) + (yellow_ratio * 0.8))
-        is_fruit_shape = (best_circularity > 0.40 and best_solidity > 0.70 and best_extent <= 0.83 and max_contour_ratio < 0.85)
+        is_plant_dominant = (green_ratio >= 0.12) or (exg_ratio >= 0.08) or (foliar_score >= 0.25 and max_contour_ratio >= 0.10)
+
+        is_fruit_shape = (best_circularity > 0.40 and best_solidity > 0.70 and best_extent <= 0.83 and max_contour_ratio < 0.85 and fruit_ratio > 0.05)
         fruit_score = min(1.0, fruit_ratio * 2.0) if is_fruit_shape else (fruit_ratio * 0.02)
         bark_score = min(1.0, brown_ratio * 1.5) if (green_ratio < 0.15 and skin_ratio < 0.15 and rectilinear_penalty < 0.10 and best_extent <= 0.83) else (brown_ratio * 0.05)
 
@@ -422,14 +448,19 @@ class PlantImageValidator:
 
         if best_extent > 0.83 and green_ratio < 0.05:
             cv_plant_score -= 0.45
-        if skin_ratio > 0.20 and green_ratio < 0.10:
-            cv_plant_score -= (skin_ratio * 0.60)
         if sky_ratio > 0.35 and max_contour_ratio < 0.15:
             cv_plant_score -= (sky_ratio * 0.50)
         if rectilinear_penalty > 0.10 and green_ratio < 0.08:
             cv_plant_score -= (rectilinear_penalty * 0.80)
         if (green_ratio > 0.35 or exg_ratio > 0.30) and max_contour_ratio > 0.25 and rectilinear_penalty < 0.10:
             cv_plant_score = min(1.0, cv_plant_score + 0.25)
+
+        # Portrait of a person check:
+        # If skin is visible and there is NO dominant plant tissue, this is a person portrait.
+        # Conversely, if a farmer holds a leaf or stands near a crop, is_plant_dominant is True,
+        # so legitimate agricultural photos with people present are preserved!
+        if skin_ratio > 0.05 and not is_plant_dominant:
+            cv_plant_score = 0.0
 
         cv_plant_score = max(0.0, min(1.0, cv_plant_score))
 
@@ -449,6 +480,11 @@ class PlantImageValidator:
             except Exception as e:
                 logger.warning("Tier 2 ML prediction failed (%s), using CV score.", e)
                 final_score = cv_plant_score
+
+        # Physical reality check: If skin is present but no dominant plant tissue,
+        # ensure final score rejects the portrait definitively.
+        if skin_ratio > 0.05 and not is_plant_dominant:
+            final_score = 0.0
 
         # Physical reality check: If there is virtually zero botanical tissue
         # (< 4% green/foliar/fruit) and low CV score, this is definitively a non-plant image

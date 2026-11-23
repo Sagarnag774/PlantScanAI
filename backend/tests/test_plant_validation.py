@@ -32,12 +32,40 @@ def _create_jpeg_bytes(img: Image.Image) -> bytes:
 
 @pytest.fixture
 def test_person_image_bytes() -> bytes:
-    img = Image.new("RGB", (224, 224), color=(225, 185, 150))
+    """Realistic portrait of a person (head, face, skin, hair, shirt)."""
+    img = Image.new("RGB", (224, 224), color=(60, 80, 110))
     d = ImageDraw.Draw(img)
-    d.ellipse([(40, 30), (184, 194)], fill=(215, 160, 130))
-    d.ellipse([(70, 80), (90, 100)], fill=(20, 20, 20))
-    d.ellipse([(134, 80), (154, 100)], fill=(20, 20, 20))
-    d.line([(85, 140), (139, 140)], fill=(160, 40, 40), width=3)
+    # Hair
+    d.ellipse([(45, 15), (179, 130)], fill=(30, 20, 15))
+    # Face skin
+    d.ellipse([(55, 45), (169, 175)], fill=(215, 160, 130))
+    # Eyes
+    d.ellipse([(75, 85), (95, 100)], fill=(20, 20, 20))
+    d.ellipse([(129, 85), (149, 100)], fill=(20, 20, 20))
+    # Nose
+    d.line([(112, 95), (112, 125)], fill=(185, 130, 100), width=2)
+    # Lips
+    d.ellipse([(95, 138), (129, 152)], fill=(180, 70, 70))
+    # Neck and clothing
+    d.rectangle([(85, 170), (139, 210)], fill=(210, 155, 125))
+    d.polygon([(20, 224), (204, 224), (160, 190), (64, 190)], fill=(40, 60, 120))
+    return _create_jpeg_bytes(img)
+
+
+@pytest.fixture
+def test_plant_with_person_background_bytes() -> bytes:
+    """Botanical leaf held by hand or with a person in the background (must NOT be rejected)."""
+    img = Image.new("RGB", (256, 256), color=(210, 165, 135))
+    d = ImageDraw.Draw(img)
+    # Person hair / head in upper corner
+    d.ellipse([(180, 10), (250, 80)], fill=(30, 25, 25))
+    # Farmer hand holding stem at bottom
+    d.rectangle([(110, 200), (146, 256)], fill=(205, 150, 120))
+    # Large dominant green leaf in center/foreground
+    d.polygon([(128, 30), (220, 120), (160, 210), (96, 210), (36, 120)], fill=(34, 139, 34))
+    d.line([(128, 30), (128, 210)], fill=(60, 180, 60), width=3)
+    d.line([(128, 90), (60, 130)], fill=(60, 180, 60), width=2)
+    d.line([(128, 140), (195, 170)], fill=(60, 180, 60), width=2)
     return _create_jpeg_bytes(img)
 
 
@@ -258,3 +286,37 @@ def test_12_base64_non_plant_rejection(client: TestClient, test_car_image_bytes:
     assert data["success"] is False
     assert data["error_code"] == "NON_PLANT_IMAGE"
     assert data["prediction"] is None
+
+
+def test_13_plant_with_person_in_background_accepted(client: TestClient, test_plant_with_person_background_bytes: bytes):
+    """
+    Test 13: A legitimate plant image with a person/hand in the background is NOT rejected
+    solely because skin/person is present, and proceeds through full inference.
+    """
+    files = {"file": ("farmer_leaf.jpg", test_plant_with_person_background_bytes, "image/jpeg")}
+    response = client.post("/api/v1/predict", files=files, data={"crop_hint": "Tomato"})
+
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] in ["success", "uncertain"]
+    assert data["crop"] == "Tomato"
+    assert data["recommendation"] is not None
+
+
+def test_14_person_portrait_never_calls_disease_classifier(client: TestClient, test_person_image_bytes: bytes):
+    """
+    Test 14 (CRITICAL PERSON BUG REGRESSION):
+    Verifies that a portrait photo of a person is rejected with HTTP 422 NON_PLANT_IMAGE
+    and the disease classifier is NEVER called.
+    """
+    engine = get_inference_engine()
+    with patch.object(engine, "predict", wraps=engine.predict) as mock_predict:
+        files = {"file": ("person_portrait.jpg", test_person_image_bytes, "image/jpeg")}
+        response = client.post("/api/v1/predict", files=files)
+
+        assert response.status_code == 422
+        data = response.json()
+        assert data["success"] is False
+        assert data["error_code"] == "NON_PLANT_IMAGE"
+        assert "does not appear to contain a plant" in data["message"]
+        assert mock_predict.call_count == 0, "Disease classifier must NEVER be called on a person portrait!"
