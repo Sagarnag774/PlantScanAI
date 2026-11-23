@@ -103,11 +103,76 @@ describe('ApiService Unit Tests', () => {
     expect(result.recommendation?.chemical.length).toBe(0);
   });
 
-  it('throws ApiError with NETWORK_ERROR code on network failure', async () => {
+  it('throws ApiError with NON_PLANT_IMAGE code on HTTP 422 validation failure', async () => {
+    const errorResponse = {
+      status: 'error',
+      error_code: 'NON_PLANT_IMAGE',
+      message: 'The uploaded image does not appear to contain a plant. Please upload a clear image of a plant leaf or another supported plant part.',
+      validation_details: {
+        is_plant: false,
+        plant_score: 0.05,
+        rejection_reason: 'Non-plant image detected (plant confidence 5.0% < threshold 45.0%)',
+      },
+    };
+
+    (global as any).fetch.mockResolvedValueOnce({
+      ok: false,
+      status: 422,
+      json: async () => errorResponse,
+    });
+
+    try {
+      await ApiService.predictImage('file:///data/user/0/person_portrait.jpg');
+      fail('Expected ApiService.predictImage to throw ApiError');
+    } catch (err: any) {
+      expect(err).toBeInstanceOf(ApiError);
+      expect(err.code).toBe('NON_PLANT_IMAGE');
+      expect(err.status).toBe(422);
+      expect(err.message).toContain('does not appear to contain a plant');
+      expect(err.details.error_code).toBe('NON_PLANT_IMAGE');
+    }
+  });
+
+  it('throws ApiError with BLURRY_IMAGE code on HTTP 422 image quality failure', async () => {
+    const errorResponse = {
+      status: 'error',
+      error_code: 'BLURRY_IMAGE',
+      message: 'The uploaded image is too blurry for reliable botanical validation.',
+      validation_details: {
+        is_plant: false,
+        blur_variance: 24.5,
+        rejection_reason: 'Image is too blurry',
+      },
+    };
+
+    (global as any).fetch.mockResolvedValueOnce({
+      ok: false,
+      status: 422,
+      json: async () => errorResponse,
+    });
+
+    try {
+      await ApiService.predictImage('file:///data/user/0/blurry_leaf.jpg');
+      fail('Expected ApiService.predictImage to throw ApiError');
+    } catch (err: any) {
+      expect(err).toBeInstanceOf(ApiError);
+      expect(err.code).toBe('BLURRY_IMAGE');
+      expect(err.status).toBe(422);
+      expect(err.message).toContain('blurry');
+    }
+  });
+
+  it('throws ApiError with NETWORK_ERROR code on network failure, distinguishable from validation error', async () => {
     (global as any).fetch.mockRejectedValueOnce(new Error('Failed to connect'));
 
-    await expect(
-      ApiService.predictImage('file:///data/user/0/leaf.jpg')
-    ).rejects.toThrow(ApiError);
+    try {
+      await ApiService.predictImage('file:///data/user/0/leaf.jpg');
+      fail('Expected ApiService.predictImage to throw ApiError');
+    } catch (err: any) {
+      expect(err).toBeInstanceOf(ApiError);
+      expect(err.code).toBe('NETWORK_ERROR');
+      expect(err.code).not.toBe('NON_PLANT_IMAGE');
+      expect(err.status).toBe(0);
+    }
   });
 });

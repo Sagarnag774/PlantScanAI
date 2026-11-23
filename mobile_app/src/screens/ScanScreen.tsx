@@ -36,6 +36,12 @@ const SUPPORTED_CROPS = [
 
 const PLANT_PARTS = ['Auto-Detect', 'Leaf', 'Stem', 'Fruit', 'Bark'];
 
+interface ValidationErrorState {
+  title: string;
+  message: string;
+  code: string;
+}
+
 export const ScanScreen: React.FC<ScanScreenProps> = ({ navigation, language }) => {
   const t = getTranslation(language);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -43,6 +49,7 @@ export const ScanScreen: React.FC<ScanScreenProps> = ({ navigation, language }) 
   const [selectedPart, setSelectedPart] = useState<string>('Auto-Detect');
   const [loading, setLoading] = useState<boolean>(false);
   const [stageProgress, setStageProgress] = useState<string>('');
+  const [validationError, setValidationError] = useState<ValidationErrorState | null>(null);
 
   const handlePickImage = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -60,6 +67,7 @@ export const ScanScreen: React.FC<ScanScreenProps> = ({ navigation, language }) 
 
     if (!result.canceled && result.assets && result.assets.length > 0) {
       setSelectedImage(result.assets[0].uri);
+      setValidationError(null);
     }
   };
 
@@ -78,12 +86,14 @@ export const ScanScreen: React.FC<ScanScreenProps> = ({ navigation, language }) 
 
     if (!result.canceled && result.assets && result.assets.length > 0) {
       setSelectedImage(result.assets[0].uri);
+      setValidationError(null);
     }
   };
 
   const handleDiagnose = async () => {
     if (!selectedImage) return;
 
+    setValidationError(null);
     setLoading(true);
     setStageProgress(t.scan.analyzingStage1);
 
@@ -95,14 +105,54 @@ export const ScanScreen: React.FC<ScanScreenProps> = ({ navigation, language }) 
         language
       );
       setLoading(false);
+      setStageProgress('');
       navigation.navigate('ResultScreen', { result: response, imageUri: selectedImage });
     } catch (err: any) {
       setLoading(false);
-      const message =
-        err instanceof ApiError && err.code === 'TIMEOUT'
-          ? t.scan.timeoutMessage
-          : t.scan.networkErrorMessage;
-      Alert.alert('Diagnosis Error', message);
+      setStageProgress('');
+
+      let title = 'Diagnosis Error';
+      let message = t.scan.networkErrorMessage;
+      let code = 'UNKNOWN_ERROR';
+
+      if (err instanceof ApiError) {
+        code = err.code;
+        switch (err.code) {
+          case 'NON_PLANT_IMAGE':
+            title = t.scan.nonPlantTitle;
+            message = t.scan.nonPlantMessage;
+            break;
+          case 'BLURRY_IMAGE':
+            title = t.scan.blurryTitle;
+            message = t.scan.blurryMessage;
+            break;
+          case 'AMBIGUOUS_IMAGE':
+            title = t.scan.ambiguousTitle;
+            message = t.scan.ambiguousMessage;
+            break;
+          case 'LOW_QUALITY_IMAGE':
+            title = t.scan.lowQualityTitle;
+            message = t.scan.lowQualityMessage;
+            break;
+          case 'TIMEOUT':
+            title = 'Request Timeout';
+            message = t.scan.timeoutMessage;
+            break;
+          case 'NETWORK_ERROR':
+            title = 'Network Connection Error';
+            message = t.scan.networkErrorMessage;
+            break;
+          default:
+            title = 'Diagnosis Error';
+            message = err.message || t.scan.networkErrorMessage;
+        }
+      } else if (err?.message) {
+        code = 'CLIENT_ERROR';
+        message = err.message;
+      }
+
+      setValidationError({ title, message, code });
+      Alert.alert(title, message);
     }
   };
 
@@ -151,7 +201,13 @@ export const ScanScreen: React.FC<ScanScreenProps> = ({ navigation, language }) 
           {selectedImage ? (
             <View style={styles.previewWrapper}>
               <Image source={{ uri: selectedImage }} style={styles.previewImage} />
-              <TouchableOpacity style={styles.retakeBtn} onPress={() => setSelectedImage(null)}>
+              <TouchableOpacity
+                style={styles.retakeBtn}
+                onPress={() => {
+                  setSelectedImage(null);
+                  setValidationError(null);
+                }}
+              >
                 <Text style={styles.retakeText}>✕ {t.scan.retake}</Text>
               </TouchableOpacity>
             </View>
@@ -162,6 +218,26 @@ export const ScanScreen: React.FC<ScanScreenProps> = ({ navigation, language }) 
             </View>
           )}
         </View>
+
+        {/* Validation Error Banner */}
+        {validationError && (
+          <View style={styles.errorCard}>
+            <View style={styles.errorHeader}>
+              <Text style={styles.errorIcon}>⚠️</Text>
+              <Text style={styles.errorTitle}>{validationError.title}</Text>
+            </View>
+            <Text style={styles.errorMessage}>{validationError.message}</Text>
+            <TouchableOpacity
+              style={styles.retryBtn}
+              onPress={() => {
+                setSelectedImage(null);
+                setValidationError(null);
+              }}
+            >
+              <Text style={styles.retryBtnText}>🔄 {t.scan.tryAnotherPhoto}</Text>
+            </TouchableOpacity>
+          </View>
+        )}
 
         {/* Action Buttons */}
         {!selectedImage ? (
@@ -377,5 +453,46 @@ const styles = StyleSheet.create({
   loadingRow: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  errorCard: {
+    backgroundColor: '#fff0f0',
+    borderColor: '#e63946',
+    borderWidth: 1.5,
+    borderRadius: 12,
+    padding: 16,
+    marginVertical: 12,
+  },
+  errorHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 6,
+  },
+  errorIcon: {
+    fontSize: 20,
+    marginRight: 8,
+  },
+  errorTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#b71c1c',
+  },
+  errorMessage: {
+    fontSize: 14,
+    color: '#5c1d1d',
+    lineHeight: 20,
+    marginBottom: 12,
+  },
+  retryBtn: {
+    backgroundColor: '#e63946',
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+  },
+  retryBtnText: {
+    color: '#ffffff',
+    fontSize: 14,
+    fontWeight: '600',
   },
 });

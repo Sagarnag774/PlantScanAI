@@ -37,14 +37,41 @@ def generate_synthetic_non_plant_samples(count_per_category: int = 25) -> List[T
     samples = []
     random.seed(42)
 
-    # 1. People / Portraits (Skin tones, faces)
+    # 1. People / Portraits (Skin tones, faces, hair, shirts of various colors)
     for _ in range(count_per_category):
-        img = Image.new("RGB", (224, 224), color=(random.randint(200, 240), random.randint(170, 205), random.randint(140, 175)))
+        # Background wall or room
+        bg_col = random.choice([(210, 210, 215), (230, 225, 220), (180, 185, 190), (100, 105, 110)])
+        img = Image.new("RGB", (224, 224), color=bg_col)
         d = ImageDraw.Draw(img)
-        d.ellipse([(40, 30), (184, 194)], fill=(random.randint(190, 230), random.randint(150, 190), random.randint(120, 160)))
-        d.ellipse([(70, 80), (90, 100)], fill=(20, 20, 20))
-        d.ellipse([(134, 80), (154, 100)], fill=(20, 20, 20))
-        d.line([(85, 140), (139, 140)], fill=(160, 40, 40), width=3)
+
+        # Shirt
+        shirt_col = random.choice([
+            (30, 60, 160), (180, 40, 40), (40, 40, 40), (240, 240, 245),
+            (60, 120, 180), (140, 80, 160), (210, 160, 40)
+        ])
+        d.rectangle([(20, 150), (204, 224)], fill=shirt_col)
+
+        # Neck and Face (diverse skin tones across Fitzpatrick Types I to VI)
+        skin_tone = random.choice([
+            (240, 205, 175),  # fair
+            (225, 185, 150),  # light tan
+            (205, 160, 125),  # medium olive
+            (175, 130, 95),   # tan brown
+            (140, 95, 65),    # dark brown
+            (90, 60, 40)      # deep dark
+        ])
+        d.rectangle([(90, 120), (134, 160)], fill=skin_tone)  # neck
+        d.ellipse([(45, 30), (179, 145)], fill=skin_tone)     # face
+
+        # Hair
+        hair_col = random.choice([(20, 20, 20), (50, 35, 25), (100, 70, 40), (180, 150, 90)])
+        d.ellipse([(42, 20), (182, 75)], fill=hair_col)
+
+        # Facial features (eyes, nose, mouth)
+        d.ellipse([(75, 75), (95, 90)], fill=(30, 30, 30))
+        d.ellipse([(129, 75), (149, 90)], fill=(30, 30, 30))
+        d.line([(95, 120), (129, 120)], fill=(160, 50, 50), width=3)
+
         samples.append((img, "person"))
 
     # 2. Cars / Vehicles (Metallic blue/red/silver, straight lines, wheels)
@@ -182,6 +209,22 @@ def collect_dataset(max_plants_per_crop: int = 35) -> Tuple[np.ndarray, np.ndarr
         X_features.append(feat)
         y_labels.append(1)
         categories.append("synthetic_plant_leaf")
+        plant_count += 1
+
+    # 4. Farmer-Held Plant Leaves (Ensuring model learns plant with hands/person in background is valid)
+    for _ in range(25):
+        img = Image.new("RGB", (224, 224), color=(random.randint(180, 220), random.randint(180, 220), random.randint(180, 220)))
+        d = ImageDraw.Draw(img)
+        # Farmer's hand / fingers at edge
+        skin_tone = random.choice([(225, 185, 150), (205, 160, 125), (175, 130, 95)])
+        d.ellipse([(10, 140), (80, 220)], fill=skin_tone)
+        # Prominent green plant leaf in center
+        d.ellipse([(60, 20), (210, 210)], fill=(random.randint(30, 50), random.randint(130, 175), random.randint(30, 50)))
+        d.line([(80, 190), (190, 40)], fill=(30, 110, 30), width=3)
+        feat = PlantImageValidator.extract_features(np.array(img))
+        X_features.append(feat)
+        y_labels.append(1)
+        categories.append("farmer_held_leaf")
         plant_count += 1
 
     print(f"[OK] Total Plant Samples collected: {plant_count}")

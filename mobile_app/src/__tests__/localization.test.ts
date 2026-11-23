@@ -16,6 +16,13 @@ describe('Localization & Translation Unit Tests', () => {
     expect(dict.scan.chooseGallery).toBeDefined();
     expect(dict.scan.diagnose).toBeDefined();
     expect(dict.scan.timeoutMessage).toBeDefined();
+    expect(dict.scan.nonPlantTitle).toBeDefined();
+    expect(dict.scan.nonPlantMessage).toBeDefined();
+    expect(dict.scan.blurryTitle).toBeDefined();
+    expect(dict.scan.blurryMessage).toBeDefined();
+    expect(dict.scan.ambiguousTitle).toBeDefined();
+    expect(dict.scan.lowQualityTitle).toBeDefined();
+    expect(dict.scan.tryAnotherPhoto).toBeDefined();
 
     // Result keys
     expect(dict.result.plantPart).toBeDefined();
